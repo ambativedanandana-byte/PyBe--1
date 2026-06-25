@@ -1,0 +1,2722 @@
+[
+  {
+    "id": "beg_arith_1",
+    "level": "Beginner",
+    "topic": "arithmetic",
+    "errorType": "Syntax Error",
+    "title": "Incorrect Operator Symbol",
+    "snippet": "# Calculate area\nlength = 10\nwidth = 5\narea = length x width\nprint(area)",
+    "options": [
+      "area = length * width",
+      "area = length + width",
+      "area = length / width",
+      "area = length x width"
+    ],
+    "correctAnswer": "area = length * width",
+    "explanation": "Python uses the asterisk (*) symbol for multiplication, not the letter \"x\".",
+    "learningTip": "Always use * for multiplication, / for division, + for addition, and - for subtraction in Python."
+  },
+  {
+    "id": "beg_arith_2",
+    "level": "Beginner",
+    "topic": "arithmetic",
+    "errorType": "Runtime Error",
+    "title": "Division by Zero",
+    "snippet": "# Distribute cookies\ncookies = 12\nchildren = 0\nper_child = cookies / children\nprint(per_child)",
+    "options": [
+      "children should not be 0",
+      "cookies should be float",
+      "per_child = cookies * children",
+      "use cookies // children"
+    ],
+    "correctAnswer": "children should not be 0",
+    "explanation": "Dividing by zero raises a ZeroDivisionError in Python.",
+    "learningTip": "Always check if your divisor is zero before performing division operations."
+  },
+  {
+    "id": "beg_arith_3",
+    "level": "Beginner",
+    "topic": "arithmetic",
+    "errorType": "Logical Error",
+    "title": "Average Calculation Order of Operations",
+    "snippet": "# Find average of two scores\nscore1 = 80\nscore2 = 90\naverage = score1 + score2 / 2\nprint(average)",
+    "options": [
+      "average = (score1 + score2) / 2",
+      "average = score1 + (score2 / 2)",
+      "average = score1 / 2 + score2",
+      "average = score1 + score2"
+    ],
+    "correctAnswer": "average = (score1 + score2) / 2",
+    "explanation": "Division has higher precedence than addition. Without parentheses, score2 is divided by 2, then added to score1.",
+    "learningTip": "Use parentheses to explicitly group operations you want to execute first."
+  },
+  {
+    "id": "beg_arith_4",
+    "level": "Beginner",
+    "topic": "arithmetic",
+    "errorType": "Syntax Error",
+    "title": "Missing Operator",
+    "snippet": "# Calculate triple value\nval = 5\ntriple = 3val\nprint(triple)",
+    "options": [
+      "triple = 3 * val",
+      "triple = val3",
+      "triple = 3 + val",
+      "triple = val * 3val"
+    ],
+    "correctAnswer": "triple = 3 * val",
+    "explanation": "Python does not support implicit multiplication. You must use the * operator between a number and a variable.",
+    "learningTip": "Always specify the operator explicitly. Writing \"3val\" is a syntax error."
+  },
+  {
+    "id": "beg_arith_5",
+    "level": "Beginner",
+    "topic": "arithmetic",
+    "errorType": "Logical Error",
+    "title": "Integer Division vs Float Division",
+    "snippet": "# Calculate exact half of a budget\nbudget = 15\nhalf = budget // 2\nprint(half) # Expected: 7.5",
+    "options": [
+      "half = budget / 2",
+      "half = budget % 2",
+      "half = budget * 0.5",
+      "half = float(budget // 2)"
+    ],
+    "correctAnswer": "half = budget / 2",
+    "explanation": "The double slash (//) operator performs floor division, discarding the remainder. Use single slash (/) for exact float division.",
+    "learningTip": "Use / for division when you want decimal/fractional results, and // when you specifically want integer quotients."
+  },
+  {
+    "id": "beg_comp_1",
+    "level": "Beginner",
+    "topic": "comparisons",
+    "errorType": "Syntax Error",
+    "title": "Assignment instead of Comparison",
+    "snippet": "# Check if score is perfect\nscore = 100\nif score = 100:\n    print(\"Perfect!\")",
+    "options": [
+      "if score == 100:",
+      "if score === 100:",
+      "if score is 100:",
+      "if score = 100"
+    ],
+    "correctAnswer": "if score == 100:",
+    "explanation": "A single equals sign (=) is for variable assignment. For comparison, you must use double equals (==).",
+    "learningTip": "Remember: \"=\" assigns values, while \"==\" checks for equality."
+  },
+  {
+    "id": "beg_comp_2",
+    "level": "Beginner",
+    "topic": "comparisons",
+    "errorType": "Logical Error",
+    "title": "Incorrect Inequality operator",
+    "snippet": "# Allow entry if user is under 18\nage = 20\nif age > 18:\n    print(\"Allow child discount\") # Expected: no output for age 20",
+    "options": [
+      "if age < 18:",
+      "if age <= 18:",
+      "if age != 18:",
+      "if age == 18:"
+    ],
+    "correctAnswer": "if age < 18:",
+    "explanation": "The code uses greater than (>) instead of less than (<). A 20-year-old would incorrectly match the condition.",
+    "learningTip": "Verify that the inequality operator direction matches the logical requirements (e.g. < for less than, > for greater than)."
+  },
+  {
+    "id": "beg_comp_3",
+    "level": "Beginner",
+    "topic": "comparisons",
+    "errorType": "Runtime Error",
+    "title": "Comparing Incompatible Types",
+    "snippet": "# Check age limit\nage = \"15\"\nif age >= 18:\n    print(\"Adult\")",
+    "options": [
+      "Convert age to integer: int(age) >= 18",
+      "Convert 18 to string: age >= \"18\"",
+      "Compare length: len(age) >= 18",
+      "Use age == 18"
+    ],
+    "correctAnswer": "Convert age to integer: int(age) >= 18",
+    "explanation": "Comparing a string value with an integer raises a TypeError at runtime.",
+    "learningTip": "Ensure both operands in comparisons are of compatible types. Use int() or float() to convert strings containing numbers."
+  },
+  {
+    "id": "beg_comp_4",
+    "level": "Beginner",
+    "topic": "comparisons",
+    "errorType": "Syntax Error",
+    "title": "Invalid Not-Equals Operator",
+    "snippet": "# Check if names are different\nname1 = \"Alice\"\nname2 = \"Bob\"\nif name1 =! name2:\n    print(\"Different\")",
+    "options": [
+      "if name1 != name2:",
+      "if name1 not= name2:",
+      "if name1 <> name2:",
+      "if name1 !== name2:"
+    ],
+    "correctAnswer": "if name1 != name2:",
+    "explanation": "The inequality operator in Python is \"!=\" and not \"=!\".",
+    "learningTip": "Python uses != for checking inequality. Make sure the exclamation mark comes first."
+  },
+  {
+    "id": "beg_comp_5",
+    "level": "Beginner",
+    "topic": "comparisons",
+    "errorType": "Logical Error",
+    "title": "Exclusive Range boundary",
+    "snippet": "# Check if score is within passing range (60 to 100 inclusive)\nscore = 60\nif score > 60 and score <= 100:\n    print(\"Pass\") # Expected: Pass for 60",
+    "options": [
+      "if score >= 60 and score <= 100:",
+      "if score > 59 and score < 100:",
+      "if score == 60:",
+      "if 60 <= score < 100:"
+    ],
+    "correctAnswer": "if score >= 60 and score <= 100:",
+    "explanation": "The > operator excludes 60. To make it inclusive, use >=.",
+    "learningTip": "Pay attention to whether boundaries are inclusive (>=, <=) or exclusive (>, <)."
+  },
+  {
+    "id": "beg_cond_1",
+    "level": "Beginner",
+    "topic": "conditionals",
+    "errorType": "Syntax Error",
+    "title": "Incorrect Elif Spelling",
+    "snippet": "# Temperature check\ntemp = 15\nif temp > 30:\n    print(\"Hot\")\nelse if temp > 10:\n    print(\"Mild\")",
+    "options": [
+      "elif temp > 10:",
+      "elseif temp > 10:",
+      "elsif temp > 10:",
+      "else temp > 10:"
+    ],
+    "correctAnswer": "elif temp > 10:",
+    "explanation": "Python uses the keyword \"elif\" for else-if conditions, not \"else if\" or \"elseif\".",
+    "learningTip": "Write \"elif\" when checking nested or subsequent conditions."
+  },
+  {
+    "id": "beg_cond_2",
+    "level": "Beginner",
+    "topic": "conditionals",
+    "errorType": "Syntax Error",
+    "title": "Missing Colon after Condition",
+    "snippet": "# Check if positive\nnum = 5\nif num > 0\n    print(\"Positive\")",
+    "options": [
+      "if num > 0:",
+      "if (num > 0)",
+      "if num > 0 then:",
+      "if num > 0 do:"
+    ],
+    "correctAnswer": "if num > 0:",
+    "explanation": "Python syntax requires a colon (:) at the end of the if condition.",
+    "learningTip": "Always put a colon at the end of control statements like if, elif, else, while, and for."
+  },
+  {
+    "id": "beg_cond_3",
+    "level": "Beginner",
+    "topic": "conditionals",
+    "errorType": "Logical Error",
+    "title": "Overlapping Condition Ordering",
+    "snippet": "# Grade checking\nscore = 95\nif score >= 60:\n    print(\"D\")\nelif score >= 90:\n    print(\"A\") # Expected: A for 95",
+    "options": [
+      "Check >= 90 condition first",
+      "Use nested if statements",
+      "Use score > 90",
+      "Check score >= 60 last"
+    ],
+    "correctAnswer": "Check >= 90 condition first",
+    "explanation": "Since 95 is greater than 60, the first block matches and displays \"D\". The elif is never reached.",
+    "learningTip": "Always order overlapping conditions from most specific (highest score/strictest limit) to most general."
+  },
+  {
+    "id": "beg_cond_4",
+    "level": "Beginner",
+    "topic": "conditionals",
+    "errorType": "Runtime Error",
+    "title": "IndentationError in conditional block",
+    "snippet": "# Simple check\nstatus = True\nif status:\nprint(\"Active\")",
+    "options": [
+      "Indent the print statement",
+      "Put print on same line",
+      "Add pass statement",
+      "Use parentheses"
+    ],
+    "correctAnswer": "Indent the print statement",
+    "explanation": "Python uses indentation to group code blocks. The code under \"if\" must be indented.",
+    "learningTip": "Ensure all block bodies (if, else, loops, functions) are indented, typically with 4 spaces."
+  },
+  {
+    "id": "beg_cond_5",
+    "level": "Beginner",
+    "topic": "conditionals",
+    "errorType": "Logical Error",
+    "title": "Missing Else Case",
+    "snippet": "# Check even number\nval = 3\nif val % 2 == 0:\n    print(\"Even\")\n# Expected: prints \"Odd\" if not even",
+    "options": [
+      "Add: else: print(\"Odd\")",
+      "Add: elif val % 2 != 0: print(\"Odd\")",
+      "Add: print(\"Odd\") at end",
+      "Change condition to != 0"
+    ],
+    "correctAnswer": "Add: else: print(\"Odd\")",
+    "explanation": "The code checks for even numbers, but lacks an \"else\" case to handle odd numbers.",
+    "learningTip": "Always include an \"else\" block when you need a default fallback outcome."
+  },
+  {
+    "id": "beg_count_1",
+    "level": "Beginner",
+    "topic": "counting",
+    "errorType": "Syntax Error",
+    "title": "Incorrect Increment Operator",
+    "snippet": "# Count items\ncount = 0\ncount =+ 1\nprint(count) # Expected count to increase",
+    "options": [
+      "count += 1",
+      "count = count + 1",
+      "count ++",
+      "Both count += 1 and count = count + 1"
+    ],
+    "correctAnswer": "Both count += 1 and count = count + 1",
+    "explanation": "Writing \"count =+ 1\" is interpreted as \"count = (+1)\" which just assigns positive 1 to count. Use \"+=\" to increment.",
+    "learningTip": "To increment a variable, use the += operator or assign to \"variable + value\"."
+  },
+  {
+    "id": "beg_count_2",
+    "level": "Beginner",
+    "topic": "counting",
+    "errorType": "Runtime Error",
+    "title": "NameError on Uninitialized Variable",
+    "snippet": "# Count clicks\nclicks = clicks + 1\nprint(clicks)",
+    "options": [
+      "Initialize clicks = 0 first",
+      "Use clicks += 1",
+      "clicks = 1",
+      "Use global clicks"
+    ],
+    "correctAnswer": "Initialize clicks = 0 first",
+    "explanation": "The variable clicks is referenced on the right hand side before it has been defined, throwing a NameError.",
+    "learningTip": "Always initialize counter variables (e.g. clicks = 0) before referencing them to increment."
+  },
+  {
+    "id": "beg_count_3",
+    "level": "Beginner",
+    "topic": "counting",
+    "errorType": "Logical Error",
+    "title": "Off-by-One Loop Count",
+    "snippet": "# Count up to 5\ni = 1\nwhile i < 5:\n    print(i)\n    i += 1 # Expected: prints 1 to 5",
+    "options": [
+      "Change condition to: while i <= 5:",
+      "Initialize i = 0",
+      "Increment i before print",
+      "Change i < 5 to i < 6"
+    ],
+    "correctAnswer": "Change condition to: while i <= 5:",
+    "explanation": "The condition i < 5 stops the loop before 5 is printed (prints 1, 2, 3, 4). Use <= to include 5.",
+    "learningTip": "Verify loop conditions to ensure boundaries are correctly handled (off-by-one errors)."
+  },
+  {
+    "id": "beg_count_4",
+    "level": "Beginner",
+    "topic": "counting",
+    "errorType": "Logical Error",
+    "title": "Infinite Loop due to Missing Increment",
+    "snippet": "# Loop count\ni = 1\nwhile i <= 3:\n    print(i)\n    # Expected: count to 3",
+    "options": [
+      "Add i += 1 inside loop",
+      "Change condition to i > 3",
+      "Use a for loop",
+      "Break loop manually"
+    ],
+    "correctAnswer": "Add i += 1 inside loop",
+    "explanation": "Without incrementing \"i\", the condition \"i <= 3\" remains True forever, causing an infinite loop.",
+    "learningTip": "Always ensure variables in loop conditions are updated inside the loop body."
+  },
+  {
+    "id": "beg_count_5",
+    "level": "Beginner",
+    "topic": "counting",
+    "errorType": "Runtime Error",
+    "title": "Type mismatch on Counter addition",
+    "snippet": "# Add to score\nscore = 10\nbonus = \"5\"\nscore += bonus",
+    "options": [
+      "Convert bonus to int: score += int(bonus)",
+      "Convert score to str",
+      "Use score = score + bonus",
+      "Use bonus = 5"
+    ],
+    "correctAnswer": "Convert bonus to int: score += int(bonus)",
+    "explanation": "Adding a string to an integer raises a TypeError.",
+    "learningTip": "Ensure both variables are of numeric types (int or float) before using addition or increments."
+  },
+  {
+    "id": "beg_idx_1",
+    "level": "Beginner",
+    "topic": "indexing",
+    "errorType": "Runtime Error",
+    "title": "Index Out of Range",
+    "snippet": "# Get third character\nword = \"Py\"\nchar = word[2]",
+    "options": [
+      "index is out of bounds",
+      "index starts at 1",
+      "word has no length",
+      "use word[3]"
+    ],
+    "correctAnswer": "index is out of bounds",
+    "explanation": "The string \"Py\" has length 2 (indices 0 and 1). Accessing index 2 raises an IndexError.",
+    "learningTip": "Python indices are 0-based, meaning the last character is at index len(sequence) - 1."
+  },
+  {
+    "id": "beg_idx_2",
+    "level": "Beginner",
+    "topic": "indexing",
+    "errorType": "Logical Error",
+    "title": "Incorrect First Index",
+    "snippet": "# Get first element of list\nscores = [90, 85, 95]\nfirst = scores[1]\nprint(first) # Expected: 90",
+    "options": [
+      "first = scores[0]",
+      "first = scores[first]",
+      "first = scores[-1]",
+      "first = scores[2]"
+    ],
+    "correctAnswer": "first = scores[0]",
+    "explanation": "Python uses 0-based indexing. scores[1] accesses the second element (85), not the first.",
+    "learningTip": "Always use index 0 to access the first item in any Python list or string."
+  },
+  {
+    "id": "beg_idx_3",
+    "level": "Beginner",
+    "topic": "indexing",
+    "errorType": "Runtime Error",
+    "title": "Invalid Index Type",
+    "snippet": "# Access element using float index\nitems = [\"a\", \"b\", \"c\"]\nidx = 1.0\nprint(items[idx])",
+    "options": [
+      "Use integer index: items[int(idx)]",
+      "items[1.0] is correct",
+      "Convert items to float",
+      "Use items[\"1.0\"]"
+    ],
+    "correctAnswer": "Use integer index: items[int(idx)]",
+    "explanation": "List indices must be integers or slices, not floats. Using 1.0 throws a TypeError.",
+    "learningTip": "Always ensure the value used inside square brackets [] evaluates to an integer."
+  },
+  {
+    "id": "beg_idx_4",
+    "level": "Beginner",
+    "topic": "indexing",
+    "errorType": "Logical Error",
+    "title": "Last Element accessing",
+    "snippet": "# Get last element of a list\nvals = [10, 20, 30]\nlast = vals[len(vals)]",
+    "options": [
+      "last = vals[-1]",
+      "last = vals[len(vals)-1]",
+      "Both last = vals[-1] and last = vals[len(vals)-1]",
+      "last = vals[3]"
+    ],
+    "correctAnswer": "Both last = vals[-1] and last = vals[len(vals)-1]",
+    "explanation": "Accessing index len(vals) causes an IndexError. You can access the last element using index -1 or len(vals) - 1.",
+    "learningTip": "Use negative index -1 as a clean shorthand to access the last item in a collection."
+  },
+  {
+    "id": "beg_idx_5",
+    "level": "Beginner",
+    "topic": "indexing",
+    "errorType": "Syntax Error",
+    "title": "Incorrect Index Brackets",
+    "snippet": "# Access first element\ncolors = [\"red\", \"blue\"]\nfirst = colors(0)",
+    "options": [
+      "first = colors[0]",
+      "first = colors{0}",
+      "first = colors.get(0)",
+      "first = colors -> 0"
+    ],
+    "correctAnswer": "first = colors[0]",
+    "explanation": "Lists and strings use square brackets [] for indexing, not parentheses (). Parentheses are for function calls.",
+    "learningTip": "Remember: Indexing always uses square brackets []."
+  },
+  {
+    "id": "beg_list_1",
+    "level": "Beginner",
+    "topic": "lists",
+    "errorType": "Syntax Error",
+    "title": "Missing comma between items",
+    "snippet": "# Create colors list\nmy_list = [\"red\" \"blue\" \"green\"]\nprint(len(my_list)) # Expected: 3",
+    "options": [
+      "Add commas: [\"red\", \"blue\", \"green\"]",
+      "Use parenthesis: (\"red\" \"blue\")",
+      "Use single string",
+      "Use semicolons"
+    ],
+    "correctAnswer": "Add commas: [\"red\", \"blue\", \"green\"]",
+    "explanation": "Without commas, Python string literal concatenation combines them into a single string item [\"redbluegreen\"].",
+    "learningTip": "Separate items in list literals with commas."
+  },
+  {
+    "id": "beg_list_2",
+    "level": "Beginner",
+    "topic": "lists",
+    "errorType": "Runtime Error",
+    "title": "List append returns None assignment",
+    "snippet": "# Add score\nscores = [80, 90]\nscores = scores.append(95)\nprint(len(scores))",
+    "options": [
+      "Do not assign: scores.append(95)",
+      "Use scores = scores + 95",
+      "Use scores.add(95)",
+      "Use scores.insert(95)"
+    ],
+    "correctAnswer": "Do not assign: scores.append(95)",
+    "explanation": "The list append() method modifies the list in place and returns None. Assigning it back to scores overwrites the list with None.",
+    "learningTip": "In-place list operations (append, sort, reverse) return None. Call them without assignment."
+  },
+  {
+    "id": "beg_list_3",
+    "level": "Beginner",
+    "topic": "lists",
+    "errorType": "Logical Error",
+    "title": "Incorrect List Length check",
+    "snippet": "# Check if list is empty\nitems = []\nif len(items) == Null:\n    print(\"Empty\")",
+    "options": [
+      "if len(items) == 0:",
+      "if not items:",
+      "Both if len(items) == 0: and if not items:",
+      "if items == None:"
+    ],
+    "correctAnswer": "Both if len(items) == 0: and if not items:",
+    "explanation": "Python uses \"None\" instead of \"Null\", and the length of an empty list is 0. An empty list also evaluates to False in boolean contexts.",
+    "learningTip": "Use \"if not items:\" as the most Pythonic way to check if a list is empty."
+  },
+  {
+    "id": "beg_list_4",
+    "level": "Beginner",
+    "topic": "lists",
+    "errorType": "Runtime Error",
+    "title": "Unsupported list method add",
+    "snippet": "# Create shopping list\nshopping = [\"milk\"]\nshopping.add(\"bread\")",
+    "options": [
+      "shopping.append(\"bread\")",
+      "shopping.extend(\"bread\")",
+      "shopping += \"bread\"",
+      "shopping.push(\"bread\")"
+    ],
+    "correctAnswer": "shopping.append(\"bread\")",
+    "explanation": "Lists do not have an \"add\" method (sets do). Use \"append\" to add a single item to a list.",
+    "learningTip": "Use list.append(item) to append an item to the end of a list."
+  },
+  {
+    "id": "beg_list_5",
+    "level": "Beginner",
+    "topic": "lists",
+    "errorType": "Logical Error",
+    "title": "Unexpected list mutation sharing",
+    "snippet": "# Copy list\nlist1 = [1, 2]\nlist2 = list1\nlist2.append(3)\nprint(list1) # Expected: [1, 2]",
+    "options": [
+      "list2 = list1.copy()",
+      "list2 = list(list1)",
+      "Both list2 = list1.copy() and list2 = list(list1)",
+      "list2 = [list1]"
+    ],
+    "correctAnswer": "Both list2 = list1.copy() and list2 = list(list1)",
+    "explanation": "Simply assigning list2 = list1 copies the reference, so changes to list2 mutate list1. Use copy() or list() to create a new shallow copy.",
+    "learningTip": "Be careful with assignment operator (=) on mutable objects like lists. It copies references, not values."
+  },
+  {
+    "id": "beg_str_1",
+    "level": "Beginner",
+    "topic": "strings",
+    "errorType": "Syntax Error",
+    "title": "Mismatched String Quotes",
+    "snippet": "# User welcome\nmsg = \"Welcome to PyBe'\nprint(msg)",
+    "options": [
+      "msg = \"Welcome to PyBe\"",
+      "msg = 'Welcome to PyBe'",
+      "Both msg = \"Welcome to PyBe\" and msg = 'Welcome to PyBe'",
+      "msg = \"\"\"Welcome to PyBe'"
+    ],
+    "correctAnswer": "Both msg = \"Welcome to PyBe\" and msg = 'Welcome to PyBe'",
+    "explanation": "String literals must begin and end with matching single (') or double (\") quotes.",
+    "learningTip": "Always close string literals using the same quote symbol used to open them."
+  },
+  {
+    "id": "beg_str_2",
+    "level": "Beginner",
+    "topic": "strings",
+    "errorType": "Runtime Error",
+    "title": "Cannot Concatenate String and Int",
+    "snippet": "# Create age string\nage = 20\nmsg = \"Age: \" + age\nprint(msg)",
+    "options": [
+      "msg = \"Age: \" + str(age)",
+      "msg = f\"Age: {age}\"",
+      "Both msg = \"Age: \" + str(age) and msg = f\"Age: {age}\"",
+      "msg = \"Age: \" + int(age)"
+    ],
+    "correctAnswer": "Both msg = \"Age: \" + str(age) and msg = f\"Age: {age}\"",
+    "explanation": "Python is strongly typed and will not implicitly convert an integer to a string for concatenation (+).",
+    "learningTip": "Convert non-string variables using str() or use f-strings to construct text."
+  },
+  {
+    "id": "beg_str_3",
+    "level": "Beginner",
+    "topic": "strings",
+    "errorType": "Runtime Error",
+    "title": "TypeError String Immutable mutation",
+    "snippet": "# Change first character to uppercase\nword = \"python\"\nword[0] = \"P\"\nprint(word)",
+    "options": [
+      "word = \"P\" + word[1:]",
+      "word.replace(\"p\", \"P\", 1)",
+      "Both word = \"P\" + word[1:] and word.replace(\"p\", \"P\", 1)",
+      "word[0].upper()"
+    ],
+    "correctAnswer": "Both word = \"P\" + word[1:] and word.replace(\"p\", \"P\", 1)",
+    "explanation": "Strings in Python are immutable; you cannot modify individual characters directly via indexing.",
+    "learningTip": "To change a string, construct a new one using slices or replace methods."
+  },
+  {
+    "id": "beg_str_4",
+    "level": "Beginner",
+    "topic": "strings",
+    "errorType": "Logical Error",
+    "title": "Case Sensitive comparison failure",
+    "snippet": "# Check user confirmation\nreply = \"Yes\"\nif reply == \"yes\":\n    print(\"Confirmed\") # Expected: Confirmed for \"Yes\"",
+    "options": [
+      "if reply.lower() == \"yes\":",
+      "if reply.upper() == \"YES\":",
+      "Both options are correct",
+      "if reply is \"yes\":"
+    ],
+    "correctAnswer": "Both options are correct",
+    "explanation": "String comparisons in Python are case-sensitive. \"Yes\" does not equal \"yes\". Convert to lowercase first.",
+    "learningTip": "Use .lower() or .upper() on user inputs before comparing them to ignore casing differences."
+  },
+  {
+    "id": "beg_str_5",
+    "level": "Beginner",
+    "topic": "strings",
+    "errorType": "Syntax Error",
+    "title": "Missing closing parenthesis in print string",
+    "snippet": "# Simple greet\nprint(\"Hello World\"",
+    "options": [
+      "print(\"Hello World\")",
+      "print Hello World",
+      "print(\"Hello World\";",
+      "print(Hello World)"
+    ],
+    "correctAnswer": "print(\"Hello World\")",
+    "explanation": "The print function call is missing its closing parenthesis. This causes a syntax error.",
+    "learningTip": "Always verify that parentheses are correctly closed and matched."
+  },
+  {
+    "id": "beg_sub_1",
+    "level": "Beginner",
+    "topic": "subtraction",
+    "errorType": "Syntax Error",
+    "title": "Invalid decrement syntax",
+    "snippet": "# Decrease lives\nlives = 3\nlives --\nprint(lives)",
+    "options": [
+      "lives -= 1",
+      "lives = lives - 1",
+      "Both lives -= 1 and lives = lives - 1",
+      "lives = -1"
+    ],
+    "correctAnswer": "Both lives -= 1 and lives = lives - 1",
+    "explanation": "Python does not support the decrement operator (--). Use -= 1 or re-assignment.",
+    "learningTip": "Python syntax uses -= 1 to subtract 1 from a variable."
+  },
+  {
+    "id": "beg_sub_2",
+    "level": "Beginner",
+    "topic": "subtraction",
+    "errorType": "Runtime Error",
+    "title": "TypeError string subtraction",
+    "snippet": "# Remove character\nword = \"cats\"\nnew_word = word - \"s\"",
+    "options": [
+      "new_word = word.replace(\"s\", \"\")",
+      "new_word = word[:-1]",
+      "Both options are correct",
+      "new_word = word - 1"
+    ],
+    "correctAnswer": "Both options are correct",
+    "explanation": "Python does not support string subtraction using the \"-\" operator.",
+    "learningTip": "To remove characters from a string, use replace() or slice notation."
+  },
+  {
+    "id": "beg_sub_3",
+    "level": "Beginner",
+    "topic": "subtraction",
+    "errorType": "Logical Error",
+    "title": "Negative values ignored",
+    "snippet": "# Calculate inventory difference\nstock = 10\nsold = 15\nremaining = stock - sold\nif remaining < 0:\n    remaining = 0 # Expected remaining to not be negative",
+    "options": [
+      "The logic is correct, but check values",
+      "remaining = stock + sold",
+      "Use abs(stock - sold)",
+      "remaining = sold - stock"
+    ],
+    "correctAnswer": "The logic is correct, but check values",
+    "explanation": "The logic is correct, but check if code logic handling negative remaining values is present. If it is, there is no logic error. Wait, if remaining is negative, inventory should stay 0. So no bug? Let's check another subtraction issue.",
+    "learningTip": "Always safeguard against negative values when calculating physical inventory or balances."
+  },
+  {
+    "id": "beg_sub_4",
+    "level": "Beginner",
+    "topic": "subtraction",
+    "errorType": "Logical Error",
+    "title": "Reverse subtraction order",
+    "snippet": "# Find price difference\nold_price = 100\nnew_price = 80\ndrop = new_price - old_price # Expected: positive drop value",
+    "options": [
+      "drop = old_price - new_price",
+      "drop = abs(new_price - old_price)",
+      "Both options are correct",
+      "drop = new_price + old_price"
+    ],
+    "correctAnswer": "Both options are correct",
+    "explanation": "Subtracting old_price from new_price yields a negative difference (-20). Subtract new_price from old_price for the positive drop.",
+    "learningTip": "Be careful with the order of operands in subtraction as order matters (non-commutative)."
+  },
+  {
+    "id": "beg_sub_5",
+    "level": "Beginner",
+    "topic": "subtraction",
+    "errorType": "Runtime Error",
+    "title": "AttributeError on list subtraction",
+    "snippet": "# Remove elements\nlist1 = [1, 2, 3]\nlist2 = [2]\nresult = list1 - list2",
+    "options": [
+      "result = [x for x in list1 if x not in list2]",
+      "result = list(set(list1) - set(list2))",
+      "Both options are correct",
+      "result = list1.remove(list2)"
+    ],
+    "correctAnswer": "Both options are correct",
+    "explanation": "List subtraction is not supported via the \"-\" operator in Python.",
+    "learningTip": "Use list comprehensions or sets to compute differences between list collections."
+  },
+  {
+    "id": "beg_var_1",
+    "level": "Beginner",
+    "topic": "variables",
+    "errorType": "Syntax Error",
+    "title": "Variable Name Starting with Number",
+    "snippet": "# Store high score\n1st_score = 500\nprint(1st_score)",
+    "options": [
+      "score_1st = 500",
+      "first_score = 500",
+      "Both options are correct",
+      "score1 = 500"
+    ],
+    "correctAnswer": "Both options are correct",
+    "explanation": "Variable names in Python cannot start with a number. They must start with a letter or an underscore.",
+    "learningTip": "Start variable names with letters or underscores. Numbers can be used anywhere else in the name."
+  },
+  {
+    "id": "beg_var_2",
+    "level": "Beginner",
+    "topic": "variables",
+    "errorType": "Syntax Error",
+    "title": "Variable Name containing Space",
+    "snippet": "# User details\nuser name = \"Alice\"\nprint(user name)",
+    "options": [
+      "user_name = \"Alice\"",
+      "userName = \"Alice\"",
+      "Both options are correct",
+      "username = \"Alice\""
+    ],
+    "correctAnswer": "Both options are correct",
+    "explanation": "Variable names cannot contain spaces in Python.",
+    "learningTip": "Use underscores (snake_case) or capitals (camelCase) to separate words in variable names."
+  },
+  {
+    "id": "beg_var_3",
+    "level": "Beginner",
+    "topic": "variables",
+    "errorType": "Runtime Error",
+    "title": "NameError typo in variable reference",
+    "snippet": "# Greeting\nmessage = \"Hello\"\nprint(mesage)",
+    "options": [
+      "Correct the typo: print(message)",
+      "Change to message = \"Hello\"",
+      "Use print(\"mesage\")",
+      "Initialize mesage = message"
+    ],
+    "correctAnswer": "Correct the typo: print(message)",
+    "explanation": "A typo in the variable name (\"mesage\" instead of \"message\") causes a NameError because the variable does not exist.",
+    "learningTip": "Check spelling of variable names carefully in code logic references."
+  },
+  {
+    "id": "beg_var_4",
+    "level": "Beginner",
+    "topic": "variables",
+    "errorType": "Syntax Error",
+    "title": "Assigning to Python keyword",
+    "snippet": "# Store value\nclass = \"Math\"\nprint(class)",
+    "options": [
+      "class_name = \"Math\"",
+      "subject = \"Math\"",
+      "Both options are correct",
+      "className = \"Math\""
+    ],
+    "correctAnswer": "Both options are correct",
+    "explanation": "The word \"class\" is a reserved keyword in Python and cannot be used as a variable name.",
+    "learningTip": "Avoid using reserved Python keywords (like class, def, if, import) as variable names."
+  },
+  {
+    "id": "beg_var_5",
+    "level": "Beginner",
+    "topic": "variables",
+    "errorType": "Logical Error",
+    "title": "Unintended variable overwrite",
+    "snippet": "# Convert temp\ntemp = 32\ntemp = 100\nprint(temp) # Expected: original 32",
+    "options": [
+      "Use different variable names: original_temp = 32, new_temp = 100",
+      "Do not assign twice",
+      "temp = 32 + 100",
+      "temp2 = temp"
+    ],
+    "correctAnswer": "Use different variable names: original_temp = 32, new_temp = 100",
+    "explanation": "Assigning 100 to the variable \"temp\" overwrites its original value of 32.",
+    "learningTip": "Use unique, descriptive names for different data points to avoid accidentally overwriting variables."
+  },
+  {
+    "id": "exp_avg_1",
+    "level": "Explorer",
+    "topic": "averages",
+    "errorType": "Runtime Error",
+    "title": "ZeroDivisionError empty list average",
+    "snippet": "# Find average score\nscores = []\navg = sum(scores) / len(scores)",
+    "options": [
+      "Add safety check: if len(scores) > 0:",
+      "avg = sum(scores) / (len(scores) or 1)",
+      "Both options are correct",
+      "avg = 0"
+    ],
+    "correctAnswer": "Both options are correct",
+    "explanation": "Calculating the average of an empty list results in division by zero, throwing a ZeroDivisionError.",
+    "learningTip": "Ensure you check if the list has elements before performing division for average calculation."
+  },
+  {
+    "id": "exp_avg_2",
+    "level": "Explorer",
+    "topic": "averages",
+    "errorType": "Logical Error",
+    "title": "Average of list incorrect divisor",
+    "snippet": "# Average speed\nspeeds = [60, 70, 80]\navg = sum(speeds) / 2 # Expected: average of 3 values",
+    "options": [
+      "avg = sum(speeds) / len(speeds)",
+      "avg = sum(speeds) / 3",
+      "Both options are correct",
+      "avg = speeds / 2"
+    ],
+    "correctAnswer": "Both options are correct",
+    "explanation": "The code divides by a hardcoded value 2 instead of the actual list length (3), producing an incorrect average.",
+    "learningTip": "Always divide by len(list) to dynamically calculate the correct average score."
+  },
+  {
+    "id": "exp_avg_3",
+    "level": "Explorer",
+    "topic": "averages",
+    "errorType": "Runtime Error",
+    "title": "TypeError sum of non-numeric list items",
+    "snippet": "# Find class average\ngrades = [90, \"85\", 95]\navg = sum(grades) / len(grades)",
+    "options": [
+      "Convert grades to list of integers first",
+      "Convert grades to list of strings",
+      "Use sum(int(grades))",
+      "Remove \"85\" from list"
+    ],
+    "correctAnswer": "Convert grades to list of integers first",
+    "explanation": "The sum() function raises a TypeError when it encounters a string in a list of integers.",
+    "learningTip": "Ensure all elements are integers or floats before using sum() on list objects."
+  },
+  {
+    "id": "exp_avg_4",
+    "level": "Explorer",
+    "topic": "averages",
+    "errorType": "Logical Error",
+    "title": "Integer floor division rounding error",
+    "snippet": "# Calculate exact class average\nscores = [85, 90]\navg = sum(scores) // len(scores) # Expected: 87.5",
+    "options": [
+      "avg = sum(scores) / len(scores)",
+      "avg = float(sum(scores) // len(scores))",
+      "avg = sum(scores) % len(scores)",
+      "avg = sum(scores) / 2.0"
+    ],
+    "correctAnswer": "avg = sum(scores) / len(scores)",
+    "explanation": "Using floor division (//) truncates the decimal portion, yielding 87 instead of 87.5.",
+    "learningTip": "Use single slash (/) for exact averages to retain floating point decimal accuracy."
+  },
+  {
+    "id": "exp_avg_5",
+    "level": "Explorer",
+    "topic": "averages",
+    "errorType": "Syntax Error",
+    "title": "Incorrect arguments in sum function",
+    "snippet": "# Calculate average\nscores = [10, 20]\navg = sum(10, 20) / 2",
+    "options": [
+      "avg = sum(scores) / len(scores)",
+      "avg = sum([10, 20]) / 2",
+      "Both options are correct",
+      "avg = (10 + 20) / 2"
+    ],
+    "correctAnswer": "Both options are correct",
+    "explanation": "The sum() function takes an iterable (like a list) as its argument, not separate positional arguments.",
+    "learningTip": "Always pass lists or tuples to the sum() function, rather than loose arguments."
+  },
+  {
+    "id": "exp_comp_1",
+    "level": "Explorer",
+    "topic": "comparisons",
+    "errorType": "Logical Error",
+    "title": "Chained inequality evaluation logic",
+    "snippet": "# Check if x is greater than y and y is greater than z\nx, y, z = 5, 10, 2\nresult = x > y > z # Expected: False",
+    "options": [
+      "The logic evaluates correctly as False, but verify readability",
+      "result = (x > y) and (y > z)",
+      "Both options are correct",
+      "result = x > y and x > z"
+    ],
+    "correctAnswer": "Both options are correct",
+    "explanation": "Python supports chained comparisons. x > y > z evaluates as (x > y) and (y > z). 5 > 10 is False, so result is correctly False. But using explicit \"and\" improves readability.",
+    "learningTip": "Chained comparisons can be written cleanly in Python, but using parenthesis or logical operators makes complex conditions clearer."
+  },
+  {
+    "id": "exp_comp_2",
+    "level": "Explorer",
+    "topic": "comparisons",
+    "errorType": "Runtime Error",
+    "title": "Comparing None type with integer",
+    "snippet": "# Compare high score\nscore = None\nif score > 100:\n    print(\"High\")",
+    "options": [
+      "if score is not None and score > 100:",
+      "if score > 100:",
+      "if int(score) > 100:",
+      "if score is None or score > 100:"
+    ],
+    "correctAnswer": "if score is not None and score > 100:",
+    "explanation": "Comparing None with an integer raises a TypeError at runtime.",
+    "learningTip": "Always guard variables that might be None using \"is not None\" checks before numeric comparisons."
+  },
+  {
+    "id": "exp_comp_3",
+    "level": "Explorer",
+    "topic": "comparisons",
+    "errorType": "Logical Error",
+    "title": "Membership vs identity operator",
+    "snippet": "# Check list identity\nlist1 = [1, 2]\nlist2 = [1, 2]\nprint(list1 is list2) # Expected: True (value equality)",
+    "options": [
+      "print(list1 == list2)",
+      "print(list1 in list2)",
+      "print(list1 === list2)",
+      "print(id(list1) == id(list2))"
+    ],
+    "correctAnswer": "print(list1 == list2)",
+    "explanation": "The \"is\" operator checks for object identity (memory location), whereas \"==\" checks for value equality. list1 and list2 are distinct objects with identical values.",
+    "learningTip": "Use == to compare object values, and \"is\" only when checking identity (commonly for None)."
+  },
+  {
+    "id": "exp_comp_4",
+    "level": "Explorer",
+    "topic": "comparisons",
+    "errorType": "Syntax Error",
+    "title": "Incorrect string membership check syntax",
+    "snippet": "# Check prefix\nword = \"python\"\nif word contains \"py\":\n    print(\"Yes\")",
+    "options": [
+      "if \"py\" in word:",
+      "if word.startswith(\"py\"):",
+      "Both options are correct",
+      "if word has \"py\":"
+    ],
+    "correctAnswer": "Both options are correct",
+    "explanation": "\"contains\" is not a keyword in Python. Use the \"in\" operator or the startswith() method.",
+    "learningTip": "Use the membership operator \"in\" to check if a substring is present in a string."
+  },
+  {
+    "id": "exp_comp_5",
+    "level": "Explorer",
+    "topic": "comparisons",
+    "errorType": "Logical Error",
+    "title": "Truth value testing of non-empty collections",
+    "snippet": "# Check if user has roles\nroles = [\"user\"]\nif len(roles) == True:\n    print(\"Has roles\")",
+    "options": [
+      "if roles:",
+      "if len(roles) > 0:",
+      "Both options are correct",
+      "if roles == True:"
+    ],
+    "correctAnswer": "Both options are correct",
+    "explanation": "Checking if length equals True is logical mismatch. Non-empty lists are truthy on their own. Use \"if roles:\" directly.",
+    "learningTip": "Rely on Pythonic truth value testing: empty collections are falsy, non-empty collections are truthy."
+  },
+  {
+    "id": "exp_cond_1",
+    "level": "Explorer",
+    "topic": "conditionals",
+    "errorType": "Syntax Error",
+    "title": "Missing parenthesis in nested inline if",
+    "snippet": "# Inline assign\nx = 10\nmsg = \"Even\" if x % 2 == 0 else \"Odd\"\n# Is this syntactically correct?",
+    "options": [
+      "Yes, this is valid ternary operator syntax",
+      "No, it requires parentheses",
+      "No, it requires colon",
+      "No, it must be if-else block"
+    ],
+    "correctAnswer": "Yes, this is valid ternary operator syntax",
+    "explanation": "The syntax \"value_if_true if condition else value_if_false\" is the valid conditional expression (ternary operator) in Python.",
+    "learningTip": "Python supports one-line conditional assignments. No brackets or colons are needed."
+  },
+  {
+    "id": "exp_cond_2",
+    "level": "Explorer",
+    "topic": "conditionals",
+    "errorType": "Logical Error",
+    "title": "Short circuit evaluation logic bug",
+    "snippet": "# Access list safely\nitems = []\nif items[0] == \"admin\" or len(items) > 0:\n    print(\"Safe\")",
+    "options": [
+      "if len(items) > 0 and items[0] == \"admin\":",
+      "if items[0] == \"admin\" and len(items) > 0:",
+      "if len(items) > 0 or items[0] == \"admin\":",
+      "if items and items[0] == \"admin\":"
+    ],
+    "correctAnswer": "if items and items[0] == \"admin\":",
+    "explanation": "The condition attempts to access items[0] before checking if the list is empty. If empty, items[0] immediately throws an IndexError. Reversing the order with \"and\" short-circuits safely.",
+    "learningTip": "Place check conditions that safeguard operations (like len check) first when using logical AND."
+  },
+  {
+    "id": "exp_cond_3",
+    "level": "Explorer",
+    "topic": "conditionals",
+    "errorType": "Runtime Error",
+    "title": "UnboundLocalError nested variable assignment",
+    "snippet": "# Update status\nx = 5\ndef check():\n    if x > 0:\n        x = 10 # raises UnboundLocalError\ncheck()",
+    "options": [
+      "Use global x: add \"global x\" inside function",
+      "Pass x as parameter",
+      "Both options are correct",
+      "Remove x assignment"
+    ],
+    "correctAnswer": "Both options are correct",
+    "explanation": "Assigning to x inside the function scope makes it local. Referencing it before assignment raises an error. Use global keyword or pass parameters.",
+    "learningTip": "Avoid directly modifying global variables inside functions unless explicitly declared global."
+  },
+  {
+    "id": "exp_cond_4",
+    "level": "Explorer",
+    "topic": "conditionals",
+    "errorType": "Logical Error",
+    "title": "Incorrect logic matching both boundaries",
+    "snippet": "# Alert if temperature is outside safe zone (10 to 30)\ntemp = 5\nif temp > 10 or temp < 30:\n    print(\"Unsafe\") # Expected: prints only for <10 or >30",
+    "options": [
+      "if temp < 10 or temp > 30:",
+      "if not (10 <= temp <= 30):",
+      "Both options are correct",
+      "if temp < 10 and temp > 30:"
+    ],
+    "correctAnswer": "Both options are correct",
+    "explanation": "The \"or\" condition checks if temp is greater than 10 OR less than 30. Since every number satisfies one of these, it always prints \"Unsafe\". Use < 10 or > 30.",
+    "learningTip": "For ranges, use \"or\" when checking outside a boundary, and \"and\" when checking inside a range."
+  },
+  {
+    "id": "exp_cond_5",
+    "level": "Explorer",
+    "topic": "conditionals",
+    "errorType": "Syntax Error",
+    "title": "Incorrect ternary structure",
+    "snippet": "# Ternary assignment\nactive = True\nstatus = active ? \"Online\" : \"Offline\"",
+    "options": [
+      "status = \"Online\" if active else \"Offline\"",
+      "status = active if \"Online\" else \"Offline\"",
+      "status = active ? \"Online\" else \"Offline\"",
+      "status = active : \"Online\" ? \"Offline\""
+    ],
+    "correctAnswer": "status = \"Online\" if active else \"Offline\"",
+    "explanation": "Python does not support the \"?\" ternary operator from C-style languages. Use \"val if cond else other_val\".",
+    "learningTip": "Translate ternary operations to Python's \"if-else\" inline expression format."
+  },
+  {
+    "id": "exp_dict_1",
+    "level": "Explorer",
+    "topic": "dictionaries",
+    "errorType": "Runtime Error",
+    "title": "KeyError accessing non-existent key",
+    "snippet": "# Get user age\nuser = {\"name\": \"Alice\"}\nage = user[\"age\"]",
+    "options": [
+      "Use dict.get(): age = user.get(\"age\")",
+      "Use get() with default: age = user.get(\"age\", 0)",
+      "Both options are correct",
+      "Add key first"
+    ],
+    "correctAnswer": "Both options are correct",
+    "explanation": "Accessing a non-existent key directly via square brackets user[\"age\"] throws a KeyError. Using .get() returns None or a default value safely.",
+    "learningTip": "Use dict.get(key) to retrieve keys that might not exist in a dictionary without crashing."
+  },
+  {
+    "id": "exp_dict_2",
+    "level": "Explorer",
+    "topic": "dictionaries",
+    "errorType": "Logical Error",
+    "title": "Dictionary key overwrite",
+    "snippet": "# Set roles\nuser = {\"role\": \"user\", \"role\": \"admin\"}\nprint(len(user)) # Expected: 2",
+    "options": [
+      "Keys must be unique. Duplicate keys overwrite previous values.",
+      "Change keys to role1, role2",
+      "Both options are correct",
+      "Use list for roles"
+    ],
+    "correctAnswer": "Both options are correct",
+    "explanation": "Dictionary keys must be unique. Defining \"role\" twice overwrites the first entry, resulting in a length of 1.",
+    "learningTip": "If you have multiple values for a key, store them in a list or set under that key."
+  },
+  {
+    "id": "exp_dict_3",
+    "level": "Explorer",
+    "topic": "dictionaries",
+    "errorType": "Runtime Error",
+    "title": "TypeError unhashable type list as key",
+    "snippet": "# Map configuration list to status\nstatus = {}\nkey = [1, 2]\nstatus[key] = \"Active\"",
+    "options": [
+      "Use tuple as key: key = (1, 2)",
+      "Convert list to string: key = \"[1, 2]\"",
+      "Both options are correct",
+      "Lists are fine"
+    ],
+    "correctAnswer": "Both options are correct",
+    "explanation": "Dictionary keys must be hashable. Lists are mutable and therefore unhashable, throwing a TypeError.",
+    "learningTip": "Always use immutable types (like strings, integers, or tuples) as dictionary keys."
+  },
+  {
+    "id": "exp_dict_4",
+    "level": "Explorer",
+    "topic": "dictionaries",
+    "errorType": "Syntax Error",
+    "title": "Incorrect Dictionary declaration syntax",
+    "snippet": "# Create mapping\nmapping = [\"a\" => 1, \"b\" => 2]",
+    "options": [
+      "mapping = {\"a\": 1, \"b\": 2}",
+      "mapping = dict(a=1, b=2)",
+      "Both options are correct",
+      "mapping = {\"a\" = 1, \"b\" = 2}"
+    ],
+    "correctAnswer": "Both options are correct",
+    "explanation": "Python uses curly braces {} and colons : to define dictionary literals, not brackets [] or fat arrows =>.",
+    "learningTip": "Define dictionaries using key: value syntax wrapped in curly braces."
+  },
+  {
+    "id": "exp_dict_5",
+    "level": "Explorer",
+    "topic": "dictionaries",
+    "errorType": "Runtime Error",
+    "title": "RuntimeError mutating dict during iteration",
+    "snippet": "# Delete inactive users\nusers = {\"A\": \"active\", \"B\": \"inactive\"}\nfor k, v in users.items():\n    if v == \"inactive\":\n        del users[k]",
+    "options": [
+      "Iterate over list of keys: for k in list(users.keys()):",
+      "Create new dictionary filtering keys",
+      "Both options are correct",
+      "Use list comprehension"
+    ],
+    "correctAnswer": "Both options are correct",
+    "explanation": "Modifying a dictionary size directly during iteration throws a RuntimeError.",
+    "learningTip": "When adding or removing keys, always iterate over a copy of the keys list (like list(dict.keys()))."
+  },
+  {
+    "id": "exp_filt_1",
+    "level": "Explorer",
+    "topic": "filtering",
+    "errorType": "Logical Error",
+    "title": "Incorrect list comprehension filtering placement",
+    "snippet": "# Filter even numbers\nnums = [1, 2, 3, 4]\nevens = [x if x % 2 == 0 for x in nums]",
+    "options": [
+      "evens = [x for x in nums if x % 2 == 0]",
+      "evens = list(filter(lambda x: x % 2 == 0, nums))",
+      "Both options are correct",
+      "evens = [x for x in nums]"
+    ],
+    "correctAnswer": "Both options are correct",
+    "explanation": "The \"if\" condition for filtering must be placed at the end of the comprehension. The ternary syntax at the front requires an \"else\".",
+    "learningTip": "Use \"[expr for item in iterable if condition]\" format to filter items in a list comprehension."
+  },
+  {
+    "id": "exp_filt_2",
+    "level": "Explorer",
+    "topic": "filtering",
+    "errorType": "Runtime Error",
+    "title": "TypeError filter object has no len",
+    "snippet": "# Count matching items\nnums = [1, 2, 3]\nmatches = filter(lambda x: x > 1, nums)\nprint(len(matches))",
+    "options": [
+      "Convert to list: len(list(matches))",
+      "Count manually",
+      "Use list comprehension length",
+      "Both list conversion and list comprehension length work"
+    ],
+    "correctAnswer": "Both list conversion and list comprehension length work",
+    "explanation": "The filter() function returns a lazy generator iterator, which does not implement length. Convert it to a list first.",
+    "learningTip": "Lazy iterators (filter, map, zip) must be converted to concrete collections like lists to inspect their size."
+  },
+  {
+    "id": "exp_filt_3",
+    "level": "Explorer",
+    "topic": "filtering",
+    "errorType": "Logical Error",
+    "title": "Filtering string matching empty spaces",
+    "snippet": "# Remove empty words\nwords = [\"hello\", \"\", \"world\", \" \"]\nclean = [w for w in words if w] # Expected: remove \" \" as well",
+    "options": [
+      "clean = [w for w in words if w.strip()]",
+      "clean = [w for w in words if len(w) > 0]",
+      "clean = [w for w in words if w != \"\"]",
+      "clean = list(filter(None, words))"
+    ],
+    "correctAnswer": "clean = [w for w in words if w.strip()]",
+    "explanation": "Empty strings \"\" are falsy, but spaces \" \" are truthy, so they are not filtered. Using strip() handles spaces.",
+    "learningTip": "Use .strip() to clean whitespaces from strings when evaluating empty text conditions."
+  },
+  {
+    "id": "exp_filt_4",
+    "level": "Explorer",
+    "topic": "filtering",
+    "errorType": "Syntax Error",
+    "title": "Incorrect lambda syntax in filter",
+    "snippet": "# Filter scores\nscores = [50, 80, 90]\nhigh = filter(lambda (x): x >= 80, scores)",
+    "options": [
+      "high = filter(lambda x: x >= 80, scores)",
+      "high = filter(x => x >= 80, scores)",
+      "high = filter(lambda x: return x >= 80, scores)",
+      "high = filter(def(x): x >= 80, scores)"
+    ],
+    "correctAnswer": "high = filter(lambda x: x >= 80, scores)",
+    "explanation": "Python lambda parameters do not require parentheses, and lambda expressions have an implicit return.",
+    "learningTip": "Write lambdas cleanly as \"lambda args: expression\" without parentheses or return statements."
+  },
+  {
+    "id": "exp_filt_5",
+    "level": "Explorer",
+    "topic": "filtering",
+    "errorType": "Logical Error",
+    "title": "Mutable index mutation during filter loop",
+    "snippet": "# Remove elements less than 10\nnums = [5, 12, 8, 15]\nfor x in nums:\n    if x < 10:\n        nums.remove(x) # Expected result: [12, 15]",
+    "options": [
+      "Filter using comprehension: nums = [x for x in nums if x >= 10]",
+      "Iterate over slice copy: for x in nums[:]:",
+      "Both options are correct",
+      "Use while loop"
+    ],
+    "correctAnswer": "Both options are correct",
+    "explanation": "Mutating a list during iteration changes the index markers, skipping subsequent items. Iterate over a copy or use a comprehension.",
+    "learningTip": "Never mutate the collection you are directly iterating over with a for loop."
+  },
+  {
+    "id": "exp_list_1",
+    "level": "Explorer",
+    "topic": "lists",
+    "errorType": "Runtime Error",
+    "title": "IndexError popping from empty list",
+    "snippet": "# Pop item\nstack = []\nitem = stack.pop()",
+    "options": [
+      "Check empty first: if stack: item = stack.pop()",
+      "Use stack.pop(0)",
+      "Use try-except blocks",
+      "Both empty check and try-except work"
+    ],
+    "correctAnswer": "Both empty check and try-except work",
+    "explanation": "Calling pop() on an empty list raises an IndexError.",
+    "learningTip": "Ensure lists contain elements before using pop() or remove() operations."
+  },
+  {
+    "id": "exp_list_2",
+    "level": "Explorer",
+    "topic": "lists",
+    "errorType": "Logical Error",
+    "title": "List sorting in-place returns None",
+    "snippet": "# Get sorted scores\nscores = [90, 80, 85]\nsorted_scores = scores.sort()\nprint(sorted_scores) # Expected: [80, 85, 90]",
+    "options": [
+      "Use sorted(): sorted_scores = sorted(scores)",
+      "Call sort in-place, then reference scores",
+      "Both options are correct",
+      "Use scores.reverse()"
+    ],
+    "correctAnswer": "Both options are correct",
+    "explanation": "The list.sort() method sorts the list in place and returns None. To get a new sorted list, use the sorted() function.",
+    "learningTip": "Use sorted(list) to return a new copy, and list.sort() to mutate in place without assignment."
+  },
+  {
+    "id": "exp_list_3",
+    "level": "Explorer",
+    "topic": "lists",
+    "errorType": "Runtime Error",
+    "title": "ValueError list remove item missing",
+    "snippet": "# Remove element\nitems = [\"a\", \"b\"]\nitems.remove(\"c\")",
+    "options": [
+      "Check membership first: if \"c\" in items: items.remove(\"c\")",
+      "Use try-except block",
+      "Both options are correct",
+      "Use items.discard(\"c\")"
+    ],
+    "correctAnswer": "Both options are correct",
+    "explanation": "Removing an item that is not present in the list raises a ValueError.",
+    "learningTip": "Verify that an item exists in a list before calling remove()."
+  },
+  {
+    "id": "exp_list_4",
+    "level": "Explorer",
+    "topic": "lists",
+    "errorType": "Syntax Error",
+    "title": "Incorrect list comprehension brackets",
+    "snippet": "# Squared numbers\nnums = [1, 2]\nsquared = {x*x for x in nums} # Expected: list type output",
+    "options": [
+      "Use square brackets: [x*x for x in nums]",
+      "Use list(x*x for x in nums)",
+      "Both options are correct",
+      "Use (x*x for x in nums)"
+    ],
+    "correctAnswer": "Both options are correct",
+    "explanation": "Curly braces {} create a set comprehension, not a list. Set comprehensions produce sets which lack list index access.",
+    "learningTip": "Use square brackets [] for list comprehensions, curly braces {} for sets/dicts, and parentheses () for generators."
+  },
+  {
+    "id": "exp_list_5",
+    "level": "Explorer",
+    "topic": "lists",
+    "errorType": "Logical Error",
+    "title": "Multiplying lists nested mutation",
+    "snippet": "# Create grid row copy\ngrid = [[0]] * 3\ngrid[0][0] = 1\nprint(grid) # Expected: [[1], [0], [0]]",
+    "options": [
+      "Use comprehension: grid = [[0] for _ in range(3)]",
+      "grid = [[0], [0], [0]]",
+      "Both options are correct",
+      "Use grid = list([[0]] * 3)"
+    ],
+    "correctAnswer": "Both options are correct",
+    "explanation": "Multiplying a nested list [[0]] * 3 copies the inner list reference three times. Modifying one cell updates all references. Use a comprehension.",
+    "learningTip": "Avoid multiplying nested lists with *. Use list comprehensions to instantiate distinct nested structures."
+  },
+  {
+    "id": "exp_loop_1",
+    "level": "Explorer",
+    "topic": "loops",
+    "errorType": "Runtime Error",
+    "title": "TypeError string as range arg",
+    "snippet": "# Loop count\nlimit = \"3\"\nfor i in range(limit):\n    print(i)",
+    "options": [
+      "Convert to integer: range(int(limit))",
+      "Use while loop",
+      "Use for i in limit:",
+      "Define limit = 3"
+    ],
+    "correctAnswer": "Convert to integer: range(int(limit))",
+    "explanation": "The range() function requires integer arguments. Passing a string containing a number raises a TypeError.",
+    "learningTip": "Convert numeric string inputs using int() before passing them to range()."
+  },
+  {
+    "id": "exp_loop_2",
+    "level": "Explorer",
+    "topic": "loops",
+    "errorType": "Logical Error",
+    "title": "Exclusive Range stop boundary",
+    "snippet": "# Print numbers 1 to 10\nfor i in range(1, 10):\n    print(i) # Expected: prints 1 to 10",
+    "options": [
+      "for i in range(1, 11):",
+      "for i in range(1, 10 + 1):",
+      "Both options are correct",
+      "for i in range(10):"
+    ],
+    "correctAnswer": "Both options are correct",
+    "explanation": "The stop parameter in range(start, stop) is exclusive, so range(1, 10) only prints up to 9.",
+    "learningTip": "Add 1 to your upper boundary when defining the stop parameter in range()."
+  },
+  {
+    "id": "exp_loop_3",
+    "level": "Explorer",
+    "topic": "loops",
+    "errorType": "Runtime Error",
+    "title": "NameError variable inside list loop",
+    "snippet": "# Loop names\nnames = [\"Alice\", \"Bob\"]\nfor name in names:\n    print(n)",
+    "options": [
+      "Use defined loop variable: print(name)",
+      "Initialize n = \"\"",
+      "Use print(names[n])",
+      "Change name to n in loop head: for n in names:"
+    ],
+    "correctAnswer": "Use defined loop variable: print(name)",
+    "explanation": "The print statement references variable \"n\", but the loop head defines the iteration variable as \"name\".",
+    "learningTip": "Always match the variable name in the loop body to the variable declared in the loop statement."
+  },
+  {
+    "id": "exp_loop_4",
+    "level": "Explorer",
+    "topic": "loops",
+    "errorType": "Logical Error",
+    "title": "Nested loop early break",
+    "snippet": "# Find target coordinate in matrix\nfound = False\nfor r in range(2):\n    for c in range(2):\n        if r * c == 1:\n            found = True\n            break # Expected: break outer loop too",
+    "options": [
+      "Set a flag check or raise exception to exit both",
+      "Return from function wrapper",
+      "Both options are correct",
+      "Use while loop"
+    ],
+    "correctAnswer": "Both options are correct",
+    "explanation": "A \"break\" statement only exits the innermost loop. The outer loop continues executing. Wrap in a function or check flag.",
+    "learningTip": "To break out of nested loops, use status flags, helper functions, or raise exceptions."
+  },
+  {
+    "id": "exp_loop_5",
+    "level": "Explorer",
+    "topic": "loops",
+    "errorType": "Syntax Error",
+    "title": "Incorrect loop colon syntax",
+    "snippet": "# Simple loop\nfor i in range(3)\n    print(i)",
+    "options": [
+      "Add colon: for i in range(3):",
+      "Add parentheses: for (i in range(3))",
+      "Add keyword: for i in range(3) do",
+      "Use semicolons"
+    ],
+    "correctAnswer": "Add colon: for i in range(3):",
+    "explanation": "Python for loops require a colon at the end of the loop header line.",
+    "learningTip": "Always terminate control structures (for, while, if) with a colon."
+  },
+  {
+    "id": "exp_mod_1",
+    "level": "Explorer",
+    "topic": "modulo",
+    "errorType": "Logical Error",
+    "title": "Modulo checker logic mistake",
+    "snippet": "# Check odd number\nval = 4\nif val % 2 == 1:\n    print(\"Odd\") # Expected: check is robust for negative odd numbers",
+    "options": [
+      "Use inequality: val % 2 != 0",
+      "Check val % 2 == -1 too",
+      "Both options are correct",
+      "Logic is correct as is"
+    ],
+    "correctAnswer": "Both options are correct",
+    "explanation": "In Python, negative odd numbers like -3 modulo 2 returns 1, but in some languages it is -1. Using \"!= 0\" is more robust.",
+    "learningTip": "Use != 0 to check for odd numbers in order to handle negative integer inputs cleanly."
+  },
+  {
+    "id": "exp_mod_2",
+    "level": "Explorer",
+    "topic": "modulo",
+    "errorType": "Runtime Error",
+    "title": "Modulo division by zero",
+    "snippet": "# Grouping check\nnum = 10\nfactor = 0\nrem = num % factor",
+    "options": [
+      "Ensure factor is not 0 before checking",
+      "Use factor = 1",
+      "Use float(factor)",
+      "Use factor // 1"
+    ],
+    "correctAnswer": "Ensure factor is not 0 before checking",
+    "explanation": "Calculating modulo using a divisor of zero raises a ZeroDivisionError, same as division.",
+    "learningTip": "Verify that your modulo divisor is non-zero before executing modulo calculations."
+  },
+  {
+    "id": "exp_mod_3",
+    "level": "Explorer",
+    "topic": "modulo",
+    "errorType": "Logical Error",
+    "title": "Incorrect operators logic order of operations",
+    "snippet": "# Add 1 if num is even\nnum = 4\nresult = num + 1 % 2 # Expected: 5 (since 4 is even)",
+    "options": [
+      "result = (num + 1) % 2",
+      "result = num + (1 % 2)",
+      "result = num if num % 2 != 0 else num + 1",
+      "Use helper functions"
+    ],
+    "correctAnswer": "result = num if num % 2 != 0 else num + 1",
+    "explanation": "The modulo operator (%) has higher precedence than addition. So 1 % 2 is evaluated first (equals 1), then added to num (equals 5). Wait, if we want \"add 1 if even\", then if num is 4, output should be 5. But if num is 5, output should be 5. Modifying with ternary logic is correct.",
+    "learningTip": "Be careful with operator precedence; modulo has high precedence, similar to multiplication and division."
+  },
+  {
+    "id": "exp_mod_4",
+    "level": "Explorer",
+    "topic": "modulo",
+    "errorType": "Syntax Error",
+    "title": "Incorrect Modulo Symbol",
+    "snippet": "# Find remainder\nrem = 10 mod 3",
+    "options": [
+      "rem = 10 % 3",
+      "rem = mod(10, 3)",
+      "rem = 10 // 3",
+      "rem = remainder(10, 3)"
+    ],
+    "correctAnswer": "rem = 10 % 3",
+    "explanation": "Python uses the percentage sign (%) as the modulo operator, not the keyword \"mod\".",
+    "learningTip": "Always use % for remainder/modulo calculation in Python."
+  },
+  {
+    "id": "exp_mod_5",
+    "level": "Explorer",
+    "topic": "modulo",
+    "errorType": "Logical Error",
+    "title": "Leap year checking order",
+    "snippet": "# Simple leap check (divisible by 4 and not 100, or by 400)\nyear = 2000\nif year % 4 == 0 or year % 400 == 0 and year % 100 != 0:",
+    "options": [
+      "if (year % 4 == 0 and year % 100 != 0) or year % 400 == 0:",
+      "if year % 4 == 0 and year % 400 == 0:",
+      "Use helper functions",
+      "Check year % 100 != 0 first"
+    ],
+    "correctAnswer": "if (year % 4 == 0 and year % 100 != 0) or year % 400 == 0:",
+    "explanation": "Operator precedence evaluates \"and\" before \"or\". The logic evaluates as (year % 4 == 0) or (year % 400 == 0 and year % 100 != 0). Year 2000 evaluates to True incorrectly if 100 is checked this way. Parentheses fix it.",
+    "learningTip": "Always group combined logical boolean statements (and, or) with parentheses to prevent ordering bugs."
+  },
+  {
+    "id": "exp_srch_1",
+    "level": "Explorer",
+    "topic": "search",
+    "errorType": "Runtime Error",
+    "title": "ValueError substring not found",
+    "snippet": "# Find index of tag\ntext = \"item-123\"\nidx = text.index(\"tag\")",
+    "options": [
+      "Use find(): idx = text.find(\"tag\")",
+      "Use try-except block",
+      "Both options are correct",
+      "Check if \"tag\" in text first"
+    ],
+    "correctAnswer": "Both options are correct",
+    "explanation": "The string.index() method raises a ValueError if the substring is not found. string.find() returns -1 instead.",
+    "learningTip": "Use string.find() when you want to handle missing substrings safely without raising errors."
+  },
+  {
+    "id": "exp_srch_2",
+    "level": "Explorer",
+    "topic": "search",
+    "errorType": "Logical Error",
+    "title": "Incorrect loop search early exit",
+    "snippet": "# Check if any score is failing (<60)\nscores = [85, 45, 90]\ndef check_fail(scores):\n    for s in scores:\n        if s < 60:\n            return True\n        else:\n            return False # Expected: check all elements",
+    "options": [
+      "Remove else and return False at the end of the function",
+      "Check all scores first",
+      "Use min(scores) < 60",
+      "Both removing else and using min() work"
+    ],
+    "correctAnswer": "Both removing else and using min() work",
+    "explanation": "Returning False inside the else block exits the loop on the first element (85), checking only the first item.",
+    "learningTip": "Only return negative results after the loop has fully finished scanning all items."
+  },
+  {
+    "id": "exp_srch_3",
+    "level": "Explorer",
+    "topic": "search",
+    "errorType": "Runtime Error",
+    "title": "TypeError searching in non-iterable",
+    "snippet": "# Find element\nitems = None\nif \"a\" in items:\n    print(\"Found\")",
+    "options": [
+      "if items is not None and \"a\" in items:",
+      "if \"a\" in list(items):",
+      "Use try-except blocks",
+      "Check if items is empty"
+    ],
+    "correctAnswer": "if items is not None and \"a\" in items:",
+    "explanation": "Using the \"in\" operator on None raises a TypeError because None is not iterable.",
+    "learningTip": "Verify that your search target is not None and is iterable before using membership checks."
+  },
+  {
+    "id": "exp_srch_4",
+    "level": "Explorer",
+    "topic": "search",
+    "errorType": "Logical Error",
+    "title": "Check substring match truthy index 0",
+    "snippet": "# Alert if \"alert\" is in message\nmsg = \"alert: battery low\"\nif msg.find(\"alert\"):\n    print(\"Alert!\") # Expected: print Alert!",
+    "options": [
+      "if msg.find(\"alert\") != -1:",
+      "if \"alert\" in msg:",
+      "Both options are correct",
+      "if msg.find(\"alert\") == 0:"
+    ],
+    "correctAnswer": "Both options are correct",
+    "explanation": "msg.find(\"alert\") returns 0 (the index). Since 0 is falsy, the block is not executed. Use \"in\" or compare with != -1.",
+    "learningTip": "Avoid using string.find() directly in truthy statements. Use the \"in\" operator instead."
+  },
+  {
+    "id": "exp_srch_5",
+    "level": "Explorer",
+    "topic": "search",
+    "errorType": "Logical Error",
+    "title": "Incorrect list element index check",
+    "snippet": "# Find matching word in list\nwords = [\"cat\", \"dog\"]\nidx = words.index(\"cat\")\nif idx:\n    print(\"Found\") # Expected: prints \"Found\"",
+    "options": [
+      "if idx is not None:",
+      "if \"cat\" in words:",
+      "Both if \"cat\" in words: and checking index correctly work",
+      "if idx >= 0:"
+    ],
+    "correctAnswer": "Both if \"cat\" in words: and checking index correctly work",
+    "explanation": "words.index(\"cat\") returns 0. Since 0 is falsy, \"Found\" is not printed. Use membership checking.",
+    "learningTip": "Use the membership \"in\" operator to check presence, rather than relying on list indices."
+  },
+  {
+    "id": "exp_set_1",
+    "level": "Explorer",
+    "topic": "sets",
+    "errorType": "Syntax Error",
+    "title": "Incorrect empty set declaration",
+    "snippet": "# Create empty set\nmy_set = {}",
+    "options": [
+      "my_set = set()",
+      "my_set = set({})",
+      "my_set = []",
+      "my_set = set([])"
+    ],
+    "correctAnswer": "my_set = set()",
+    "explanation": "Writing {} creates an empty dictionary, not a set. Use set() to initialize an empty set.",
+    "learningTip": "Use set() to declare an empty set, as {} is reserved for empty dictionaries."
+  },
+  {
+    "id": "exp_set_2",
+    "level": "Explorer",
+    "topic": "sets",
+    "errorType": "Runtime Error",
+    "title": "TypeError unhashable set items",
+    "snippet": "# Create set of config lists\nconfigs = {[1, 2], [3, 4]}",
+    "options": [
+      "Use tuple items: configs = {(1, 2), (3, 4)}",
+      "Use list of sets",
+      "configs = set([1, 2])",
+      "configs = {frozenset([1, 2])}"
+    ],
+    "correctAnswer": "Use tuple items: configs = {(1, 2), (3, 4)}",
+    "explanation": "Set items must be hashable (immutable). Lists are mutable, causing a TypeError.",
+    "learningTip": "Always use immutable types (integers, strings, tuples) as elements in sets."
+  },
+  {
+    "id": "exp_set_3",
+    "level": "Explorer",
+    "topic": "sets",
+    "errorType": "Runtime Error",
+    "title": "AttributeError set does not support append",
+    "snippet": "# Add to unique list\nvals = {1, 2}\nvals.append(3)",
+    "options": [
+      "vals.add(3)",
+      "vals.update([3])",
+      "Both vals.add(3) and vals.update([3]) work",
+      "vals.push(3)"
+    ],
+    "correctAnswer": "Both vals.add(3) and vals.update([3]) work",
+    "explanation": "Sets do not have an append() method. Use add() for single items or update() for iterables.",
+    "learningTip": "Call set.add(item) to insert an element into a set."
+  },
+  {
+    "id": "exp_set_4",
+    "level": "Explorer",
+    "topic": "sets",
+    "errorType": "Logical Error",
+    "title": "Set union logic intersection mismatch",
+    "snippet": "# Find common active items\nset1 = {1, 2, 3}\nset2 = {2, 3, 4}\ncommon = set1.union(set2) # Expected: {2, 3}",
+    "options": [
+      "common = set1.intersection(set2)",
+      "common = set1 & set2",
+      "Both options are correct",
+      "common = set1 - set2"
+    ],
+    "correctAnswer": "Both options are correct",
+    "explanation": "union() returns all elements from both sets. Use intersection() or the & operator to find common elements.",
+    "learningTip": "Use intersection() (or &) to find overlaps, and union() (or |) to combine sets."
+  },
+  {
+    "id": "exp_set_5",
+    "level": "Explorer",
+    "topic": "sets",
+    "errorType": "Runtime Error",
+    "title": "KeyError discarding set item",
+    "snippet": "# Remove item\nitems = {1, 2}\nitems.remove(3)",
+    "options": [
+      "Use discard(): items.discard(3)",
+      "Check membership first: if 3 in items: items.remove(3)",
+      "Both options are correct",
+      "Use pop(3)"
+    ],
+    "correctAnswer": "Both options are correct",
+    "explanation": "set.remove(x) raises a KeyError if x is not in the set. Use discard(x) which does not raise an error.",
+    "learningTip": "Use set.discard(item) to remove elements safely without raising errors if they are missing."
+  },
+  {
+    "id": "exp_str_1",
+    "level": "Explorer",
+    "topic": "strings",
+    "errorType": "Logical Error",
+    "title": "Replacing strings missing reassignment",
+    "snippet": "# Clean text\ntext = \"hello world\"\ntext.replace(\"world\", \"python\")\nprint(text) # Expected: hello python",
+    "options": [
+      "text = text.replace(\"world\", \"python\")",
+      "text = replace(text, \"world\")",
+      "Use text.strip()",
+      "Strings are mutable"
+    ],
+    "correctAnswer": "text = text.replace(\"world\", \"python\")",
+    "explanation": "The replace() method does not modify the string in place. It returns a new string which must be reassigned.",
+    "learningTip": "Always assign the result of string methods (replace, upper, strip) back to a variable."
+  },
+  {
+    "id": "exp_str_2",
+    "level": "Explorer",
+    "topic": "strings",
+    "errorType": "Runtime Error",
+    "title": "AttributeError split on list",
+    "snippet": "# Split words list\nwords = [\"hello world\"]\nparts = words.split(\" \")",
+    "options": [
+      "Access string first: parts = words[0].split(\" \")",
+      "Convert to string: parts = str(words).split(\" \")",
+      "Use list split",
+      "Use join first"
+    ],
+    "correctAnswer": "Access string first: parts = words[0].split(\" \")",
+    "explanation": "The split() method belongs to string objects, not lists. Calling it on a list raises an AttributeError.",
+    "learningTip": "Verify that the variable is a string before calling string methods like split()."
+  },
+  {
+    "id": "exp_str_3",
+    "level": "Explorer",
+    "topic": "strings",
+    "errorType": "Logical Error",
+    "title": "Incorrect join argument order",
+    "snippet": "# Combine list into comma string\nnames = [\"Alice\", \"Bob\"]\ntext = names.join(\",\") # Expected: \"Alice,Bob\"",
+    "options": [
+      "text = \",\".join(names)",
+      "text = join(\",\", names)",
+      "text = str(names)",
+      "text = names.split(\",\")"
+    ],
+    "correctAnswer": "text = \",\".join(names)",
+    "explanation": "The join() method is called on the separator string, and takes the list as its argument.",
+    "learningTip": "Syntax pattern: \"separator\".join(iterable_list)."
+  },
+  {
+    "id": "exp_str_4",
+    "level": "Explorer",
+    "topic": "strings",
+    "errorType": "Logical Error",
+    "title": "Stripping inner spaces",
+    "snippet": "# Remove inner spaces\ntext = \" a  b \"\nclean = text.strip()\nprint(clean) # Expected: \"ab\"",
+    "options": [
+      "clean = text.replace(\" \", \"\")",
+      "clean = \"\".join(text.split())",
+      "Both options are correct",
+      "clean = text.lstrip().rstrip()"
+    ],
+    "correctAnswer": "Both options are correct",
+    "explanation": "strip() only removes leading and trailing whitespaces. Inner spaces are left untouched. Use replace() or split() to remove all spaces.",
+    "learningTip": "Use replace(\" \", \"\") to remove all spaces, and strip() only for outer leading/trailing spaces."
+  },
+  {
+    "id": "exp_str_5",
+    "level": "Explorer",
+    "topic": "strings",
+    "errorType": "Syntax Error",
+    "title": "Incorrect f-string expression braces",
+    "snippet": "# Format name\nname = \"Alice\"\nmsg = f\"Hello (name)\" # Expected: Hello Alice",
+    "options": [
+      "msg = f\"Hello {name}\"",
+      "msg = \"Hello {}\".format(name)",
+      "Both options are correct",
+      "msg = f\"Hello [name]\""
+    ],
+    "correctAnswer": "Both options are correct",
+    "explanation": "F-strings use curly braces {} to interpolate variable values, not parentheses ().",
+    "learningTip": "Ensure variables inside f-strings are wrapped in curly braces {}."
+  },
+  {
+    "id": "bld_adp_1",
+    "level": "Builder",
+    "topic": "adaptive logic",
+    "errorType": "Logical Error",
+    "title": "Incorrect adaptive step logic",
+    "snippet": "# Adjust rate adaptively\nrate = 1.0\ndef adapt(score):\n    global rate\n    if score > 90:\n        rate *= 1.1\n    elif score > 80:\n        rate *= 1.05\n    else:\n        rate = 1.0 # Expected: rate decreases if score is very low",
+    "options": [
+      "Add: elif score < 50: rate *= 0.9",
+      "rate should be local",
+      "Multiply rate by score",
+      "Set rate to score"
+    ],
+    "correctAnswer": "Add: elif score < 50: rate *= 0.9",
+    "explanation": "The adaptive logic has no mechanism to decrease the rate when score is low, meaning the rate only goes up or resets to 1.0.",
+    "learningTip": "Adaptive feedback loops must define both increment and decrement boundaries to balance adaptively."
+  },
+  {
+    "id": "bld_adp_2",
+    "level": "Builder",
+    "topic": "adaptive logic",
+    "errorType": "Runtime Error",
+    "title": "UnboundLocalError in adaptive adjust",
+    "snippet": "# Adjust step\nstep = 1\ndef adjust(perf):\n    if perf > 10:\n        step = step + 1\nadjust(12)",
+    "options": [
+      "Use global step inside function",
+      "Pass step as argument",
+      "Both options are correct",
+      "Make step a parameter with default"
+    ],
+    "correctAnswer": "Both options are correct",
+    "explanation": "Modifying a global variable \"step\" inside the local scope of function raises an UnboundLocalError.",
+    "learningTip": "Declare global variables using the global keyword inside functions if they must be reassigned."
+  },
+  {
+    "id": "bld_adp_3",
+    "level": "Builder",
+    "topic": "adaptive logic",
+    "errorType": "Logical Error",
+    "title": "Threshold priority logic leak",
+    "snippet": "# Classify difficulty adaptively\ndef check(err_rate):\n    if err_rate > 0.2:\n        return \"Medium\"\n    elif err_rate > 0.5:\n        return \"Hard\"\n    else:\n        return \"Easy\"",
+    "options": [
+      "Check err_rate > 0.5 condition first",
+      "Check err_rate < 0.2 first",
+      "Reverse if-else blocks",
+      "Change medium limit to 0.3"
+    ],
+    "correctAnswer": "Check err_rate > 0.5 condition first",
+    "explanation": "Since 0.6 is greater than 0.2, it matches \"Medium\" and never reaches the \"Hard\" condition.",
+    "learningTip": "When checking threshold limits, check strict values first (e.g. descending order for greater than checks)."
+  },
+  {
+    "id": "bld_adp_4",
+    "level": "Builder",
+    "topic": "adaptive logic",
+    "errorType": "Syntax Error",
+    "title": "Incorrect indent in def adjust",
+    "snippet": "# Adapt scale\ndef scale(factor):\nif factor > 2:\n    return 10\nelse:\n    return 5",
+    "options": [
+      "Indent function body",
+      "Add parentheses",
+      "Use return statements",
+      "Define scale as class"
+    ],
+    "correctAnswer": "Indent function body",
+    "explanation": "The function body is not indented under the def statement, causing an IndentationError.",
+    "learningTip": "Ensure all function bodies are indented consistently."
+  },
+  {
+    "id": "bld_adp_5",
+    "level": "Builder",
+    "topic": "adaptive logic",
+    "errorType": "Logical Error",
+    "title": "No upper ceiling boundary logic leak",
+    "snippet": "# Adapt difficulty multiplier\nmult = 1.0\ndef adapt(consecutive_correct):\n    global mult\n    mult = consecutive_correct * 0.5 # Expected: limit mult to max 3.0",
+    "options": [
+      "mult = min(consecutive_correct * 0.5, 3.0)",
+      "mult = max(consecutive_correct * 0.5, 3.0)",
+      "mult = consecutive_correct * 0.5",
+      "Limit consecutive_correct to 5"
+    ],
+    "correctAnswer": "mult = min(consecutive_correct * 0.5, 3.0)",
+    "explanation": "Without an upper limit check, the multiplier can grow infinitely, causing unstable scale jumps.",
+    "learningTip": "Always set boundary ceilings (using min/max or conditionals) for adaptive scaling variables."
+  },
+  {
+    "id": "bld_comp_1",
+    "level": "Builder",
+    "topic": "comparisons",
+    "errorType": "Logical Error",
+    "title": "Comparing complex values sorting key",
+    "snippet": "# Sort dictionary by value\ndata = {\"a\": 3, \"b\": 1, \"c\": 2}\nsorted_data = sorted(data) # Expected: keys sorted by values",
+    "options": [
+      "sorted_data = sorted(data, key=lambda k: data[k])",
+      "sorted_data = sorted(data.items(), key=lambda x: x[1])",
+      "Both options are correct",
+      "sorted_data = sorted(data.values())"
+    ],
+    "correctAnswer": "Both options are correct",
+    "explanation": "By default, sorted(dict) only sorts dictionary keys alphabetically. Specify a custom key parameter.",
+    "learningTip": "Use key parameter in sorted() to define customized sorting criteria."
+  },
+  {
+    "id": "bld_comp_2",
+    "level": "Builder",
+    "topic": "comparisons",
+    "errorType": "Runtime Error",
+    "title": "Comparing instances of un-orderable classes",
+    "snippet": "# Compare objects\nclass User:\n    def __init__(self, score):\n        self.score = score\nu1 = User(10)\nu2 = User(20)\nprint(u1 < u2)",
+    "options": [
+      "Implement __lt__ method in User class",
+      "Implement __cmp__ method",
+      "Compare user.score directly: u1.score < u2.score",
+      "Both __lt__ implementation and direct score comparison work"
+    ],
+    "correctAnswer": "Both __lt__ implementation and direct score comparison work",
+    "explanation": "Python 3 does not support default comparisons between custom class objects. You must define comparison methods like __lt__.",
+    "learningTip": "Implement rich comparison magic methods (__lt__, __gt__, __eq__) to enable custom sorting of objects."
+  },
+  {
+    "id": "bld_comp_3",
+    "level": "Builder",
+    "topic": "comparisons",
+    "errorType": "Logical Error",
+    "title": "Truthy check matches False value",
+    "snippet": "# Check flag status\nactive = False\nif active == True:\n    print(\"Yes\")\n# Is checking explicit comparison matching boolean best practice?",
+    "options": [
+      "No, simply use \"if active:\" or \"if not active:\"",
+      "Yes, it is standard",
+      "Use \"if active is True:\"",
+      "Use \"if active == 1:\""
+    ],
+    "correctAnswer": "No, simply use \"if active:\" or \"if not active:\"",
+    "explanation": "Explicit comparisons to True/False are redundant and unpythonic. Use \"if active:\" or \"if not active:\" directly.",
+    "learningTip": "Test boolean variables directly without using explicit == True/False comparisons."
+  },
+  {
+    "id": "bld_comp_4",
+    "level": "Builder",
+    "topic": "comparisons",
+    "errorType": "Syntax Error",
+    "title": "Missing double equal in function check",
+    "snippet": "# Match code\ndef match(val):\n    return val = \"admin\"",
+    "options": [
+      "return val == \"admin\"",
+      "return val === \"admin\"",
+      "return val is \"admin\"",
+      "return val = \"admin\";"
+    ],
+    "correctAnswer": "return val == \"admin\"",
+    "explanation": "The return statement uses assignment (=) instead of equivalence comparison (==).",
+    "learningTip": "Ensure you use == inside return conditions rather than =."
+  },
+  {
+    "id": "bld_comp_5",
+    "level": "Builder",
+    "topic": "comparisons",
+    "errorType": "Logical Error",
+    "title": "Invalid multi condition check logic",
+    "snippet": "# Check status\nstatus = \"active\"\nif status == \"active\" or \"pending\":\n    print(\"OK\")",
+    "options": [
+      "if status == \"active\" or status == \"pending\":",
+      "if status in [\"active\", \"pending\"]:",
+      "Both options are correct",
+      "if status == (\"active\" or \"pending\"):"
+    ],
+    "correctAnswer": "Both options are correct",
+    "explanation": "The expression \"status == 'active' or 'pending'\" is evaluated as (status == 'active') or ('pending'). Since non-empty string 'pending' is always truthy, this condition is always True.",
+    "learningTip": "Always write full comparison expressions for each check, or use membership checks (in)."
+  },
+  {
+    "id": "bld_cond_1",
+    "level": "Builder",
+    "topic": "conditionals",
+    "errorType": "Syntax Error",
+    "title": "Incorrect elif syntax after else",
+    "snippet": "# Complex routing\nx = 10\nif x > 20:\n    print(\"High\")\nelse:\n    print(\"Low\")\nelif x == 10:\n    print(\"Ten\")",
+    "options": [
+      "Place elif before else",
+      "Remove else block",
+      "Combine into nested if",
+      "Use nested ternary"
+    ],
+    "correctAnswer": "Place elif before else",
+    "explanation": "An \"elif\" block cannot appear after an \"else\" block. \"else\" must always be the final block in the statement.",
+    "learningTip": "Always sequence blocks as: if -> elif -> else."
+  },
+  {
+    "id": "bld_cond_2",
+    "level": "Builder",
+    "topic": "conditionals",
+    "errorType": "Logical Error",
+    "title": "Logical AND checking bounds mistake",
+    "snippet": "# Check valid index\nidx = 5\nlimit = 3\nif idx >= 0 or idx < limit:\n    print(\"Valid\") # Expected: bounds check",
+    "options": [
+      "if idx >= 0 and idx < limit:",
+      "if 0 <= idx < limit:",
+      "Both options are correct",
+      "if idx < limit:"
+    ],
+    "correctAnswer": "Both options are correct",
+    "explanation": "Using \"or\" means only one condition must be true. Since 5 >= 0 is True, \"Valid\" is printed even though index 5 is out of bounds.",
+    "learningTip": "Use logical \"and\" (or chained operators) to enforce range limits and index safety."
+  },
+  {
+    "id": "bld_cond_3",
+    "level": "Builder",
+    "topic": "conditionals",
+    "errorType": "Runtime Error",
+    "title": "NameError variable defined only in one branch",
+    "snippet": "# Calculate discount\nstatus = \"guest\"\nif status == \"vip\":\n    discount = 0.2\nelse:\n    pass\nfinal = 100 * (1 - discount)",
+    "options": [
+      "Initialize discount = 0 at start",
+      "Set discount in else block",
+      "Both options are correct",
+      "Use global discount"
+    ],
+    "correctAnswer": "Both options are correct",
+    "explanation": "If the else branch is taken, \"discount\" is never defined, causing a NameError when calculating final.",
+    "learningTip": "Ensure all variables used after conditional blocks are defined in every potential branch."
+  },
+  {
+    "id": "bld_cond_4",
+    "level": "Builder",
+    "topic": "conditionals",
+    "errorType": "Logical Error",
+    "title": "Negated condition checking logic",
+    "snippet": "# Alert if mismatch\nvalid = False\nif not valid == True:\n    print(\"Mismatch\") # Expected: print only if valid is False",
+    "options": [
+      "The code logic is correct, but unpythonic",
+      "if not valid:",
+      "Both options are correct",
+      "if valid != True:"
+    ],
+    "correctAnswer": "Both options are correct",
+    "explanation": "The expression \"not valid == True\" is valid but confusing. Use \"if not valid:\" or \"if valid is False:\" for clarity.",
+    "learningTip": "Avoid double negatives or complex negations. Keep conditions direct."
+  },
+  {
+    "id": "bld_cond_5",
+    "level": "Builder",
+    "topic": "conditionals",
+    "errorType": "Syntax Error",
+    "title": "Incorrect indentation level in nested condition",
+    "snippet": "# Nested check\nx = 10\nif x > 5:\n    print(\"Greater\")\n    if x == 10:\n    print(\"Ten\")",
+    "options": [
+      "Indent print(\"Ten\") further",
+      "Align inner if with outer if",
+      "Remove inner if",
+      "Use simple logical AND"
+    ],
+    "correctAnswer": "Indent print(\"Ten\") further",
+    "explanation": "The statement print(\"Ten\") must be indented under the inner \"if x == 10:\" block.",
+    "learningTip": "Verify that indentation matches nested scopes accurately."
+  },
+  {
+    "id": "bld_dict_1",
+    "level": "Builder",
+    "topic": "dictionaries",
+    "errorType": "Runtime Error",
+    "title": "KeyError in nested dictionary access",
+    "snippet": "# Get settings\nconfig = {\"user\": {\"theme\": \"dark\"}}\nlang = config[\"user\"][\"lang\"]",
+    "options": [
+      "Use safe gets: config.get(\"user\", {}).get(\"lang\")",
+      "Check \"lang\" in user first",
+      "Both options are correct",
+      "lang = config[\"user\"][\"lang\"] or \"en\""
+    ],
+    "correctAnswer": "Both options are correct",
+    "explanation": "Accessing a nested key that is missing raises a KeyError. Safely access using chained .get() methods with fallback dicts.",
+    "learningTip": "Chaining dict.get(key, {}) permits safe lookup in deeply nested structures."
+  },
+  {
+    "id": "bld_dict_2",
+    "level": "Builder",
+    "topic": "dictionaries",
+    "errorType": "Logical Error",
+    "title": "Dictionary update overwrites keys",
+    "snippet": "# Combine options\nopt1 = {\"timeout\": 30, \"retries\": 3}\nopt2 = {\"timeout\": 60}\nopt1.update(opt2)\nprint(opt1[\"retries\"]) # Expected: retries to exist and timeout to update",
+    "options": [
+      "The code behaves correctly, but check if keys overwrite",
+      "Use copy: merged = {**opt1, **opt2}",
+      "Both options are correct",
+      "opt1 += opt2"
+    ],
+    "correctAnswer": "Both options are correct",
+    "explanation": "The code works. It updates opt1 with opt2 values. But to preserve original opt1, use a merge/copy syntax.",
+    "learningTip": "Merging dictionaries can be done in-place with update(), or non-destructively using {**d1, **d2} or the | operator."
+  },
+  {
+    "id": "bld_dict_3",
+    "level": "Builder",
+    "topic": "dictionaries",
+    "errorType": "Runtime Error",
+    "title": "TypeError key is unhashable dict",
+    "snippet": "# Use dictionary as key\ndata = {}\nkey = {\"id\": 1}\ndata[key] = \"User1\"",
+    "options": [
+      "Use tuple: key = (\"id\", 1)",
+      "Convert to string representation key",
+      "Both options are correct",
+      "Use frozenset key"
+    ],
+    "correctAnswer": "Both options are correct",
+    "explanation": "Dictionaries are mutable and cannot be used as keys. Convert them to tuples, strings, or frozensets.",
+    "learningTip": "Set and dictionary keys must consist of hashable, immutable data types."
+  },
+  {
+    "id": "bld_dict_4",
+    "level": "Builder",
+    "topic": "dictionaries",
+    "errorType": "Logical Error",
+    "title": "Copy dict modification leak",
+    "snippet": "# Copy settings\norig = {\"db\": {\"port\": 3306}}\ncopy = orig.copy()\ncopy[\"db\"][\"port\"] = 5432\nprint(orig[\"db\"][\"port\"]) # Expected: 3306",
+    "options": [
+      "Use deepcopy: import copy; copy_dict = copy.deepcopy(orig)",
+      "Reassign dict manually",
+      "orig = copy.copy()",
+      "Copy values key by key"
+    ],
+    "correctAnswer": "Use deepcopy: import copy; copy_dict = copy.deepcopy(orig)",
+    "explanation": "dict.copy() creates a shallow copy. Nested dictionary references remain shared. Use copy.deepcopy() to duplicate fully.",
+    "learningTip": "Use deepcopy for complex nested data structures to avoid mutation leaks."
+  },
+  {
+    "id": "bld_dict_5",
+    "level": "Builder",
+    "topic": "dictionaries",
+    "errorType": "Syntax Error",
+    "title": "Incorrect dict comprehension dictionary key assignment",
+    "snippet": "# Create dict mapping square values\nnums = [1, 2]\nsquares = [x: x*x for x in nums]",
+    "options": [
+      "Use curly braces: {x: x*x for x in nums}",
+      "Use dict comprehension: dict((x, x*x) for x in nums)",
+      "Both options are correct",
+      "Use list brackets"
+    ],
+    "correctAnswer": "Both options are correct",
+    "explanation": "Dict comprehensions require curly braces {} with key:value notation, not square brackets [].",
+    "learningTip": "Use curly braces for dictionary comprehensions: {key: value for item in iterable}."
+  },
+  {
+    "id": "bld_fmt_1",
+    "level": "Builder",
+    "topic": "formatting",
+    "errorType": "Syntax Error",
+    "title": "Mismatched f-string quotes",
+    "snippet": "# Welcome user\nname = \"Alice\"\nmsg = f\"User: {name}'\nprint(msg)",
+    "options": [
+      "msg = f\"User: {name}\"",
+      "msg = f'User: {name}'",
+      "Both options are correct",
+      "msg = \"User: {name}\""
+    ],
+    "correctAnswer": "Both options are correct",
+    "explanation": "The string wrapper quotes must match (both double or both single).",
+    "learningTip": "Ensure quotes encapsulating f-strings match exactly."
+  },
+  {
+    "id": "bld_fmt_2",
+    "level": "Builder",
+    "topic": "formatting",
+    "errorType": "Runtime Error",
+    "title": "KeyError in format placeholders",
+    "snippet": "# Format name and status\nmsg = \"User {name} is {status}\".format(name=\"Alice\")",
+    "options": [
+      "Add status parameter: format(name=\"Alice\", status=\"online\")",
+      "Use f-string",
+      "Both options are correct",
+      "Remove status placeholder"
+    ],
+    "correctAnswer": "Both options are correct",
+    "explanation": "The template string contains an explicit placeholder {status} that is not provided in format(), raising a KeyError.",
+    "learningTip": "All named placeholders in string.format() must have corresponding keyword arguments."
+  },
+  {
+    "id": "bld_fmt_3",
+    "level": "Builder",
+    "topic": "formatting",
+    "errorType": "Logical Error",
+    "title": "Incorrect percentage float formatting",
+    "snippet": "# Print ratio as percentage\nratio = 0.756\nprint(f\"{ratio:.2}\") # Expected: 75.60%",
+    "options": [
+      "print(f\"{ratio * 100:.2f}%\")",
+      "print(f\"{ratio:.2%}\")",
+      "Both options are correct",
+      "print(f\"{ratio:.1%}\")"
+    ],
+    "correctAnswer": "Both options are correct",
+    "explanation": "\"{ratio:.2}\" only displays two significant digits (0.76). To format as percentage, use percentage notation \":.2%\".",
+    "learningTip": "Use formatting suffix \"%\" inside f-strings to automatically multiply by 100 and add a percent sign."
+  },
+  {
+    "id": "bld_fmt_4",
+    "level": "Builder",
+    "topic": "formatting",
+    "errorType": "Syntax Error",
+    "title": "Incorrect f-string brackets nesting",
+    "snippet": "# Nesting dict in f-string\nuser = {\"name\": \"Alice\"}\nmsg = f\"Name: {user['name']}\" # Is this valid?",
+    "options": [
+      "Yes, this is valid",
+      "No, double quotes are required",
+      "No, brackets cannot be nested",
+      "No, use format method"
+    ],
+    "correctAnswer": "Yes, this is valid",
+    "explanation": "This is valid in modern Python. Ensure quote marks inside square brackets differ from the outer f-string quotes.",
+    "learningTip": "Vary double and single quotes between f-string wrappers and dictionary string keys."
+  },
+  {
+    "id": "bld_fmt_5",
+    "level": "Builder",
+    "topic": "formatting",
+    "errorType": "Runtime Error",
+    "title": "ValueError incompatible format specifier",
+    "snippet": "# Format integer as float precision\nval = \"10\"\nprint(f\"{val:.2f}\")",
+    "options": [
+      "Convert val to float first: float(val)",
+      "Use val = 10",
+      "Both options are correct",
+      "Remove .2f"
+    ],
+    "correctAnswer": "Both options are correct",
+    "explanation": "Applying float formatting specs (:.2f) on a string variable raises a ValueError.",
+    "learningTip": "Verify that the variables formatted with numeric specifiers are indeed floats or integers."
+  },
+  {
+    "id": "bld_func_1",
+    "level": "Builder",
+    "topic": "functions",
+    "errorType": "Syntax Error",
+    "title": "Non-default parameter follows default parameter",
+    "snippet": "# Greet function\ndef greet(msg=\"Hello\", name):\n    print(msg, name)",
+    "options": [
+      "def greet(name, msg=\"Hello\"):",
+      "def greet(name=\"User\", msg=\"Hello\"):",
+      "Both options are correct",
+      "def greet(msg, name):"
+    ],
+    "correctAnswer": "Both options are correct",
+    "explanation": "Parameters without default values must always be defined before parameters with default values.",
+    "learningTip": "Place required arguments first, and optional arguments (with default values) last in function signatures."
+  },
+  {
+    "id": "bld_func_2",
+    "level": "Builder",
+    "topic": "functions",
+    "errorType": "Logical Error",
+    "title": "Mutable default argument accumulator bug",
+    "snippet": "# Add user to session list\ndef add_user(u, users=[]):\n    users.append(u)\n    return users\nprint(add_user(\"Alice\")) # [\"Alice\"]\nprint(add_user(\"Bob\"))   # Expected: [\"Bob\"]",
+    "options": [
+      "def add_user(u, users=None):\n    if users is None: users = []\n    users.append(u)\n    return users",
+      "Create list copy inside",
+      "Do not use default value",
+      "Use tuple default"
+    ],
+    "correctAnswer": "def add_user(u, users=None):\n    if users is None: users = []\n    users.append(u)\n    return users",
+    "explanation": "Python evaluates default arguments once during function definition. Using a mutable list [] shares the same list instance across calls. Use None as default.",
+    "learningTip": "Always use None as default value for mutable arguments, then initialize them inside the function body."
+  },
+  {
+    "id": "bld_func_3",
+    "level": "Builder",
+    "topic": "functions",
+    "errorType": "Runtime Error",
+    "title": "Missing return value causing None operations",
+    "snippet": "# Calculate double score\ndef double(s):\n    res = s * 2\nval = double(10) + 5",
+    "options": [
+      "Add \"return res\" in function",
+      "Use print(res)",
+      "Assign val = double(10)",
+      "double(s) is correct"
+    ],
+    "correctAnswer": "Add \"return res\" in function",
+    "explanation": "Functions without an explicit return statement return None by default. Adding 5 to None raises a TypeError.",
+    "learningTip": "Make sure functions intended to compute a result explicitly call \"return\"."
+  },
+  {
+    "id": "bld_func_4",
+    "level": "Builder",
+    "topic": "functions",
+    "errorType": "Syntax Error",
+    "title": "Incorrect global scope declaration inside parameter list",
+    "snippet": "# Define function\ndef save(global data):\n    print(data)",
+    "options": [
+      "def save(data):\n    global data",
+      "def save(data):",
+      "global data\ndef save():",
+      "def save(*args):"
+    ],
+    "correctAnswer": "def save(data):",
+    "explanation": "You cannot put global declarations inside a function's parameter definition signature list.",
+    "learningTip": "Declare global scope configurations on their own line inside the function body if necessary."
+  },
+  {
+    "id": "bld_func_5",
+    "level": "Builder",
+    "topic": "functions",
+    "errorType": "Logical Error",
+    "title": "Function name shadow overwriting built-in function",
+    "snippet": "# Find max score\ndef max(lst):\n    return lst[0]\nresult = max([1, 2])\n# Expected: Built-in max is still accessible",
+    "options": [
+      "Use a different function name (e.g. find_max)",
+      "Built-in max is lost, rename custom function",
+      "Both options are correct",
+      "Use builtins.max"
+    ],
+    "correctAnswer": "Both options are correct",
+    "explanation": "Defining a custom function named \"max\" shadows the built-in max() function in the local namespace, making it inaccessible.",
+    "learningTip": "Avoid naming your variables or functions after built-in Python functions (like sum, max, min, list)."
+  },
+  {
+    "id": "bld_list_1",
+    "level": "Builder",
+    "topic": "lists",
+    "errorType": "Runtime Error",
+    "title": "IndexError popping from empty list index",
+    "snippet": "# Pop third index\nvals = [1, 2]\nval = vals.pop(3)",
+    "options": [
+      "Check length: if len(vals) > 3:",
+      "Use vals.pop()",
+      "Use try-except block",
+      "Both length check and try-except work"
+    ],
+    "correctAnswer": "Both length check and try-except work",
+    "explanation": "Popping a non-existent index raises an IndexError.",
+    "learningTip": "Check if length is greater than index before attempting pop(index)."
+  },
+  {
+    "id": "bld_list_2",
+    "level": "Builder",
+    "topic": "lists",
+    "errorType": "Logical Error",
+    "title": "In-place sort logic return overwrite",
+    "snippet": "# Sort grades\ngrades = [88, 92, 79]\ngrades = grades.sort(reverse=True)\nprint(grades) # Expected: [92, 88, 79]",
+    "options": [
+      "Use sorted: grades = sorted(grades, reverse=True)",
+      "Call grades.sort() without assignment",
+      "Both options are correct",
+      "Use grades.reverse()"
+    ],
+    "correctAnswer": "Both options are correct",
+    "explanation": "Assigning grades to grades.sort() overwrites it with None. Sort in place or use sorted().",
+    "learningTip": "List mutating operations return None. Never chain them with assignment."
+  },
+  {
+    "id": "bld_list_3",
+    "level": "Builder",
+    "topic": "lists",
+    "errorType": "Runtime Error",
+    "title": "AttributeError append list to list incorrectly",
+    "snippet": "# Add elements\nnums1 = [1, 2]\nnums2 = [3, 4]\nnums1.append(nums2)\nprint(len(nums1)) # Expected: 4",
+    "options": [
+      "Use extend(): nums1.extend(nums2)",
+      "Use list addition: nums1 += nums2",
+      "Both options are correct",
+      "Use append(3) and append(4)"
+    ],
+    "correctAnswer": "Both options are correct",
+    "explanation": "append(nums2) inserts the list [3, 4] as a single nested element, making nums1 equal to [1, 2, [3, 4]]. Use extend() or +=.",
+    "learningTip": "Use extend() to merge iterable items individually, and append() to insert an object as a single nested item."
+  },
+  {
+    "id": "bld_list_4",
+    "level": "Builder",
+    "topic": "lists",
+    "errorType": "Logical Error",
+    "title": "Shallow list copy inner dictionary mutation leak",
+    "snippet": "# Duplicating list of dicts\norig = [{\"score\": 10}]\ncopy = list(orig)\ncopy[0][\"score\"] = 20\nprint(orig[0][\"score\"]) # Expected: 10",
+    "options": [
+      "Use copy.deepcopy(): import copy; copy_list = copy.deepcopy(orig)",
+      "Copy dictionary manually inside",
+      "Both options are correct",
+      "Use orig.copy()"
+    ],
+    "correctAnswer": "Both options are correct",
+    "explanation": "A shallow copy copies the list references. The inner dictionaries remain shared objects. Modifying the copy mutates the original.",
+    "learningTip": "Use deepcopy to fully clone nested structures."
+  },
+  {
+    "id": "bld_list_5",
+    "level": "Builder",
+    "topic": "lists",
+    "errorType": "Syntax Error",
+    "title": "Incorrect slice syntax colons placement",
+    "snippet": "# Slice first two items\nitems = [10, 20, 30]\nsub = items[0,,2]",
+    "options": [
+      "sub = items[0:2]",
+      "sub = items[:2]",
+      "Both sub = items[0:2] and sub = items[:2] work",
+      "sub = items[0..2]"
+    ],
+    "correctAnswer": "Both sub = items[0:2] and sub = items[:2] work",
+    "explanation": "Python uses colons (:) to partition slices, not commas or double dots.",
+    "learningTip": "Define slices using syntax: start:stop:step."
+  },
+  {
+    "id": "bld_mut_1",
+    "level": "Builder",
+    "topic": "mutation",
+    "errorType": "Logical Error",
+    "title": "Modifying list elements in for loop without index",
+    "snippet": "# Double all scores\nscores = [10, 20]\nfor s in scores:\n    s *= 2\nprint(scores) # Expected: [20, 40]",
+    "options": [
+      "Use range loop: for i in range(len(scores)): scores[i] *= 2",
+      "Use list comprehension: scores = [s * 2 for s in scores]",
+      "Both options are correct",
+      "Use scores = [s *= 2]"
+    ],
+    "correctAnswer": "Both options are correct",
+    "explanation": "The variable \"s\" is a local reference inside the loop. Mutating it does not modify the list array cells. Use index loop or comprehension.",
+    "learningTip": "To modify list elements in place, loop using indices or use a list comprehension."
+  },
+  {
+    "id": "bld_mut_2",
+    "level": "Builder",
+    "topic": "mutation",
+    "errorType": "Runtime Error",
+    "title": "Mutation during dict iteration",
+    "snippet": "# Delete keys\nconfig = {\"a\": 1, \"b\": 2}\nfor k in config:\n    if k == \"a\":\n        del config[k]",
+    "options": [
+      "Iterate over list: for k in list(config):",
+      "Create filtered dict comprehension",
+      "Both options are correct",
+      "Use keys() directly"
+    ],
+    "correctAnswer": "Both options are correct",
+    "explanation": "Modifying dictionary keys size directly during iteration throws a RuntimeError.",
+    "learningTip": "Convert keys to a static list before iterating and mutating dictionary keys."
+  },
+  {
+    "id": "bld_mut_3",
+    "level": "Builder",
+    "topic": "mutation",
+    "errorType": "Logical Error",
+    "title": "Passing mutable argument to modify values",
+    "snippet": "# Add tag\ndef tag(lst):\n    lst.append(\"new\")\nmy_list = [1]\ntag(my_list)\n# Is my_list mutated outside the function?",
+    "options": [
+      "Yes, lists are mutable and passed by reference",
+      "No, functions isolate mutations",
+      "No, list copies are made",
+      "Yes, but copy must be returned"
+    ],
+    "correctAnswer": "Yes, lists are mutable and passed by reference",
+    "explanation": "This behaves as expected (lst is mutated). If you want to prevent mutation, pass a copy of the list (like my_list.copy()).",
+    "learningTip": "Be aware that passing mutable objects to functions allows in-place mutations outside the scope."
+  },
+  {
+    "id": "bld_mut_4",
+    "level": "Builder",
+    "topic": "mutation",
+    "errorType": "Syntax Error",
+    "title": "Incorrect set add mutation syntax",
+    "snippet": "# Mutate set\nmy_set = {1, 2}\nmy_set += {3}",
+    "options": [
+      "my_set.add(3)",
+      "my_set.update({3})",
+      "Both my_set.add(3) and my_set.update({3}) work",
+      "my_set = my_set + 3"
+    ],
+    "correctAnswer": "Both my_set.add(3) and my_set.update({3}) work",
+    "explanation": "The += operator is not supported for set values. Use add() or update().",
+    "learningTip": "Mutate sets using add() or update() methods."
+  },
+  {
+    "id": "bld_mut_5",
+    "level": "Builder",
+    "topic": "mutation",
+    "errorType": "Logical Error",
+    "title": "Unintended object attribute mutation shared state",
+    "snippet": "# Shared class attribute mutation leak\nclass Session:\n    users = [] # Shared class attribute\n\ns1 = Session()\ns2 = Session()\ns1.users.append(\"Alice\")\nprint(s2.users) # Expected: []",
+    "options": [
+      "Define users inside __init__: self.users = []",
+      "Make users private",
+      "Use static class methods",
+      "Assign s2.users = []"
+    ],
+    "correctAnswer": "Define users inside __init__: self.users = []",
+    "explanation": "Declaring users directly in the class scope makes it a class attribute shared across all instances. Initialize it in __init__ as an instance variable.",
+    "learningTip": "Declare instance attributes inside the __init__ constructor to isolate state between object instances."
+  },
+  {
+    "id": "bld_srch_1",
+    "level": "Builder",
+    "topic": "search",
+    "errorType": "Logical Error",
+    "title": "Linear search early return bug",
+    "snippet": "# Search item\ndef find(lst, target):\n    for item in lst:\n        if item == target:\n            return True\n        return False # Expected: check whole list",
+    "options": [
+      "Move return False out of the loop body",
+      "Check target in lst directly",
+      "Both options are correct",
+      "Use while loop"
+    ],
+    "correctAnswer": "Both options are correct",
+    "explanation": "The return False is inside the loop block, executing on the first mismatch. Indent it outside the loop.",
+    "learningTip": "Verify loop indentation. Returns for failures should execute only after loop completes."
+  },
+  {
+    "id": "bld_srch_2",
+    "level": "Builder",
+    "topic": "search",
+    "errorType": "Runtime Error",
+    "title": "AttributeError index lookup on dictionary",
+    "snippet": "# Search index of value in dictionary\nmapping = {\"a\": 10, \"b\": 20}\nidx = mapping.index(20)",
+    "options": [
+      "Find key: idx = [k for k, v in mapping.items() if v == 20][0]",
+      "Use get(): idx = mapping.get(20)",
+      "Use try-except blocks",
+      "Use keys() list"
+    ],
+    "correctAnswer": "Find key: idx = [k for k, v in mapping.items() if v == 20][0]",
+    "explanation": "Dictionaries do not have an index() method. Search through items() using loop or comprehension.",
+    "learningTip": "To search values in a dictionary, iterate through items() and compare values to keys."
+  },
+  {
+    "id": "bld_srch_3",
+    "level": "Builder",
+    "topic": "search",
+    "errorType": "Logical Error",
+    "title": "Substring check index edge case",
+    "snippet": "# Search substring prefix\ntext = \"ERROR: connection failed\"\nif text.find(\"ERROR\"):\n    print(\"Alert\") # Expected: print Alert",
+    "options": [
+      "if \"ERROR\" in text:",
+      "if text.find(\"ERROR\") != -1:",
+      "Both options are correct",
+      "if text.startswith(\"ERROR\"):"
+    ],
+    "correctAnswer": "Both options are correct",
+    "explanation": "text.find(\"ERROR\") returns 0 (the index). Since 0 is falsy, the condition fails. Use \"in\" or compare with != -1.",
+    "learningTip": "Use membership checking (in) or explicit index boundaries checks when using find()."
+  },
+  {
+    "id": "bld_srch_4",
+    "level": "Builder",
+    "topic": "search",
+    "errorType": "Syntax Error",
+    "title": "Incorrect search list filter lambda syntax",
+    "snippet": "# Filter items\nitems = [1, 2, 3]\nresult = filter(items, lambda x: x > 1)",
+    "options": [
+      "result = filter(lambda x: x > 1, items)",
+      "result = [x for x in items if x > 1]",
+      "Both options are correct",
+      "result = filter(x => x > 1, items)"
+    ],
+    "correctAnswer": "Both options are correct",
+    "explanation": "The arguments in filter() are (function, iterable). The code lists items first. Also, list comprehensions are preferred.",
+    "learningTip": "Pass function first, then iterable to filter(), or use list comprehensions."
+  },
+  {
+    "id": "bld_srch_5",
+    "level": "Builder",
+    "topic": "search",
+    "errorType": "Logical Error",
+    "title": "Binary search infinite loop condition",
+    "snippet": "# Binary search step\ndef search(lst, target):\n    low, high = 0, len(lst) - 1\n    while low <= high:\n        mid = (low + high) // 2\n        if lst[mid] == target: return mid\n        elif lst[mid] < target: low = mid # Expected: low = mid + 1",
+    "options": [
+      "low = mid + 1 and high = mid - 1",
+      "low = mid",
+      "high = mid",
+      "low = mid - 1"
+    ],
+    "correctAnswer": "low = mid + 1 and high = mid - 1",
+    "explanation": "Setting low = mid instead of mid + 1 causes an infinite loop when low and high differ by 1, as mid does not progress.",
+    "learningTip": "Ensure indices are strictly adjusted (+1 or -1) in binary search loops to prevent hang states."
+  },
+  {
+    "id": "bld_str_1",
+    "level": "Builder",
+    "topic": "strings",
+    "errorType": "Runtime Error",
+    "title": "AttributeError splitlines on integer",
+    "snippet": "# Format lines\ncode = 123\nlines = code.splitlines()",
+    "options": [
+      "Convert to string first: str(code).splitlines()",
+      "Use split(): str(code).split()",
+      "Both options are correct",
+      "Use lines = [code]"
+    ],
+    "correctAnswer": "Convert to string first: str(code).splitlines()",
+    "explanation": "splitlines() is a string method. Calling it on an integer raises an AttributeError.",
+    "learningTip": "Cast numeric variables to string before executing text parsing methods."
+  },
+  {
+    "id": "bld_str_2",
+    "level": "Builder",
+    "topic": "strings",
+    "errorType": "Logical Error",
+    "title": "String split empty delimiter logic leak",
+    "snippet": "# Split words\ntext = \"a  b\"\nwords = text.split(\" \") # Expected: [\"a\", \"b\"]",
+    "options": [
+      "words = text.split()",
+      "words = [w for w in text.split(\" \") if w]",
+      "Both options are correct",
+      "words = text.split(\"  \")"
+    ],
+    "correctAnswer": "Both options are correct",
+    "explanation": "Splitting with an explicit space delimiter \" \" preserves empty strings between double spaces, returning [\"a\", \"\", \"b\"]. Call split() without arguments to group all whitespaces.",
+    "learningTip": "Use string.split() with no arguments to automatically clean and split arbitrary spaces."
+  },
+  {
+    "id": "bld_str_3",
+    "level": "Builder",
+    "topic": "strings",
+    "errorType": "Runtime Error",
+    "title": "IndexError slice out of range string index",
+    "snippet": "# Safe string index slicing\ntext = \"abc\"\nprint(text[5]) # Expected: empty string if out of range",
+    "options": [
+      "Use slice: print(text[5:6])",
+      "Use try-except block",
+      "Both options are correct",
+      "Check length first"
+    ],
+    "correctAnswer": "Both options are correct",
+    "explanation": "Accessing a single index out of range text[5] raises an IndexError, but slicing text[5:6] returns empty string \"\" safely.",
+    "learningTip": "Slicing in Python does not raise IndexErrors for out-of-bounds indices."
+  },
+  {
+    "id": "bld_str_4",
+    "level": "Builder",
+    "topic": "strings",
+    "errorType": "Logical Error",
+    "title": "String encoding check failure",
+    "snippet": "# Check character encoding\nword = \"cafe\"\n# Convert to bytes\ndata = word.encode()\n# Expected: data to compare as string\nif data == \"cafe\": print(\"match\")",
+    "options": [
+      "Compare with bytes: data == b\"cafe\"",
+      "Decode first: data.decode() == \"cafe\"",
+      "Both options are correct",
+      "Use str(data)"
+    ],
+    "correctAnswer": "Both options are correct",
+    "explanation": "Encoding a string returns a bytes object. Comparing bytes directly with a string literal returns False.",
+    "learningTip": "Prefix bytes literals with b (e.g. b\"text\") or decode bytes to strings before comparing."
+  },
+  {
+    "id": "bld_str_5",
+    "level": "Builder",
+    "topic": "strings",
+    "errorType": "Syntax Error",
+    "title": "Incorrect string format formatting placeholders brackets",
+    "snippet": "# Format name\nname = \"Alice\"\nmsg = \"Hello [name]\".format(name=name)",
+    "options": [
+      "msg = \"Hello {name}\".format(name=name)",
+      "msg = f\"Hello {name}\"",
+      "Both options are correct",
+      "msg = \"Hello %s\" % name"
+    ],
+    "correctAnswer": "Both options are correct",
+    "explanation": "String format template variables must use curly braces {}, not square brackets [].",
+    "learningTip": "Use {} braces inside template strings when using the .format() method."
+  },
+  {
+    "id": "bld_val_1",
+    "level": "Builder",
+    "topic": "validation",
+    "errorType": "Runtime Error",
+    "title": "ValueError unhandled cast failure",
+    "snippet": "# Validate age input\ndef get_age(text):\n    return int(text) # raises ValueError on \"abc\"",
+    "options": [
+      "Use try-except: try: return int(text) except ValueError: return None",
+      "Check text.isdigit() before casting",
+      "Both options are correct",
+      "Return 0"
+    ],
+    "correctAnswer": "Both options are correct",
+    "explanation": "Casting non-numeric strings using int() raises a ValueError. Wrap in a try-except block or check .isdigit().",
+    "learningTip": "Always parse and validate user input inside try-except blocks when converting types."
+  },
+  {
+    "id": "bld_val_2",
+    "level": "Builder",
+    "topic": "validation",
+    "errorType": "Logical Error",
+    "title": "Validation logic leak empty input",
+    "snippet": "# Validate name\ndef check_name(name):\n    if len(name) > 10:\n        return False\n    return True # Expected: invalid if empty name",
+    "options": [
+      "if not name or len(name) > 10: return False",
+      "if len(name) == 0 or len(name) > 10: return False",
+      "Both options are correct",
+      "if name == None: return False"
+    ],
+    "correctAnswer": "Both options are correct",
+    "explanation": "The code returns True for an empty name \"\", which is typically invalid.",
+    "learningTip": "Always validate against empty strings or None values first."
+  },
+  {
+    "id": "bld_val_3",
+    "level": "Builder",
+    "topic": "validation",
+    "errorType": "Runtime Error",
+    "title": "KeyError in configuration check",
+    "snippet": "# Validate database config\ncfg = {\"host\": \"localhost\"}\nif cfg[\"port\"] == 3306:\n    print(\"Valid\")",
+    "options": [
+      "if cfg.get(\"port\") == 3306:",
+      "if \"port\" in cfg and cfg[\"port\"] == 3306:",
+      "Both options are correct",
+      "cfg[\"port\"] = 3306"
+    ],
+    "correctAnswer": "Both options are correct",
+    "explanation": "Accessing missing key \"port\" raises a KeyError. Use .get() or check membership first.",
+    "learningTip": "Validate dictionary keys safely using dict.get(key) with fallback defaults."
+  },
+  {
+    "id": "bld_val_4",
+    "level": "Builder",
+    "topic": "validation",
+    "errorType": "Syntax Error",
+    "title": "Incorrect validate function parameter format signature",
+    "snippet": "# Validate parameters\ndef check(x, y,):\n    return x > y",
+    "options": [
+      "def check(x, y):",
+      "def check(x, y, *args):",
+      "Both options are correct",
+      "def check(x, y, None):"
+    ],
+    "correctAnswer": "Both options are correct",
+    "explanation": "While Python allows a trailing comma in argument lists, check if parameter syntax is clean without dangling commas.",
+    "learningTip": "Keep function parameter lists clean and standard."
+  },
+  {
+    "id": "bld_val_5",
+    "level": "Builder",
+    "topic": "validation",
+    "errorType": "Logical Error",
+    "title": "Validation regex email match checks",
+    "snippet": "# Validate email domain\nemail = \"user@gmail.com\"\nif email.endswith(\"gmail\"): print(\"valid\") # Expected: check full domain",
+    "options": [
+      "if email.endswith(\"@gmail.com\") or email.endswith(\".gmail.com\"):",
+      "if email.split(\"@\")[-1] == \"gmail.com\":",
+      "Both options are correct",
+      "if \"gmail\" in email:"
+    ],
+    "correctAnswer": "Both options are correct",
+    "explanation": "Using endswith(\"gmail\") returns False because it ends with \".com\". Check full domain suffix.",
+    "learningTip": "Use explicit suffix patterns or splits to validate domain names exactly."
+  },
+  {
+    "id": "bld_whl_1",
+    "level": "Builder",
+    "topic": "while loops",
+    "errorType": "Logical Error",
+    "title": "Infinite loop condition never updates",
+    "snippet": "# Decrease countdown\ni = 5\nwhile i > 0:\n    print(i)\n    # Expected: loop ends at 0",
+    "options": [
+      "Add i -= 1 inside loop",
+      "Add break statement",
+      "Use for loop instead",
+      "Decrement i before loop"
+    ],
+    "correctAnswer": "Add i -= 1 inside loop",
+    "explanation": "The counter variable \"i\" is never decremented inside the loop, creating an infinite loop.",
+    "learningTip": "Make sure the variables involved in a while loop condition are updated in each iteration."
+  },
+  {
+    "id": "bld_whl_2",
+    "level": "Builder",
+    "topic": "while loops",
+    "errorType": "Runtime Error",
+    "title": "IndexError list pop while loop condition",
+    "snippet": "# Process items\nitems = [1, 2]\nwhile len(items) >= 0:\n    val = items.pop()",
+    "options": [
+      "while len(items) > 0:",
+      "while items:",
+      "Both options are correct",
+      "while len(items) >= 1:"
+    ],
+    "correctAnswer": "Both options are correct",
+    "explanation": "The condition \"len(items) >= 0\" is always True. When the list is empty, popping from it raises an IndexError.",
+    "learningTip": "Use \"while items:\" as a clean way to process list items until the collection is empty."
+  },
+  {
+    "id": "bld_whl_3",
+    "level": "Builder",
+    "topic": "while loops",
+    "errorType": "Logical Error",
+    "title": "While loop condition off by one boundary",
+    "snippet": "# Add numbers until total is 10\ntotal = 0\nwhile total < 10:\n    total += 3\n# Expected total to not exceed 10. Wait, if total exceeds 10, loop terminates. Let's check another one.",
+    "options": [
+      "Check boundary inside loop",
+      "Change condition to total <= 10",
+      "Use if checks inside",
+      "Break if total >= 10"
+    ],
+    "correctAnswer": "Check boundary inside loop",
+    "explanation": "The loop runs, but the final total is 12 (exceeds 10). Add checks inside the loop or adjust addition.",
+    "learningTip": "Ensure loop exit conditions and value additions are bounded correctly."
+  },
+  {
+    "id": "bld_whl_4",
+    "level": "Builder",
+    "topic": "while loops",
+    "errorType": "Syntax Error",
+    "title": "Incorrect while colon placement",
+    "snippet": "# Simple while\ni = 0\nwhile i < 3\n    print(i)\n    i += 1",
+    "options": [
+      "Add colon: while i < 3:",
+      "Add parenthesis: while (i < 3)",
+      "Add do keyword: while i < 3 do:",
+      "Align variables"
+    ],
+    "correctAnswer": "Add colon: while i < 3:",
+    "explanation": "Python while loops require a colon at the end of the conditional header line.",
+    "learningTip": "Always append a colon to while headers."
+  },
+  {
+    "id": "bld_whl_5",
+    "level": "Builder",
+    "topic": "while loops",
+    "errorType": "Logical Error",
+    "title": "While True break condition missing",
+    "snippet": "# Loop input\nwhile True:\n    user_input = \"exit\"\n    # Expected: exit loop if user_input is \"exit\"",
+    "options": [
+      "Add: if user_input == \"exit\": break",
+      "Use while user_input != \"exit\":",
+      "Both options are correct",
+      "Change exit to break"
+    ],
+    "correctAnswer": "Both options are correct",
+    "explanation": "Without an explicit \"break\" statement inside a \"while True\" loop, the loop runs infinitely.",
+    "learningTip": "Always provide a path to hit a \"break\" statement inside while True loops."
+  }
+]
