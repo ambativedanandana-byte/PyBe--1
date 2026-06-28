@@ -24,7 +24,7 @@ function shuffleArray(arr) {
   return a;
 }
 
-export default function ErrorQuestionCard({ question, onAnswerSubmit, onNext, onPrev, hasPrev, hasNext }) {
+export default function ErrorQuestionCard({ question, onAnswerSubmit, onNext, onPrev, hasPrev, hasNext, timerExpired }) {
   const [selected, setSelected] = useState('');
   const [submitting, setSubmitting] = useState(false);
   const [submissionResult, setSubmissionResult] = useState(null);
@@ -33,8 +33,26 @@ export default function ErrorQuestionCard({ question, onAnswerSubmit, onNext, on
   // eslint-disable-next-line react-hooks/exhaustive-deps
   const shuffledOptions = useMemo(() => shuffleArray(question.options), [question.id]);
 
+  // Auto-submit when timer runs out
+  React.useEffect(() => {
+    if (timerExpired && !submissionResult && !submitting) {
+      const handleTimeoutSubmit = async () => {
+        setSubmitting(true);
+        try {
+          const result = await onAnswerSubmit(question.id, selected || 'TIMEOUT_EXPIRED');
+          setSubmissionResult(result);
+        } catch (err) {
+          console.error(err);
+        } finally {
+          setSubmitting(false);
+        }
+      };
+      handleTimeoutSubmit();
+    }
+  }, [timerExpired, submissionResult, submitting, selected, question.id, onAnswerSubmit]);
+
   const handleSubmit = async () => {
-    if (!selected || submitting || submissionResult) return;
+    if (!selected || submitting || submissionResult || timerExpired) return;
     setSubmitting(true);
     try {
       const result = await onAnswerSubmit(question.id, selected);
@@ -94,8 +112,8 @@ export default function ErrorQuestionCard({ question, onAnswerSubmit, onNext, on
               key={idx}
               type="button"
               className={cls}
-              onClick={() => !submitted && setSelected(option)}
-              disabled={submitted}
+              onClick={() => !submitted && !timerExpired && setSelected(option)}
+              disabled={submitted || timerExpired}
             >
               <span className="eq-option-letter">{label}</span>
               <span className="eq-option-text">{option}</span>
@@ -122,7 +140,7 @@ export default function ErrorQuestionCard({ question, onAnswerSubmit, onNext, on
             type="button"
             className="eq-submit-btn"
             onClick={handleSubmit}
-            disabled={!selected || submitting}
+            disabled={!selected || submitting || timerExpired}
           >
             {submitting ? 'Checking…' : 'Submit Answer'}
           </button>

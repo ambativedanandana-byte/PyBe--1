@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { ShieldAlert, Award, RefreshCw, ChevronRight } from 'lucide-react';
 import ErrorQuestionCard from '../components/ErrorQuestionCard';
 
@@ -22,6 +22,16 @@ const LEVEL_DESCRIPTIONS = {
 
 const LEVEL_ICONS = { Beginner: '🌱', Explorer: '🔍', Builder: '⚡' };
 
+// Fisher-Yates in-place shuffle
+function fisherYates(arr) {
+  const a = [...arr];
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+
 export default function ErrorDetectivePage({
   questions,
   solvedIds,
@@ -38,7 +48,71 @@ export default function ErrorDetectivePage({
   setSelectedQuestionId,
   api
 }) {
-  /* ─── API: submit answer ─── */
+  /* ══════════════════════════════════════════════
+     HOOKS — must precede ALL conditional returns
+  ══════════════════════════════════════════════ */
+
+  // Session-stable question ordering: one shuffle per topic per page-load
+  const sessionOrder = useRef({});
+
+  // Active question derived from ID
+  const activeQ = selectedLevel && selectedTopic && selectedQuestionId
+    ? (questions || []).find(q => q.id === selectedQuestionId)
+    : null;
+
+  // Streak: consecutive correct answers
+  const [streak, setStreak] = useState(0);
+
+  // Timer mode: fixed to 30s
+  const timerMode = 30;
+  const [timeLeft, setTimeLeft]   = useState(30);
+  const [timerExpired, setTimerExpired] = useState(false);
+
+  // Check if current question has already been answered in this session
+  const isAnswered = activeQ ? (solvedIds.includes(activeQ.id) || submissions.some(s => s.questionId === activeQ.id)) : false;
+
+  // Countdown effect — resets whenever the question changes or is answered
+  useEffect(() => {
+    if (!selectedQuestionId || isAnswered) {
+      setTimeLeft(30);
+      setTimerExpired(false);
+      return;
+    }
+    setTimeLeft(30);
+    setTimerExpired(false);
+    const id = setInterval(() => {
+      setTimeLeft(prev => {
+        if (prev <= 1) { clearInterval(id); setTimerExpired(true); return 0; }
+        return prev - 1;
+      });
+    }, 1000);
+    return () => clearInterval(id);
+  }, [selectedQuestionId, isAnswered]);
+
+  /* ══════════════════════════════════════════════
+     HELPERS
+  ══════════════════════════════════════════════ */
+
+  /**
+   * Returns questions for a topic in a session-stable shuffled order.
+   * The first call for a given level+topic shuffles and caches;
+   * subsequent calls return the same cached order.
+   */
+  const getSessionTopicQs = (level, topic) => {
+    const key = `${level}___${topic}`;
+    const raw = (questions || []).filter(q => q.level === level && q.topic === topic);
+    if (!sessionOrder.current[key]) {
+      sessionOrder.current[key] = fisherYates(raw).map(q => q.id);
+    }
+    return sessionOrder.current[key]
+      .map(id => raw.find(q => q.id === id))
+      .filter(Boolean);
+  };
+
+  /* ══════════════════════════════════════════════
+     API HANDLERS
+  ══════════════════════════════════════════════ */
+
   const handleAnswerSubmit = async (questionId, selectedAnswer) => {
     const result = await api('/error-detective/submit', {
       method: 'POST',
@@ -48,10 +122,14 @@ export default function ErrorDetectivePage({
     if (result.completedQuestions) setSolvedIds(result.completedQuestions);
     const progressData = await api('/error-detective/progress');
     setSubmissions(progressData.submissions || []);
+
+    // Streak tracking
+    if (result.isCorrect) setStreak(s => s + 1);
+    else                  setStreak(0);
+
     return { isCorrect: result.isCorrect, correctAnswer: result.correctAnswer, explanation: result.explanation };
   };
 
-  /* ─── API: reset ─── */
   const handleReset = async () => {
     if (!window.confirm('Reset all debugging progress? This clears your score and statistics.')) return;
     try {
@@ -62,30 +140,46 @@ export default function ErrorDetectivePage({
       setSelectedLevel(null);
       setSelectedTopic(null);
       setSelectedQuestionId(null);
+      // Reset local session state
+      sessionOrder.current = {};
+      setStreak(0);
     } catch (error) {
       console.error('Error resetting progress:', error);
     }
   };
 
-  /* ─── Topic click → directly into exam ─── */
+  // Topic click → directly into exam using session-stable order
   const handleTopicSelect = (topic) => {
     setSelectedTopic(topic);
-    const topicQs = questions.filter(q => q.level === selectedLevel && q.topic === topic);
+    const topicQs = getSessionTopicQs(selectedLevel, topic);
     const firstUnsolved = topicQs.find(q => !solvedIds.includes(q.id));
     setSelectedQuestionId((firstUnsolved || topicQs[0])?.id || null);
   };
 
-  /* ─── Unlock helpers (pure — derived from solvedIds, no extra storage needed) ─── */
+  /* ══════════════════════════════════════════════
+     GUARD (after all hooks)
+  ══════════════════════════════════════════════ */
+  if (!questions || questions.length === 0) {
+    return <div className="loading">Loading Error Detective…</div>;
+  }
 
-  // Returns true when every question in every topic of `prereqLevel` is solved
+  /* ══════════════════════════════════════════════
+     COMPUTED VALUES
+  ══════════════════════════════════════════════ */
+  const totalQuestions  = questions.length;
+  const uniqueCompleted = questions.filter(q => solvedIds.includes(q.id)).length;
+  const overallPct      = totalQuestions > 0 ? Math.round((uniqueCompleted / totalQuestions) * 100) : 0;
+  const allComplete     = uniqueCompleted === totalQuestions && totalQuestions > 0;
+
+  /* ══════════════════════════════════════════════
+     UNLOCK HELPERS (derived from solvedIds)
+  ══════════════════════════════════════════════ */
   const isAllLevelDone = (prereqLevel) =>
     LEVELS[prereqLevel].every(topic => {
       const qs = questions.filter(q => q.level === prereqLevel && q.topic === topic);
       return qs.length > 0 && qs.every(q => solvedIds.includes(q.id));
     });
 
-  // Level unlocking: Beginner always open; Explorer after all Beginner done;
-  // Builder after all Explorer done.
   const isLevelUnlocked = (level) => {
     if (level === 'Beginner') return true;
     if (level === 'Explorer') return isAllLevelDone('Beginner');
@@ -93,31 +187,22 @@ export default function ErrorDetectivePage({
     return false;
   };
 
-  // Topic unlocking: Beginner topics unlock sequentially (first always open,
-  // each subsequent topic unlocks only when the previous one is 100% complete).
-  // Explorer/Builder topics are all available once the level itself is unlocked.
   const getUnlockedTopics = (level) => {
     if (!isLevelUnlocked(level)) return new Set();
     if (level !== 'Beginner') return new Set(LEVELS[level]);
-
     const topics = LEVELS['Beginner'];
     const unlocked = new Set();
     for (let i = 0; i < topics.length; i++) {
       unlocked.add(topics[i]);
       const qs = questions.filter(q => q.level === 'Beginner' && q.topic === topics[i]);
-      const done = qs.length > 0 && qs.every(q => solvedIds.includes(q.id));
-      if (!done) break; // next topic stays locked until this one is 100%
+      if (!(qs.length > 0 && qs.every(q => solvedIds.includes(q.id)))) break;
     }
     return unlocked;
   };
 
-
-  const totalQuestions    = questions.length;
-  const uniqueCompleted   = questions.filter(q => solvedIds.includes(q.id)).length;
-  const overallPct        = totalQuestions > 0 ? Math.round((uniqueCompleted / totalQuestions) * 100) : 0;
-  const allComplete       = uniqueCompleted === totalQuestions && totalQuestions > 0;
-
-  /* ─── Breadcrumb strip ─── */
+  /* ══════════════════════════════════════════════
+     BREADCRUMB
+  ══════════════════════════════════════════════ */
   const Breadcrumbs = () => (
     <nav className="ed-breadcrumbs">
       <span onClick={() => { setSelectedLevel(null); setSelectedTopic(null); setSelectedQuestionId(null); }}>
@@ -185,7 +270,6 @@ export default function ErrorDetectivePage({
           </div>
         )}
 
-        {/* Overall progress panel */}
         <div className="stats-progress-container panel">
           <div className="stats-progress-header">
             <div className="stats-progress-title"><Award size={20} /><h2>Overall Debugging Mastery</h2></div>
@@ -202,7 +286,6 @@ export default function ErrorDetectivePage({
           </div>
         </div>
 
-        {/* Level cards */}
         <div className="level-selection-grid">
           {Object.keys(LEVELS).map(lvl => {
             const lvlQs        = questions.filter(q => q.level === lvl);
@@ -210,7 +293,6 @@ export default function ErrorDetectivePage({
             const lvlPct       = lvlQs.length > 0 ? Math.round((lvlCompleted / lvlQs.length) * 100) : 0;
             const lvlDone      = lvlPct === 100 && lvlQs.length > 0;
             const locked       = !isLevelUnlocked(lvl);
-
             return (
               <div
                 key={lvl}
@@ -271,9 +353,7 @@ export default function ErrorDetectivePage({
             <span style={{ fontSize: '1.5rem' }}>🥇</span>
             <div>
               <h3 style={{ margin: 0, color: '#1e3a8a' }}>Level Completed!</h3>
-              <p style={{ margin: '4px 0 0', fontSize: '0.9rem' }}>
-                All topics cleared in the {selectedLevel} level.
-              </p>
+              <p style={{ margin: '4px 0 0', fontSize: '0.9rem' }}>All topics cleared in the {selectedLevel} level.</p>
             </div>
           </div>
         )}
@@ -289,7 +369,6 @@ export default function ErrorDetectivePage({
             const tPct     = tQs.length > 0 ? Math.round((tDone / tQs.length) * 100) : 0;
             const mastered = tPct === 100 && tQs.length > 0;
             const locked   = !getUnlockedTopics(selectedLevel).has(topic);
-
             return (
               <div
                 key={topic}
@@ -335,10 +414,11 @@ export default function ErrorDetectivePage({
   }
 
   /* ════════════════════════════════════════
-     VIEW 3 — Exam Mode (one question at a time)
+     VIEW 3 — Exam Mode
   ════════════════════════════════════════ */
   if (selectedLevel && selectedTopic && selectedQuestionId) {
-    const topicQs  = questions.filter(q => q.level === selectedLevel && q.topic === selectedTopic);
+    // Use session-stable shuffled order
+    const topicQs  = getSessionTopicQs(selectedLevel, selectedTopic);
     const curIndex = topicQs.findIndex(q => q.id === selectedQuestionId);
     const activeQ  = topicQs[curIndex];
     const hasPrev  = curIndex > 0;
@@ -351,33 +431,55 @@ export default function ErrorDetectivePage({
       else { setSelectedTopic(null); setSelectedQuestionId(null); }
     };
     const handlePrev = () => { if (hasPrev) setSelectedQuestionId(topicQs[curIndex - 1].id); };
+    const handleBack = () => { setSelectedQuestionId(null); };
+
+    // Timer display helpers
+    const timerUrgent = timerMode && timeLeft > 0 && timeLeft <= 5;
+    const xpReward    = selectedLevel === 'Beginner' ? 10 : selectedLevel === 'Explorer' ? 20 : 30;
 
     return (
       <section className="workspace error-detective-workspace">
         <Breadcrumbs />
 
-        {/* Exam wrapper — centered, max 900px */}
         <div className="exam-wrapper">
+          {/* Clear Progress Bar at the Top */}
+          <div className="exam-progress-wrapper">
+            <div className="exam-progress-bar-bg">
+              <div className="exam-progress-bar-fill" style={{ width: `${tPct}%` }} />
+            </div>
+            <div className="exam-progress-bar-info">
+              <span>{tDone} of {topicQs.length} Solved</span>
+              <span>{tPct}% Topic Complete</span>
+            </div>
+          </div>
 
-          {/* ── Exam header ── */}
+          {/* ══ Enhanced Exam Header ══ */}
           <div className="exam-header">
+            {/* Row 1: Back + Topic + Fixed Timer */}
             <div className="exam-header-top">
+              <button className="exam-back-btn" onClick={handleBack}>
+                ← Back
+              </button>
               <span className="exam-topic-label" style={{ textTransform: 'capitalize' }}>
                 📘 {selectedTopic}
               </span>
-              <span className="exam-counter">
-                Question {curIndex + 1} <span className="exam-counter-dim">of {topicQs.length}</span>
+              <span className={`exam-timer-display ${timerUrgent ? 'exam-timer-urgent' : ''} ${timerExpired ? 'exam-timer-expired' : ''}`}>
+                ⏱ {timerExpired ? "Time's up!" : `${timeLeft}s`}
               </span>
             </div>
-            {/* Progress bar */}
-            <div className="exam-track">
-              <div
-                className="exam-fill"
-                style={{ width: `${((curIndex) / topicQs.length) * 100}%` }}
-              />
-            </div>
-            <div className="exam-header-bottom">
-              <span className="exam-solved-label">{tDone} solved · {tPct}% complete</span>
+
+            {/* Row 2: Stats (Streak, XP) & Dot Trail */}
+            <div className="exam-meta-row">
+              <div className="exam-meta-left">
+                {streak > 0 && (
+                  <span className="exam-streak-badge">
+                    🔥 {streak} Streak
+                  </span>
+                )}
+                <span className="exam-xp-reward-badge">
+                  ✨ +{xpReward} XP Reward
+                </span>
+              </div>
               <div className="exam-dot-trail">
                 {topicQs.map((q, i) => {
                   const solved = solvedIds.includes(q.id);
@@ -405,6 +507,7 @@ export default function ErrorDetectivePage({
               onPrev={handlePrev}
               hasPrev={hasPrev}
               hasNext={hasNext}
+              timerExpired={timerExpired}
             />
           ) : (
             <div className="panel empty-questions">
