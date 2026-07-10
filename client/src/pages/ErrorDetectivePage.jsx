@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { ShieldAlert, Award, RefreshCw, ChevronRight } from 'lucide-react';
-import ErrorQuestionCard from '../components/ErrorQuestionCard';
+import InvestigationFlow from '../components/InvestigationFlow';
 
 const LEVELS = {
   Beginner: [
@@ -499,7 +499,7 @@ export default function ErrorDetectivePage({
 
           {/* ── Question card ── */}
           {activeQ ? (
-            <ErrorQuestionCard
+            <InvestigationFlow
               key={activeQ.id}
               question={activeQ}
               onAnswerSubmit={handleAnswerSubmit}

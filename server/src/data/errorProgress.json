@@ -1,3 +1,53 @@
 {
-  "submissions": []
+  "submissions": [
+    {
+      "_id": "4c84ce89-0bfa-4c0a-bd9f-7cb55875df36",
+      "questionId": "beg_arith_1",
+      "selectedAnswer": "TIMEOUT_EXPIRED",
+      "isCorrect": false,
+      "submittedAt": "2026-07-07T18:35:32.342Z"
+    },
+    {
+      "_id": "1a95f313-2146-4414-99ff-64c90fce9503",
+      "questionId": "beg_arith_3",
+      "selectedAnswer": "average = (score1 + score2) / 2",
+      "isCorrect": true,
+      "submittedAt": "2026-07-07T19:49:52.664Z"
+    },
+    {
+      "_id": "4f3ed555-faef-4209-a3c8-95a33d899253",
+      "questionId": "beg_arith_3",
+      "selectedAnswer": "average = (score1 + score2) / 2",
+      "isCorrect": true,
+      "submittedAt": "2026-07-07T19:49:56.832Z"
+    },
+    {
+      "_id": "fdd319c9-c526-469b-9582-ed325f42fce3",
+      "questionId": "beg_arith_2",
+      "selectedAnswer": "children should not be 0",
+      "isCorrect": true,
+      "submittedAt": "2026-07-07T19:51:24.736Z"
+    },
+    {
+      "_id": "dcfc8418-789d-4526-af3a-384465e33ca0",
+      "questionId": "beg_arith_2",
+      "selectedAnswer": "children should not be 0",
+      "isCorrect": true,
+      "submittedAt": "2026-07-07T19:51:28.331Z"
+    },
+    {
+      "_id": "a28878e9-d2f3-4509-ad9a-5af6d85d5378",
+      "questionId": "beg_arith_5",
+      "selectedAnswer": "half = budget / 2",
+      "isCorrect": true,
+      "submittedAt": "2026-07-07T19:52:51.359Z"
+    },
+    {
+      "_id": "70261390-28dc-49cc-8e20-3e0572e1b055",
+      "questionId": "beg_arith_5",
+      "selectedAnswer": "half = budget / 2",
+      "isCorrect": true,
+      "submittedAt": "2026-07-07T19:52:55.951Z"
+    }
+  ]
 }
