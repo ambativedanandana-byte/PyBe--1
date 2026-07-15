@@ -181,23 +181,11 @@ export default function ErrorDetectivePage({
     });
 
   const isLevelUnlocked = (level) => {
-    if (level === 'Beginner') return true;
-    if (level === 'Explorer') return isAllLevelDone('Beginner');
-    if (level === 'Builder')  return isAllLevelDone('Explorer');
-    return false;
+    return true;
   };
 
   const getUnlockedTopics = (level) => {
-    if (!isLevelUnlocked(level)) return new Set();
-    if (level !== 'Beginner') return new Set(LEVELS[level]);
-    const topics = LEVELS['Beginner'];
-    const unlocked = new Set();
-    for (let i = 0; i < topics.length; i++) {
-      unlocked.add(topics[i]);
-      const qs = questions.filter(q => q.level === 'Beginner' && q.topic === topics[i]);
-      if (!(qs.length > 0 && qs.every(q => solvedIds.includes(q.id)))) break;
-    }
-    return unlocked;
+    return new Set(LEVELS[level] || []);
   };
 
   /* ══════════════════════════════════════════════
@@ -453,49 +441,7 @@ export default function ErrorDetectivePage({
             </div>
           </div>
 
-          {/* ══ Enhanced Exam Header ══ */}
-          <div className="exam-header">
-            {/* Row 1: Back + Topic + Fixed Timer */}
-            <div className="exam-header-top">
-              <button className="exam-back-btn" onClick={handleBack}>
-                ← Back
-              </button>
-              <span className="exam-topic-label" style={{ textTransform: 'capitalize' }}>
-                📘 {selectedTopic}
-              </span>
-              <span className={`exam-timer-display ${timerUrgent ? 'exam-timer-urgent' : ''} ${timerExpired ? 'exam-timer-expired' : ''}`}>
-                ⏱ {timerExpired ? "Time's up!" : `${timeLeft}s`}
-              </span>
-            </div>
 
-            {/* Row 2: Stats (Streak, XP) & Dot Trail */}
-            <div className="exam-meta-row">
-              <div className="exam-meta-left">
-                {streak > 0 && (
-                  <span className="exam-streak-badge">
-                    🔥 {streak} Streak
-                  </span>
-                )}
-                <span className="exam-xp-reward-badge">
-                  ✨ +{xpReward} XP Reward
-                </span>
-              </div>
-              <div className="exam-dot-trail">
-                {topicQs.map((q, i) => {
-                  const solved = solvedIds.includes(q.id);
-                  const active = i === curIndex;
-                  return (
-                    <span
-                      key={q.id}
-                      className={`exam-dot ${active ? 'exam-dot-active' : solved ? 'exam-dot-done' : 'exam-dot-pending'}`}
-                      onClick={() => setSelectedQuestionId(q.id)}
-                      title={`Q${i + 1}: ${q.title}`}
-                    />
-                  );
-                })}
-              </div>
-            </div>
-          </div>
 
           {/* ── Question card ── */}
           {activeQ ? (

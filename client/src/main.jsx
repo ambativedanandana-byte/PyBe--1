@@ -655,22 +655,8 @@ function App() {
                   const qs = errorQuestions.filter(q => q.level === lvl && q.topic === t);
                   return qs.length > 0 && qs.every(q => errorSolvedIds.includes(q.id));
                 });
-              const levelUnlocked =
-                errorFilters.level === 'Beginner' ? true
-                : errorFilters.level === 'Explorer' ? allDone('Beginner')
-                : errorFilters.level === 'Builder'  ? allDone('Explorer')
-                : false;
-              const unlockedTopics = (() => {
-                if (!levelUnlocked) return new Set();
-                if (errorFilters.level !== 'Beginner') return new Set(levelTopics);
-                const s = new Set();
-                for (const t of levelTopics) {
-                  s.add(t);
-                  const qs = errorQuestions.filter(q => q.level === 'Beginner' && q.topic === t);
-                  if (!(qs.length > 0 && qs.every(q => errorSolvedIds.includes(q.id)))) break;
-                }
-                return s;
-              })();
+              const levelUnlocked = true;
+              const unlockedTopics = new Set(levelTopics);
               return (
                 <>
                   <div className="sb-section-label" style={{ marginTop: '4px' }}>
