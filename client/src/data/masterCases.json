@@ -1,0 +1,710 @@
+{
+  "case1": {
+    "caseId": "case1",
+    "difficulty": "Beginner",
+    "title": "Robot Delivery Scale",
+    "theme": "Warehouse",
+    "caseNumber": "Case #01",
+    "totalPanels": 4,
+    "comicPanels": [
+      {
+        "panelNumber": 1,
+        "title": "Delivery Mission Initiated",
+        "characterName": "Unit-42 (Sorting Robot)",
+        "speechBubble": "Order #101 received! Preparing to weigh cargo boxes.",
+        "narration": "Unit-42 arrives at the cargo weighing scale with two boxes.",
+        "emotion": "cheerful",
+        "background": "warehouse"
+      },
+      {
+        "panelNumber": 2,
+        "title": "Weighing Box A",
+        "characterName": "Unit-42 (Sorting Robot)",
+        "speechBubble": "Box A weighs 10kg. Placing on scale platform.",
+        "narration": "The digital sensor logs the first package weight.",
+        "emotion": "focused",
+        "background": "warehouse"
+      },
+      {
+        "panelNumber": 3,
+        "title": "Weighing Box B",
+        "characterName": "Unit-42 (Sorting Robot)",
+        "speechBubble": "Box B weighs 5kg. Adding to the platform scale.",
+        "narration": "Unit-42 places the second package on the scale.",
+        "emotion": "energetic",
+        "background": "warehouse"
+      },
+      {
+        "panelNumber": 4,
+        "title": "Unexpected Readout",
+        "characterName": "Supervisor Sam",
+        "speechBubble": "Hold on! The scale displays 105kg instead of 15kg! Cart overloaded!",
+        "narration": "The cart tilts under the false heavy reading, triggering an alarm.",
+        "emotion": "surprised",
+        "background": "warehouse"
+      }
+    ],
+    "investigation": {
+      "evidence": [
+        { "id": "ev-1", "label": "Address received", "details": "Delivery destination recorded at central terminal." },
+        { "id": "ev-2", "label": "Journey started", "details": "Robot departed loading bay on scheduled route." },
+        { "id": "ev-3", "label": "Weight sensor readout", "details": "Digital scale flashed 105kg reading instead of 15kg." },
+        { "id": "ev-4", "label": "Delivery cart overloaded", "details": "Cart tilted under unexpected heavy weight load." }
+      ],
+      "timeline": [
+        { "id": "t-1", "text": "Robot receives delivery order at terminal" },
+        { "id": "t-2", "text": "Robot measures box weights on scale" },
+        { "id": "t-3", "text": "Cart overloads from unexpected heavy reading" }
+      ],
+      "observations": [
+        "The work started.",
+        "The work stopped.",
+        "The work finished.",
+        "The result was different."
+      ],
+      "patterns": [
+        {
+          "id": "pat-1",
+          "title": "The work never started.",
+          "description": "System failed before initial action could begin."
+        },
+        {
+          "id": "pat-2",
+          "title": "The work started but stopped.",
+          "description": "An unexpected halt interrupted execution midway."
+        },
+        {
+          "id": "pat-3",
+          "title": "The work finished but produced the wrong result.",
+          "description": "All actions completed to the end, but the final outcome differed from physical expectation."
+        }
+      ],
+      "reflections": [
+        "The measurement values were combined as text digits rather than adding physical quantities.",
+        "The scale sensor sent data before boxes settled on the platform.",
+        "The calculation rule applied the wrong mathematical operator."
+      ]
+    },
+    "pythonCode": {
+      "codeSnippet": "val1 = \"10\"\nval2 = \"5\"\ntotal = val1 + val2\nprint(\"Total weight:\", total)",
+      "highlightLine": 3,
+      "buggyCode": "val1 = \"10\"\nval2 = \"5\"\ntotal = val1 + val2\nprint(total)",
+      "fixedCode": "val1 = 10\nval2 = 5\ntotal = val1 + val2\nprint(total)",
+      "beforeOutput": "105",
+      "expectedOutput": "15",
+      "storyComparison": {
+        "storyText": "Robot scale displayed '105kg' when 10kg and 5kg boxes were placed together.",
+        "pythonText": "val1 = \"10\" and val2 = \"5\" join together as text \"105\" instead of adding numbers 10 + 5."
+      }
+    },
+    "expectedBehavior": "Combine 10 and 5 as numeric addition to equal 15.",
+    "hint": "Look at lines 1 and 2. Are the numbers wrapped in quotes (\"10\") or plain numbers (10)?",
+    "bugFix": {
+      "solution": "Remove the quotation marks around 10 and 5 so Python adds them as numbers."
+    },
+    "learningSummary": {
+      "conceptName": "Logical Error",
+      "definition": "The program runs completely without crashing, but produces an incorrect result because the calculation rule is wrong.",
+      "realLifeConnection": "The robot scale displayed '105' because two text digits were stuck together instead of adding physical weights.",
+      "pythonConnection": "Quotes around numbers ('10') make Python treat them as text strings. Removing quotes allows mathematical addition.",
+      "memoryTip": "Logical errors don't crash your code—they just give wrong answers!",
+      "summarySentence": "Quotes around numbers caused text concatenation instead of numeric addition."
+    }
+  },
+  "case2": {
+    "caseId": "case2",
+    "difficulty": "Beginner",
+    "title": "Grand Prix Timer",
+    "theme": "Racetrack",
+    "caseNumber": "Case #02",
+    "totalPanels": 4,
+    "comicPanels": [
+      {
+        "panelNumber": 1,
+        "title": "Final Lap Lineup",
+        "characterName": "Speedster Sparky",
+        "speechBubble": "Engines roaring! Red Car and Blue Car crossing the finish line!",
+        "narration": "The speedway grand championship reaches its final lap.",
+        "emotion": "energetic",
+        "background": "racetrack"
+      },
+      {
+        "panelNumber": 2,
+        "title": "Crossing Finish Gate",
+        "characterName": "Flag Marshall Max",
+        "speechBubble": "Red Car finishes in 8 seconds! Blue Car finishes in 12 seconds!",
+        "narration": "Laser timing sensors log the precise finish times.",
+        "emotion": "focused",
+        "background": "racetrack"
+      },
+      {
+        "panelNumber": 3,
+        "title": "Scoreboard Announcement",
+        "characterName": "Speedster Sparky",
+        "speechBubble": "Look at the digital scoreboard! It crowned Blue Car the winner!",
+        "narration": "The electronic leaderboard flashes Blue Car in 1st place.",
+        "emotion": "surprised",
+        "background": "racetrack"
+      },
+      {
+        "panelNumber": 4,
+        "title": "Victory Dispute",
+        "characterName": "Flag Marshall Max",
+        "speechBubble": "That's impossible! 8 seconds is faster than 12 seconds!",
+        "narration": "The crowd gasps as the leaderboard awards the trophy to the higher time.",
+        "emotion": "puzzled",
+        "background": "racetrack"
+      }
+    ],
+    "investigation": {
+      "evidence": [
+        { "id": "ev-1", "label": "Cars positioned", "details": "Red and Blue cars lined up at starting line." },
+        { "id": "ev-2", "label": "Race finished", "details": "Red Car finished in 8s; Blue Car in 12s." },
+        { "id": "ev-3", "label": "Trophy awarded", "details": "Blue Car declared winner on scoreboard." },
+        { "id": "ev-4", "label": "Drivers confused", "details": "Red Car driver holds faster time record." }
+      ],
+      "timeline": [
+        { "id": "t-1", "text": "Cars placed at starting line" },
+        { "id": "t-2", "text": "Red Car finishes in 8s, Blue Car in 12s" },
+        { "id": "t-3", "text": "Scoreboard declares Blue Car winner" }
+      ],
+      "observations": [
+        "The work started.",
+        "The work stopped.",
+        "The work finished.",
+        "The result was different."
+      ],
+      "patterns": [
+        {
+          "id": "pat-1",
+          "title": "The work never started.",
+          "description": "System failed before initial action could begin."
+        },
+        {
+          "id": "pat-2",
+          "title": "The work started but stopped.",
+          "description": "An unexpected halt interrupted execution midway."
+        },
+        {
+          "id": "pat-3",
+          "title": "The work finished but produced the wrong result.",
+          "description": "The timer ran completely, but the winner ranking rule produced an unexpected output."
+        }
+      ],
+      "reflections": [
+        "The ranking system treated higher time numbers as better scores.",
+        "The finish gate sensor swapped lane identities.",
+        "The timer display rounded the numbers incorrectly."
+      ]
+    },
+    "pythonCode": {
+      "codeSnippet": "red_time = 8\nblue_time = 12\nis_winner = red_time > blue_time\nprint(\"Red wins:\", is_winner)",
+      "highlightLine": 3,
+      "buggyCode": "red_time = 8\nblue_time = 12\nis_winner = red_time > blue_time\nprint(\"Red wins:\", is_winner)",
+      "fixedCode": "red_time = 8\nblue_time = 12\nis_winner = red_time < blue_time\nprint(\"Red wins:\", is_winner)",
+      "beforeOutput": "Red wins: False",
+      "expectedOutput": "Red wins: True",
+      "storyComparison": {
+        "storyText": "Red Car finished in 8s (faster), but Blue Car (12s) was awarded the trophy.",
+        "pythonText": "The comparison operator > checked for bigger time instead of smaller time."
+      }
+    },
+    "expectedBehavior": "Evaluate 8 < 12 as True so the faster car wins.",
+    "hint": "In race timing, a faster car has a SMALLER time. Check the operator sign on line 3.",
+    "bugFix": {
+      "solution": "Change red_time > blue_time to red_time < blue_time."
+    },
+    "learningSummary": {
+      "conceptName": "Logical Error",
+      "definition": "The code executes smoothly, but the comparison condition produces an unexpected result.",
+      "realLifeConnection": "In a race, lower time means faster speed. The scoreboard used > instead of <.",
+      "pythonConnection": "8 < 12 evaluates to True, but 8 > 12 evaluates to False.",
+      "memoryTip": "In race timing, smaller numbers win!",
+      "summarySentence": "Using > instead of < declared the slower car as the winner."
+    }
+  },
+  "case3": {
+    "caseId": "case3",
+    "difficulty": "Beginner",
+    "title": "Attendance Register",
+    "theme": "Classroom",
+    "caseNumber": "Case #03",
+    "totalPanels": 4,
+    "comicPanels": [
+      {
+        "panelNumber": 1,
+        "title": "Morning Roll Call",
+        "characterName": "Mr. Roy (Teacher)",
+        "speechBubble": "Class 4B, please hand in your weekly attendance logs to Ananya.",
+        "narration": "Students submit their daily attendance sheets.",
+        "emotion": "calm",
+        "background": "classroom"
+      },
+      {
+        "panelNumber": 2,
+        "title": "Scanning Worksheets",
+        "characterName": "Ananya (Class Monitor)",
+        "speechBubble": "Scanning scores into the Smartboard display system.",
+        "narration": "Ananya connects the digital scanner to project the honor roll.",
+        "emotion": "diligent",
+        "background": "classroom"
+      },
+      {
+        "panelNumber": 3,
+        "title": "Screen Freeze Alarm",
+        "characterName": "Ananya (Class Monitor)",
+        "speechBubble": "Oh no! The screen froze instantly with a syntax error warning!",
+        "narration": "The smartboard screen turns black before displaying any names.",
+        "emotion": "shocked",
+        "background": "classroom"
+      },
+      {
+        "panelNumber": 4,
+        "title": "Missing Symbol",
+        "characterName": "Mr. Roy (Teacher)",
+        "speechBubble": "Look at the command line: a tiny colon symbol was omitted at the end of the if statement!",
+        "narration": "The entire digital roll call halts due to one missing punctuation mark.",
+        "emotion": "focused",
+        "background": "classroom"
+      }
+    ],
+    "investigation": {
+      "evidence": [
+        { "id": "ev-1", "label": "Worksheets collected", "details": "Students submitted completed math worksheets." },
+        { "id": "ev-2", "label": "Scores scanned", "details": "Ananya scored 90 marks; Rohan scored 85 marks." },
+        { "id": "ev-3", "label": "Screen freeze", "details": "Projector froze before displaying student names." },
+        { "id": "ev-4", "label": "Syntax warning", "details": "Command line displayed missing symbol error." }
+      ],
+      "timeline": [
+        { "id": "t-1", "text": "Worksheets placed in scanner basket" },
+        { "id": "t-2", "text": "Monitor inputs student names and scores" },
+        { "id": "t-3", "text": "Screen freezes due to missing syntax symbol" }
+      ],
+      "observations": [
+        "The work started.",
+        "The work stopped.",
+        "The work finished.",
+        "The result was different."
+      ],
+      "patterns": [
+        {
+          "id": "pat-1",
+          "title": "The work never started.",
+          "description": "System failed before initial action could begin due to syntax rule violation."
+        },
+        {
+          "id": "pat-2",
+          "title": "The work started but stopped.",
+          "description": "An unexpected halt interrupted execution midway."
+        },
+        {
+          "id": "pat-3",
+          "title": "The work finished but produced the wrong result.",
+          "description": "All actions completed to the end."
+        }
+      ],
+      "reflections": [
+        "The if condition was missing a mandatory colon symbol at the end.",
+        "The scanner read two papers at the exact same instant.",
+        "The print template mapped column headers incorrectly."
+      ]
+    },
+    "pythonCode": {
+      "codeSnippet": "ananya = 90\nrohan = 85\nif ananya > rohan\n    print(\"Ananya leading\")",
+      "highlightLine": 3,
+      "buggyCode": "ananya = 90\nrohan = 85\nif ananya > rohan\n    print(\"Ananya leading\")",
+      "fixedCode": "ananya = 90\nrohan = 85\nif ananya > rohan:\n    print(\"Ananya leading\")",
+      "beforeOutput": "SyntaxError: expected ':' at end of if statement",
+      "expectedOutput": "Ananya leading",
+      "storyComparison": {
+        "storyText": "The electronic display froze instantly before showing student report cards.",
+        "pythonText": "Python stopped execution immediately because line 3 was missing a colon (:)."
+      }
+    },
+    "expectedBehavior": "Execute condition cleanly with colon : at the end.",
+    "hint": "Look at the end of line 3. What punctuation mark is missing after rohan?",
+    "bugFix": {
+      "solution": "Add a colon (:) to the end of line 3: if ananya > rohan:"
+    },
+    "learningSummary": {
+      "conceptName": "Syntax Error",
+      "definition": "Python cannot read or execute the program because a punctuation or grammar rule was broken.",
+      "realLifeConnection": "Like a missing period at the end of a sentence or a misspelled highway sign.",
+      "pythonConnection": "If statements in Python require a colon (:) at the end of the condition line.",
+      "memoryTip": "Syntax errors crash before the code even starts running!",
+      "summarySentence": "Missing colon (:) on the if statement caused an immediate Syntax Error."
+    }
+  },
+  "case4": {
+    "caseId": "case4",
+    "difficulty": "Explorer",
+    "title": "Express Train Coach Scanner",
+    "theme": "Railway Station",
+    "caseNumber": "Case #04",
+    "totalPanels": 5,
+    "comicPanels": [
+      {
+        "panelNumber": 1,
+        "title": "Platform 9 Departure",
+        "characterName": "Conductor Clara",
+        "speechBubble": "Express Train 402 departing Platform 9! Scanning passenger passes.",
+        "narration": "Conductor Clara initiates the digital coach headcount scanner.",
+        "emotion": "focused",
+        "background": "station"
+      },
+      {
+        "panelNumber": 2,
+        "title": "Coach A & B Clear",
+        "characterName": "Conductor Clara",
+        "speechBubble": "Coach A scanned: 25 passengers. Coach B scanned: 25 passengers.",
+        "narration": "The handheld scanner registers Coach A and Coach B smoothly.",
+        "emotion": "cheerful",
+        "background": "train_coach"
+      },
+      {
+        "panelNumber": 3,
+        "title": "Moving to Coach C",
+        "characterName": "Passenger Pete",
+        "speechBubble": "Conductor! Coach C has 70 passengers waiting for validation!",
+        "narration": "Passengers in Coach C present their digital QR tickets.",
+        "emotion": "energetic",
+        "background": "train_coach"
+      },
+      {
+        "panelNumber": 4,
+        "title": "Scanner Crash Alert",
+        "characterName": "Conductor Clara",
+        "speechBubble": "Oh no! The scanner crashed with an IndexError: List index out of range!",
+        "narration": "The device screen flashes a runtime error and halts scanning.",
+        "emotion": "shocked",
+        "background": "train_coach"
+      },
+      {
+        "panelNumber": 5,
+        "title": "Index Mismatch Uncovered",
+        "characterName": "Conductor Clara",
+        "speechBubble": "The scanner tried to access index 2, but only 2 coaches (0 and 1) were listed in memory!",
+        "narration": "The headcount omitted Coach C because it wasn't added to the list.",
+        "emotion": "bewildered",
+        "background": "station"
+      }
+    ],
+    "investigation": {
+      "evidence": [
+        { "id": "ev-1", "label": "Passes scanned", "details": "Barcode passes scanned for Coaches A and B." },
+        { "id": "ev-2", "label": "Train in motion", "details": "Express train departed on schedule." },
+        { "id": "ev-3", "label": "Count mismatch", "details": "Handheld scanner displays 50; 120 seats occupied." },
+        { "id": "ev-4", "label": "Coach C skipped", "details": "Coach C scanner failed to log entries." }
+      ],
+      "timeline": [
+        { "id": "t-1", "text": "Passengers board at station platform" },
+        { "id": "t-2", "text": "Conductor scans passes across coaches" },
+        { "id": "t-3", "text": "Headcount display shows Coach C data missing" }
+      ],
+      "observations": [
+        "The work started.",
+        "The work stopped.",
+        "The work finished.",
+        "The result was different."
+      ],
+      "patterns": [
+        {
+          "id": "pat-1",
+          "title": "The work never started.",
+          "description": "Coach C passenger scan loop failed to initiate."
+        },
+        {
+          "id": "pat-2",
+          "title": "The work started but stopped.",
+          "description": "Scanning loop crashed midway after Coach B without processing Coach C."
+        },
+        {
+          "id": "pat-3",
+          "title": "The work finished but produced the wrong result.",
+          "description": "The count completed, but missed an entire category."
+        }
+      ],
+      "reflections": [
+        "The coach list had only 2 items (indices 0, 1), so accessing index 2 crashed the scanner.",
+        "Coach C scanner lost signal connection midway.",
+        "The total variable was reset to zero between coaches."
+      ]
+    },
+    "pythonCode": {
+      "codeSnippet": "coaches = [\"Coach A\", \"Coach B\"]\ncurrent = coaches[2]\nprint(\"Scanning:\", current)",
+      "highlightLine": 2,
+      "buggyCode": "coaches = [\"Coach A\", \"Coach B\"]\ncurrent = coaches[2]\nprint(\"Scanning:\", current)",
+      "fixedCode": "coaches = [\"Coach A\", \"Coach B\", \"Coach C\"]\ncurrent = coaches[2]\nprint(\"Scanning:\", current)",
+      "beforeOutput": "IndexError: list index out of range",
+      "expectedOutput": "Scanning: Coach C",
+      "storyComparison": {
+        "storyText": "Conductor tried to scan Coach C, but the scanner had only 2 coaches in memory.",
+        "pythonText": "Line 2 attempted to access index 2 when the list only had indices 0 and 1."
+      }
+    },
+    "expectedBehavior": "Include Coach C in list so index 2 accesses valid coach.",
+    "hint": "Line 1 only has 2 coaches listed. Add \"Coach C\" to the list on line 1.",
+    "bugFix": {
+      "solution": "Change coaches = [\"Coach A\", \"Coach B\"] to coaches = [\"Coach A\", \"Coach B\", \"Coach C\"]."
+    },
+    "learningSummary": {
+      "conceptName": "Runtime Error",
+      "definition": "The program starts running fine, but crashes midway when trying to perform an impossible action.",
+      "realLifeConnection": "The conductor reached for a 3rd coach that was not logged in the register.",
+      "pythonConnection": "Python list indices start at 0. Accessing index 2 of a 2-item list causes an IndexError.",
+      "memoryTip": "Runtime errors happen while the program is actively running!",
+      "summarySentence": "Accessing index 2 on a 2-item list caused an IndexError Runtime Error."
+    }
+  },
+  "case5": {
+    "caseId": "case5",
+    "difficulty": "Explorer",
+    "title": "Patient Temperature Console",
+    "theme": "Hospital",
+    "caseNumber": "Case #05",
+    "totalPanels": 5,
+    "comicPanels": [
+      {
+        "panelNumber": 1,
+        "title": "Morning Vitals Check",
+        "characterName": "Dr. Maya",
+        "speechBubble": "Nurse Ben, please log the morning temperature readings for Ward 3.",
+        "narration": "Dr. Maya initiates the central health summary system.",
+        "emotion": "warm",
+        "background": "clinic"
+      },
+      {
+        "panelNumber": 2,
+        "title": "Log Readings",
+        "characterName": "Nurse Ben",
+        "speechBubble": "Patient 1: 37°C, Patient 2: 36.5°C, Patient 3: 37.2°C. Total = 110.7°C.",
+        "narration": "Nurse Ben enters three patient temperatures into the console.",
+        "emotion": "careful",
+        "background": "clinic"
+      },
+      {
+        "panelNumber": 3,
+        "title": "Running Average Script",
+        "characterName": "Nurse Ben",
+        "speechBubble": "Executing average calculation script for the ward summary report.",
+        "narration": "The central server runs the vital statistics averaging program.",
+        "emotion": "focused",
+        "background": "clinic"
+      },
+      {
+        "panelNumber": 4,
+        "title": "Division by Zero Crash",
+        "characterName": "Dr. Maya",
+        "speechBubble": "Alarm! The screen flashed ZeroDivisionError: division by zero!",
+        "narration": "The medical console halts with a red system error banner.",
+        "emotion": "alarmed",
+        "background": "clinic"
+      },
+      {
+        "panelNumber": 5,
+        "title": "Zero Counter Uncovered",
+        "characterName": "Dr. Maya",
+        "speechBubble": "The patient count variable was set to 0! Dividing total degrees by 0 crashed the system!",
+        "narration": "Updating patient_count to 3 computes the correct 36.9°C average.",
+        "emotion": "focused",
+        "background": "clinic"
+      }
+    ],
+    "investigation": {
+      "evidence": [
+        { "id": "ev-1", "label": "Vitals taken", "details": "Patient temperatures logged: 37°C, 36.5°C, 37.2°C." },
+        { "id": "ev-2", "label": "Average computed", "details": "Clinic summary script executed." },
+        { "id": "ev-3", "label": "Alarm triggered", "details": "Console displays ZeroDivisionError alarm." },
+        { "id": "ev-4", "label": "Dashboard paused", "details": "Medical staff halt vital reporting." }
+      ],
+      "timeline": [
+        { "id": "t-1", "text": "Nurse logs patient vitals in clinic" },
+        { "id": "t-2", "text": "Automated clinic summary script runs" },
+        { "id": "t-3", "text": "Console crashes from ZeroDivisionError" }
+      ],
+      "observations": [
+        "The work started.",
+        "The work stopped.",
+        "The work finished.",
+        "The result was different."
+      ],
+      "patterns": [
+        {
+          "id": "pat-1",
+          "title": "The work never started.",
+          "description": "System failed before initial action could begin."
+        },
+        {
+          "id": "pat-2",
+          "title": "The work started but stopped.",
+          "description": "An impossible math division halted execution midway."
+        },
+        {
+          "id": "pat-3",
+          "title": "The work finished but produced the wrong result.",
+          "description": "Vitals sum calculated, but division by patient count was missing."
+        }
+      ],
+      "reflections": [
+        "The script set patient count = 0, causing division by zero.",
+        "The unit conversion multiplied by Fahrenheit instead of Celsius.",
+        "An extra temperature value was added by mistake."
+      ]
+    },
+    "pythonCode": {
+      "codeSnippet": "total_temp = 110.7\ncount = 0\navg = total_temp / count\nprint(\"Average:\", avg)",
+      "highlightLine": 3,
+      "buggyCode": "total_temp = 110.7\ncount = 0\navg = total_temp / count\nprint(\"Average:\", avg)",
+      "fixedCode": "total_temp = 110.7\ncount = 3\navg = total_temp / count\nprint(\"Average:\", avg)",
+      "beforeOutput": "ZeroDivisionError: division by zero",
+      "expectedOutput": "Average: 36.9",
+      "storyComparison": {
+        "storyText": "Clinic summary machine displayed error alarm when computing average temperature.",
+        "pythonText": "Line 3 attempted to divide total_temp by count = 0."
+      }
+    },
+    "expectedBehavior": "Set count = 3 to compute valid average temperature 36.9.",
+    "hint": "Check count on line 2. Set count = 3 for the 3 patients.",
+    "bugFix": {
+      "solution": "Change count = 0 to count = 3 on line 2."
+    },
+    "learningSummary": {
+      "conceptName": "Runtime Error",
+      "definition": "The computer attempted a mathematical operation that is impossible in math rules.",
+      "realLifeConnection": "The clinic computer tried to average temperatures across 0 patients.",
+      "pythonConnection": "Dividing any number by zero in Python causes an immediate ZeroDivisionError.",
+      "memoryTip": "Never divide by zero!",
+      "summarySentence": "Dividing by zero caused a ZeroDivisionError Runtime Error."
+    }
+  },
+  "case6": {
+    "caseId": "case6",
+    "difficulty": "Builder",
+    "title": "Solar Panel Sorting Conveyor",
+    "theme": "Factory",
+    "caseNumber": "Case #06",
+    "totalPanels": 6,
+    "comicPanels": [
+      {
+        "panelNumber": 1,
+        "title": "Factory Line Startup",
+        "characterName": "Quality Lead Rita",
+        "speechBubble": "Conveyor Belt 1 online! Inspecting 100 premium solar panels.",
+        "narration": "Solar light units enter the automated quality inspection line.",
+        "emotion": "focused",
+        "background": "factory"
+      },
+      {
+        "panelNumber": 2,
+        "title": "Optical Sensor Scan",
+        "characterName": "Inspection Bot IX-7",
+        "speechBubble": "Scanning Unit #42... Quality score = 85 points! (Pass threshold: 80 points)",
+        "narration": "The optical sensor tests light output and build quality.",
+        "emotion": "diligent",
+        "background": "factory"
+      },
+      {
+        "panelNumber": 3,
+        "title": "Diverter Lever Action",
+        "characterName": "Quality Lead Rita",
+        "speechBubble": "Wait! The robotic sorting arm just threw Unit #42 into the SCRAP BIN!",
+        "narration": "The pneumatic lever diverts the 85-point solar light into the bin marked REJECT.",
+        "emotion": "shocked",
+        "background": "factory"
+      },
+      {
+        "panelNumber": 4,
+        "title": "Bin Inspection",
+        "characterName": "Quality Lead Rita",
+        "speechBubble": "Accept Bin has 0 items! Reject Bin has 100 perfect items!",
+        "narration": "Rita checks the collection bins at the end of the belt.",
+        "emotion": "puzzled",
+        "background": "factory"
+      },
+      {
+        "panelNumber": 5,
+        "title": "Operator Check",
+        "characterName": "Inspection Bot IX-7",
+        "speechBubble": "Condition check: is_pass = score < 80 evaluated to False for score 85!",
+        "narration": "The automated arm routed items to the opposite bin.",
+        "emotion": "bewildered",
+        "background": "factory"
+      },
+      {
+        "panelNumber": 6,
+        "title": "Logic Corrected",
+        "characterName": "Quality Lead Rita",
+        "speechBubble": "Changing < 80 to >= 80! Now all 100 passing solar panels route to the ACCEPT bin!",
+        "narration": "The sorting line resumes flawless operation.",
+        "emotion": "cheerful",
+        "background": "factory"
+      }
+    ],
+    "investigation": {
+      "evidence": [
+        { "id": "ev-1", "label": "Line online", "details": "Target 100 sealed solar lights on belt 1." },
+        { "id": "ev-2", "label": "Sensor passed", "details": "Unit 42 scored 85 points (Pass mark: 80)." },
+        { "id": "ev-3", "label": "Lever diverted", "details": "Passing unit thrown into reject bin." },
+        { "id": "ev-4", "label": "Bin inverted", "details": "Accept bin 0 items; Reject bin 100 items." }
+      ],
+      "timeline": [
+        { "id": "t-1", "text": "Solar light units enter assembly belt" },
+        { "id": "t-2", "text": "Optical sensor scores units above 80 points" },
+        { "id": "t-3", "text": "Sorting lever diverts passing units to reject bin" }
+      ],
+      "observations": [
+        "The work started.",
+        "The work stopped.",
+        "The work finished.",
+        "The result was different."
+      ],
+      "patterns": [
+        {
+          "id": "pat-1",
+          "title": "The work never started.",
+          "description": "System failed before initial action could begin."
+        },
+        {
+          "id": "pat-2",
+          "title": "The work started but stopped.",
+          "description": "An unexpected halt interrupted execution midway."
+        },
+        {
+          "id": "pat-3",
+          "title": "The work finished but produced the wrong result.",
+          "description": "The decision rule routed items to opposite bins."
+        }
+      ],
+      "reflections": [
+        "The sorting lever condition inverted less-than and greater-than checks.",
+        "The pass threshold variable was set to 100 instead of 80.",
+        "The bin labels were physically swapped on the conveyor line."
+      ]
+    },
+    "pythonCode": {
+      "codeSnippet": "score = 85\nis_pass = score < 80\nif is_pass:\n    print(\"Accepted\")\nelse:\n    print(\"Rejected\")",
+      "highlightLine": 2,
+      "buggyCode": "score = 85\nis_pass = score < 80\nif is_pass:\n    print(\"Accepted\")\nelse:\n    print(\"Rejected\")",
+      "fixedCode": "score = 85\nis_pass = score >= 80\nif is_pass:\n    print(\"Accepted\")\nelse:\n    print(\"Rejected\")",
+      "beforeOutput": "Rejected",
+      "expectedOutput": "Accepted",
+      "storyComparison": {
+        "storyText": "100 high-quality solar lights with score 85 were thrown into the scrap bin.",
+        "pythonText": "Line 2 checked score < 80 instead of score >= 80, setting is_pass = False."
+      }
+    },
+    "expectedBehavior": "Evaluate score >= 80 as True to accept high-scoring items.",
+    "hint": "Passing items must score 80 or higher. Change < 80 to >= 80 on line 2.",
+    "bugFix": {
+      "solution": "Change is_pass = score < 80 to is_pass = score >= 80."
+    },
+    "learningSummary": {
+      "conceptName": "Logical Error",
+      "definition": "The decision condition inverted the comparison operator, routing good items to reject bins.",
+      "realLifeConnection": "Passing solar lights were diverted to scrap bins.",
+      "pythonConnection": "85 < 80 evaluates to False, triggering the else block.",
+      "memoryTip": "Always double check your < and >= comparison signs!",
+      "summarySentence": "Using < instead of >= sent high-scoring items to the reject bin."
+    }
+  }
+}

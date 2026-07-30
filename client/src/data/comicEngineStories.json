@@ -1,0 +1,336 @@
+{
+  "case1": {
+    "id": "case1",
+    "caseNumber": "Case #01",
+    "title": "Robot Delivery",
+    "level": "Beginner",
+    "totalPanels": 4,
+    "panels": [
+      {
+        "panelNumber": 1,
+        "title": "Delivery Order Arrives",
+        "image": "/comics/robot_delivery/panel1.png",
+        "characterName": "Delivery Robot",
+        "speechBubble": "I received today's delivery order! Time to sort the packages.",
+        "narration": "The automated sorting robot scans arriving packages at the central warehouse loading dock.",
+        "emotion": "cheerful",
+        "background": "warehouse"
+      },
+      {
+        "panelNumber": 2,
+        "title": "Scanning Package Weights",
+        "image": "/comics/robot_delivery/panel2.png",
+        "characterName": "Delivery Robot",
+        "speechBubble": "Box A weighs 10 kilograms. Box B weighs 5 kilograms.",
+        "narration": "The robot measures both boxes on the digital scale and prepares to place them on the delivery cart.",
+        "emotion": "focused",
+        "background": "warehouse"
+      },
+      {
+        "panelNumber": 3,
+        "title": "Unexpected Total Displayed",
+        "image": "/comics/robot_delivery/panel3.png",
+        "characterName": "Delivery Robot",
+        "speechBubble": "Total weight displayed: 105 kilograms! That looks way too heavy!",
+        "narration": "The scale readout screen flashes 105 kilograms instead of the expected combined weight.",
+        "emotion": "confused",
+        "background": "warehouse"
+      },
+      {
+        "panelNumber": 4,
+        "title": "Cart Overloaded",
+        "image": "/comics/robot_delivery/panel4.png",
+        "characterName": "Warehouse Manager",
+        "speechBubble": "Stop! The robot loaded extra heavy weights onto the cart!",
+        "narration": "The delivery cart tilts under the heavy load as staff gather to investigate the scale readout.",
+        "emotion": "surprised",
+        "background": "warehouse"
+      }
+    ]
+  },
+  "case2": {
+    "id": "case2",
+    "caseNumber": "Case #02",
+    "title": "Toy Car Race",
+    "level": "Beginner",
+    "totalPanels": 4,
+    "panels": [
+      {
+        "panelNumber": 1,
+        "title": "Track Setup",
+        "image": "/comics/toy_car/panel1.png",
+        "characterName": "Track Marshall",
+        "speechBubble": "Welcome to the mini electric car championship! Position your cars.",
+        "narration": "Two children place their electric toy cars at the starting line of the wooden track.",
+        "emotion": "excited",
+        "background": "racetrack"
+      },
+      {
+        "panelNumber": 2,
+        "title": "Race Commences",
+        "image": "/comics/toy_car/panel2.png",
+        "characterName": "Track Marshall",
+        "speechBubble": "Green light! Red Car completes in 8 seconds. Blue Car in 12 seconds.",
+        "narration": "Both cars zoom down the straight track toward the automatic infrared finish gate.",
+        "emotion": "energetic",
+        "background": "racetrack"
+      },
+      {
+        "panelNumber": 3,
+        "title": "Scoreboard Announcement",
+        "image": "/comics/toy_car/panel3.png",
+        "characterName": "Race Announcer",
+        "speechBubble": "Winner announced on the big screen: Blue Car wins the trophy!",
+        "narration": "The digital scoreboard displays Blue Car as winner despite its higher finish time.",
+        "emotion": "puzzled",
+        "background": "racetrack"
+      },
+      {
+        "panelNumber": 4,
+        "title": "Confused Runners",
+        "image": "/comics/toy_car/panel4.png",
+        "characterName": "Red Car Driver",
+        "speechBubble": "Wait! I crossed the line first with a lower time score!",
+        "narration": "The crowd points at the scoreboard while the judge double checks the timing log.",
+        "emotion": "shocked",
+        "background": "racetrack"
+      }
+    ]
+  },
+  "case3": {
+    "id": "case3",
+    "caseNumber": "Case #03",
+    "title": "School Homework Register",
+    "level": "Beginner",
+    "totalPanels": 4,
+    "panels": [
+      {
+        "panelNumber": 1,
+        "title": "Morning Attendance",
+        "image": "/comics/school_homework/panel1.png",
+        "characterName": "Teacher",
+        "speechBubble": "Good morning Class 4! Please submit your math worksheets.",
+        "narration": "Students place their completed homework sheets into the digital scanner basket.",
+        "emotion": "cheerful",
+        "background": "classroom"
+      },
+      {
+        "panelNumber": 2,
+        "title": "Scanning Worksheets",
+        "image": "/comics/school_homework/panel2.png",
+        "characterName": "Class Monitor",
+        "speechBubble": "Ananya scored 90 marks. Rohan scored 85 marks.",
+        "narration": "The monitor inputs student names and scores into the digital attendance register.",
+        "emotion": "focused",
+        "background": "classroom"
+      },
+      {
+        "panelNumber": 3,
+        "title": "Mismatched Records",
+        "image": "/comics/school_homework/panel3.png",
+        "characterName": "Teacher",
+        "speechBubble": "Look at the screen! Rohan's report shows Ananya's score!",
+        "narration": "The digital portal swaps student names and marks on the class projection screen.",
+        "emotion": "startled",
+        "background": "classroom"
+      },
+      {
+        "panelNumber": 4,
+        "title": "Classroom Surprise",
+        "image": "/comics/school_homework/panel4.png",
+        "characterName": "Student",
+        "speechBubble": "My grade report has someone else's name at the top!",
+        "narration": "Students hold their printed grade sheets in confusion as the teacher halts distribution.",
+        "emotion": "surprised",
+        "background": "classroom"
+      }
+    ]
+  },
+  "case4": {
+    "id": "case4",
+    "caseNumber": "Case #04",
+    "title": "Train Journey",
+    "level": "Explorer",
+    "totalPanels": 5,
+    "panels": [
+      {
+        "panelNumber": 1,
+        "title": "Station Departure",
+        "image": "/comics/train_journey/panel1.png",
+        "characterName": "Station Master",
+        "speechBubble": "Express Train 101 departing Platform 3 for Central City!",
+        "narration": "Passengers board the silver passenger train while staff verify digital ticket passes.",
+        "emotion": "proud",
+        "background": "station"
+      },
+      {
+        "panelNumber": 2,
+        "title": "Checking Passports",
+        "image": "/comics/train_journey/panel2.png",
+        "characterName": "Ticket Collector",
+        "speechBubble": "Checking tickets for Coach A, Coach B, and Coach C.",
+        "narration": "The conductor scans barcode tickets for passengers across three separate seating coaches.",
+        "emotion": "diligent",
+        "background": "train_coach"
+      },
+      {
+        "panelNumber": 3,
+        "title": "Intermediary Stop",
+        "image": "/comics/train_journey/panel3.png",
+        "characterName": "Train Driver",
+        "speechBubble": "Passing Riverton station! All signals show green status.",
+        "narration": "The train maintains steady speed along the scenic countryside rail line.",
+        "emotion": "calm",
+        "background": "railway"
+      },
+      {
+        "panelNumber": 4,
+        "title": "Seat Count Anomaly",
+        "image": "/comics/train_journey/panel4.png",
+        "characterName": "Ticket Collector",
+        "speechBubble": "The display says 50 passengers boarded, but 120 seats are occupied!",
+        "narration": "The conductor counts 120 passengers in seats while the hand scanner reads only 50.",
+        "emotion": "bewildered",
+        "background": "train_coach"
+      },
+      {
+        "panelNumber": 5,
+        "title": "Coach Lock",
+        "image": "/comics/train_journey/panel5.png",
+        "characterName": "Conductor",
+        "speechBubble": "Coach C passengers were completely skipped by the counter!",
+        "narration": "Staff discover that one coach scanner failed to send data to the main log.",
+        "emotion": "alert",
+        "background": "station"
+      }
+    ]
+  },
+  "case5": {
+    "id": "case5",
+    "caseNumber": "Case #05",
+    "title": "Hospital Machine",
+    "level": "Explorer",
+    "totalPanels": 5,
+    "panels": [
+      {
+        "panelNumber": 1,
+        "title": "Clinic Check-up",
+        "image": "/comics/hospital_machine/panel1.png",
+        "characterName": "Dr. Sarah",
+        "speechBubble": "Welcome to the health clinic! Let's record today's vitals.",
+        "narration": "Patients wait comfortably in the bright clinic reception as health check-ups begin.",
+        "emotion": "warm",
+        "background": "clinic"
+      },
+      {
+        "panelNumber": 2,
+        "title": "Measuring Temperature",
+        "image": "/comics/hospital_machine/panel2.png",
+        "characterName": "Nurse Alex",
+        "speechBubble": "Patient 1 temp is 37°C. Patient 2 temp is 36.5°C. Patient 3 is 37.2°C.",
+        "narration": "The nurse measures patient temperatures using the digital smart thermometer.",
+        "emotion": "careful",
+        "background": "clinic"
+      },
+      {
+        "panelNumber": 3,
+        "title": "Calculating Average",
+        "image": "/comics/hospital_machine/panel3.png",
+        "characterName": "Nurse Alex",
+        "speechBubble": "Running the automated clinic average calculation for today's visits.",
+        "narration": "The monitor computes summary vitals for the morning patient logs.",
+        "emotion": "focused",
+        "background": "clinic"
+      },
+      {
+        "panelNumber": 4,
+        "title": "Alarm Triggers",
+        "image": "/comics/hospital_machine/panel4.png",
+        "characterName": "Dr. Sarah",
+        "speechBubble": "Wait! The screen shows average clinic temperature is 110.7°C!",
+        "narration": "Red warning lights flash on the console as an impossible average temperature displays.",
+        "emotion": "alarmed",
+        "background": "clinic"
+      },
+      {
+        "panelNumber": 5,
+        "title": "Formula Investigation",
+        "image": "/comics/hospital_machine/panel5.png",
+        "characterName": "Doctor",
+        "speechBubble": "The total sum was displayed instead of dividing by patient count!",
+        "narration": "The medical team pauses testing to inspect the health dashboard readout.",
+        "emotion": "concerned",
+        "background": "clinic"
+      }
+    ]
+  },
+  "case6": {
+    "id": "case6",
+    "caseNumber": "Case #06",
+    "title": "Smart Factory",
+    "level": "Builder",
+    "totalPanels": 6,
+    "panels": [
+      {
+        "panelNumber": 1,
+        "title": "Shift Begins",
+        "image": "/comics/smart_factory/panel1.png",
+        "characterName": "Chief Engineer",
+        "speechBubble": "Smart Factory Line 4 online! Target output: 100 sealed solar lights.",
+        "narration": "Robotic arms and automated conveyor belts light up in the high-tech solar factory.",
+        "emotion": "confident",
+        "background": "factory"
+      },
+      {
+        "panelNumber": 2,
+        "title": "Assembly Progress",
+        "image": "/comics/smart_factory/panel2.png",
+        "characterName": "Line Operator",
+        "speechBubble": "Solar cells mounted. Casing inspect sensor active on belt 1.",
+        "narration": "Products move smoothly through assembly, testing, and quality control stations.",
+        "emotion": "focused",
+        "background": "factory"
+      },
+      {
+        "panelNumber": 3,
+        "title": "Quality Sensor Check",
+        "image": "/comics/smart_factory/panel3.png",
+        "characterName": "Quality Inspector",
+        "speechBubble": "Pass mark set at 80 points. Checking unit 42 with 85 points.",
+        "narration": "The optical scanner measures solar panel output voltage against minimum requirements.",
+        "emotion": "meticulous",
+        "background": "factory"
+      },
+      {
+        "panelNumber": 4,
+        "title": "Reject Bin Overflow",
+        "image": "/comics/smart_factory/panel4.png",
+        "characterName": "Line Operator",
+        "speechBubble": "Warning! Unit 42 passed quality check but was thrown into the reject bin!",
+        "narration": "The sorting lever diverts high-scoring units into the scrap container.",
+        "emotion": "shocked",
+        "background": "factory"
+      },
+      {
+        "panelNumber": 5,
+        "title": "Multiple System Events",
+        "image": "/comics/smart_factory/panel5.png",
+        "characterName": "Chief Engineer",
+        "speechBubble": "Accept bin has 0 items! Reject bin has all 100 perfect units!",
+        "narration": "Every single quality-checked solar light ends up in the rejected items bin.",
+        "emotion": "distressed",
+        "background": "factory"
+      },
+      {
+        "panelNumber": 6,
+        "title": "Investigation Opened",
+        "image": "/comics/smart_factory/panel6.png",
+        "characterName": "Lead Detective",
+        "speechBubble": "Multiple events occurred here. Examine the sorting logic to solve the case!",
+        "narration": "The factory manager halts line 4 as detective team opens the case investigation.",
+        "emotion": "determined",
+        "background": "factory"
+      }
+    ]
+  }
+}

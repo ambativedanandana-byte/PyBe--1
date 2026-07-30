@@ -3,3 +3,9 @@ client/dist/
 .env
 npm-debug.log*
 .DS_Store
+
+# Large generated comic image assets (PNG binaries)
+client/public/comics/
+
+# Scratch/backup files
+scratch/

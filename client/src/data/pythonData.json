@@ -1,0 +1,152 @@
+{
+  "case1": {
+    "caseId": "case1",
+    "caseName": "Case #01: Robot Delivery",
+    "conceptName": "Logical Error",
+    "codeSnippet": "val1 = \"10\"\nval2 = \"5\"\ntotal = val1 + val2\nprint(\"Total weight:\", total)",
+    "highlightLine": 3,
+    "buggyCode": "val1 = \"10\"\nval2 = \"5\"\ntotal = val1 + val2\nprint(total)",
+    "fixedCode": "val1 = 10\nval2 = 5\ntotal = val1 + val2\nprint(total)",
+    "beforeOutput": "105",
+    "expectedOutput": "15",
+    "storyComparison": {
+      "storyText": "Robot scale displayed '105kg' when 10kg and 5kg boxes were placed together.",
+      "pythonText": "val1 = \"10\" and val2 = \"5\" join together as text \"105\" instead of adding numbers 10 + 5."
+    },
+    "discovery": {
+      "title": "Logical Error",
+      "definition": "The program runs completely without crashing, but produces an incorrect result because the calculation rule is wrong.",
+      "realLifeConnection": "The robot scale displayed '105' because two text digits were stuck together instead of adding physical weights.",
+      "pythonConnection": "Quotes around numbers ('10') make Python treat them as text strings. Removing quotes allows mathematical addition.",
+      "memoryTip": "Logical errors don't crash your code—they just give wrong answers!"
+    },
+    "hint": "Look at lines 1 and 2. Are the numbers wrapped in quotes (\"10\") or plain numbers (10)?",
+    "solution": "Remove the quotation marks around 10 and 5 so Python adds them as numbers.",
+    "summarySentence": "Quotes around numbers caused text concatenation instead of numeric addition."
+  },
+  "case2": {
+    "caseId": "case2",
+    "caseName": "Case #02: Toy Car Race",
+    "conceptName": "Logical Error",
+    "codeSnippet": "red_time = 8\nblue_time = 12\nis_winner = red_time > blue_time\nprint(\"Red wins:\", is_winner)",
+    "highlightLine": 3,
+    "buggyCode": "red_time = 8\nblue_time = 12\nis_winner = red_time > blue_time\nprint(\"Red wins:\", is_winner)",
+    "fixedCode": "red_time = 8\nblue_time = 12\nis_winner = red_time < blue_time\nprint(\"Red wins:\", is_winner)",
+    "beforeOutput": "Red wins: False",
+    "expectedOutput": "Red wins: True",
+    "storyComparison": {
+      "storyText": "Red Car finished in 8s (faster), but Blue Car (12s) was awarded the trophy.",
+      "pythonText": "The comparison operator > checked for bigger time instead of smaller time."
+    },
+    "discovery": {
+      "title": "Logical Error",
+      "definition": "The code executes smoothly, but the comparison condition produces an unexpected result.",
+      "realLifeConnection": "In a race, lower time means faster speed. The scoreboard used > instead of <.",
+      "pythonConnection": "8 < 12 evaluates to True, but 8 > 12 evaluates to False.",
+      "memoryTip": "In race timing, smaller numbers win!"
+    },
+    "hint": "In race timing, a faster car has a SMALLER time. Check the operator sign on line 3.",
+    "solution": "Change red_time > blue_time to red_time < blue_time.",
+    "summarySentence": "Using > instead of < declared the slower car as the winner."
+  },
+  "case3": {
+    "caseId": "case3",
+    "caseName": "Case #03: School Homework Register",
+    "conceptName": "Syntax Error",
+    "codeSnippet": "ananya = 90\nrohan = 85\nif ananya > rohan\n    print(\"Ananya leading\")",
+    "highlightLine": 3,
+    "buggyCode": "ananya = 90\nrohan = 85\nif ananya > rohan\n    print(\"Ananya leading\")",
+    "fixedCode": "ananya = 90\nrohan = 85\nif ananya > rohan:\n    print(\"Ananya leading\")",
+    "beforeOutput": "SyntaxError: expected ':' at end of if statement",
+    "expectedOutput": "Ananya leading",
+    "storyComparison": {
+      "storyText": "The electronic display froze instantly before showing student report cards.",
+      "pythonText": "Python stopped execution immediately because line 3 was missing a colon (:)."
+    },
+    "discovery": {
+      "title": "Syntax Error",
+      "definition": "Python cannot read or execute the program because a punctuation or grammar rule was broken.",
+      "realLifeConnection": "Like a missing period at the end of a sentence or a misspelled highway sign.",
+      "pythonConnection": "If statements in Python require a colon (:) at the end of the condition line.",
+      "memoryTip": "Syntax errors crash before the code even starts running!"
+    },
+    "hint": "Look at the end of line 3. What punctuation mark is missing after rohan?",
+    "solution": "Add a colon (:) to the end of line 3: if ananya > rohan:",
+    "summarySentence": "Missing colon (:) on the if statement caused an immediate Syntax Error."
+  },
+  "case4": {
+    "caseId": "case4",
+    "caseName": "Case #04: Train Journey",
+    "conceptName": "Runtime Error",
+    "codeSnippet": "coaches = [\"Coach A\", \"Coach B\"]\ncurrent = coaches[2]\nprint(\"Scanning:\", current)",
+    "highlightLine": 2,
+    "buggyCode": "coaches = [\"Coach A\", \"Coach B\"]\ncurrent = coaches[2]\nprint(\"Scanning:\", current)",
+    "fixedCode": "coaches = [\"Coach A\", \"Coach B\", \"Coach C\"]\ncurrent = coaches[2]\nprint(\"Scanning:\", current)",
+    "beforeOutput": "IndexError: list index out of range",
+    "expectedOutput": "Scanning: Coach C",
+    "storyComparison": {
+      "storyText": "Conductor tried to scan Coach C, but the scanner had only 2 coaches in memory.",
+      "pythonText": "Line 2 attempted to access index 2 when the list only had indices 0 and 1."
+    },
+    "discovery": {
+      "title": "Runtime Error",
+      "definition": "The program starts running fine, but crashes midway when trying to perform an impossible action.",
+      "realLifeConnection": "The conductor reached for a 3rd coach that was not logged in the register.",
+      "pythonConnection": "Python list indices start at 0. Accessing index 2 of a 2-item list causes an IndexError.",
+      "memoryTip": "Runtime errors happen while the program is actively running!"
+    },
+    "hint": "Line 1 only has 2 coaches listed. Add \"Coach C\" to the list on line 1.",
+    "solution": "Change coaches = [\"Coach A\", \"Coach B\"] to coaches = [\"Coach A\", \"Coach B\", \"Coach C\"].",
+    "summarySentence": "Accessing index 2 on a 2-item list caused an IndexError Runtime Error."
+  },
+  "case5": {
+    "caseId": "case5",
+    "caseName": "Case #05: Hospital Machine",
+    "conceptName": "Runtime Error",
+    "codeSnippet": "total_temp = 110.7\ncount = 0\navg = total_temp / count\nprint(\"Average:\", avg)",
+    "highlightLine": 3,
+    "buggyCode": "total_temp = 110.7\ncount = 0\navg = total_temp / count\nprint(\"Average:\", avg)",
+    "fixedCode": "total_temp = 110.7\ncount = 3\navg = total_temp / count\nprint(\"Average:\", avg)",
+    "beforeOutput": "ZeroDivisionError: division by zero",
+    "expectedOutput": "Average: 36.9",
+    "storyComparison": {
+      "storyText": "Clinic summary machine displayed error alarm when computing average temperature.",
+      "pythonText": "Line 3 attempted to divide total_temp by count = 0."
+    },
+    "discovery": {
+      "title": "Runtime Error",
+      "definition": "The computer attempted a mathematical operation that is impossible in math rules.",
+      "realLifeConnection": "The clinic computer tried to average temperatures across 0 patients.",
+      "pythonConnection": "Dividing any number by zero in Python causes an immediate ZeroDivisionError.",
+      "memoryTip": "Never divide by zero!"
+    },
+    "hint": "Check count on line 2. Set count = 3 for the 3 patients.",
+    "solution": "Change count = 0 to count = 3 on line 2.",
+    "summarySentence": "Dividing by zero caused a ZeroDivisionError Runtime Error."
+  },
+  "case6": {
+    "caseId": "case6",
+    "caseName": "Case #06: Smart Factory",
+    "conceptName": "Logical Error",
+    "codeSnippet": "score = 85\nis_pass = score < 80\nif is_pass:\n    print(\"Accepted\")\nelse:\n    print(\"Rejected\")",
+    "highlightLine": 2,
+    "buggyCode": "score = 85\nis_pass = score < 80\nif is_pass:\n    print(\"Accepted\")\nelse:\n    print(\"Rejected\")",
+    "fixedCode": "score = 85\nis_pass = score >= 80\nif is_pass:\n    print(\"Accepted\")\nelse:\n    print(\"Rejected\")",
+    "beforeOutput": "Rejected",
+    "expectedOutput": "Accepted",
+    "storyComparison": {
+      "storyText": "100 high-quality solar lights with score 85 were thrown into the scrap bin.",
+      "pythonText": "Line 2 checked score < 80 instead of score >= 80, setting is_pass = False."
+    },
+    "discovery": {
+      "title": "Logical Error",
+      "definition": "The decision condition inverted the comparison operator, routing good items to reject bins.",
+      "realLifeConnection": "Passing solar lights were diverted to scrap bins.",
+      "pythonConnection": "85 < 80 evaluates to False, triggering the else block.",
+      "memoryTip": "Always double check your < and >= comparison signs!"
+    },
+    "hint": "Passing items must score 80 or higher. Change < 80 to >= 80 on line 2.",
+    "solution": "Change is_pass = score < 80 to is_pass = score >= 80.",
+    "summarySentence": "Using < instead of >= sent high-scoring items to the reject bin."
+  }
+}

@@ -1,0 +1,260 @@
+{
+  "case1": {
+    "caseId": "case1",
+    "title": "Robot Delivery",
+    "evidence": [
+      { "id": "ev-1", "label": "Address received", "details": "Delivery destination recorded at central terminal." },
+      { "id": "ev-2", "label": "Journey started", "details": "Robot departed loading bay on scheduled route." },
+      { "id": "ev-3", "label": "Weight sensor readout", "details": "Digital scale flashed 105kg reading instead of 15kg." },
+      { "id": "ev-4", "label": "Delivery cart overloaded", "details": "Cart tilted under unexpected heavy weight load." }
+    ],
+    "timeline": [
+      { "id": "t-1", "text": "Robot receives delivery order at terminal" },
+      { "id": "t-2", "text": "Robot measures box weights on scale" },
+      { "id": "t-3", "text": "Cart overloads from unexpected heavy reading" }
+    ],
+    "observations": [
+      "The work started.",
+      "The work stopped.",
+      "The work finished.",
+      "The result was different."
+    ],
+    "patterns": [
+      {
+        "id": "pat-1",
+        "title": "The work never started.",
+        "description": "System failed before initial action could begin."
+      },
+      {
+        "id": "pat-2",
+        "title": "The work started but stopped.",
+        "description": "An unexpected halt interrupted execution midway."
+      },
+      {
+        "id": "pat-3",
+        "title": "The work finished but produced the wrong result.",
+        "description": "All actions completed to the end, but the final outcome differed from physical expectation."
+      }
+    ],
+    "reflections": [
+      "The measurement values were combined as text rather than adding their quantities.",
+      "The scale sensor sent data before the boxes settled on the platform.",
+      "The calculation rule applied the wrong mathematical formula."
+    ]
+  },
+  "case2": {
+    "caseId": "case2",
+    "title": "Toy Car Race",
+    "evidence": [
+      { "id": "ev-1", "label": "Cars positioned", "details": "Red and Blue cars lined up at starting line." },
+      { "id": "ev-2", "label": "Race finished", "details": "Red Car finished in 8s; Blue Car in 12s." },
+      { "id": "ev-3", "label": "Trophy awarded", "details": "Blue Car declared winner on scoreboard." },
+      { "id": "ev-4", "label": "Drivers confused", "details": "Red Car driver holds faster time record." }
+    ],
+    "timeline": [
+      { "id": "t-1", "text": "Cars placed at starting line" },
+      { "id": "t-2", "text": "Red Car finishes in 8s, Blue Car in 12s" },
+      { "id": "t-3", "text": "Scoreboard declares Blue Car winner" }
+    ],
+    "observations": [
+      "The work started.",
+      "The work stopped.",
+      "The work finished.",
+      "The result was different."
+    ],
+    "patterns": [
+      {
+        "id": "pat-1",
+        "title": "The work never started.",
+        "description": "System failed before initial action could begin."
+      },
+      {
+        "id": "pat-2",
+        "title": "The work started but stopped.",
+        "description": "An unexpected halt interrupted execution midway."
+      },
+      {
+        "id": "pat-3",
+        "title": "The work finished but produced the wrong result.",
+        "description": "The timer ran completely, but the winner ranking rule produced an unexpected output."
+      }
+    ],
+    "reflections": [
+      "The ranking system treated higher time numbers as better scores.",
+      "The finish gate sensor swapped lane identities.",
+      "The timer display rounded the numbers incorrectly."
+    ]
+  },
+  "case3": {
+    "caseId": "case3",
+    "title": "School Homework Register",
+    "evidence": [
+      { "id": "ev-1", "label": "Worksheets collected", "details": "Students submitted completed math worksheets." },
+      { "id": "ev-2", "label": "Scores scanned", "details": "Ananya scored 90 marks; Rohan scored 85 marks." },
+      { "id": "ev-3", "label": "Projection display", "details": "Screen projected swapped student names." },
+      { "id": "ev-4", "label": "Distribution halted", "details": "Teacher paused paper distribution." }
+    ],
+    "timeline": [
+      { "id": "t-1", "text": "Worksheets placed in scanner basket" },
+      { "id": "t-2", "text": "Monitor inputs student names and scores" },
+      { "id": "t-3", "text": "Screen projects swapped grade reports" }
+    ],
+    "observations": [
+      "The work started.",
+      "The work stopped.",
+      "The work finished.",
+      "The result was different."
+    ],
+    "patterns": [
+      {
+        "id": "pat-1",
+        "title": "The work never started.",
+        "description": "System failed before initial action could begin."
+      },
+      {
+        "id": "pat-2",
+        "title": "The work started but stopped.",
+        "description": "An unexpected halt interrupted execution midway."
+      },
+      {
+        "id": "pat-3",
+        "title": "The work finished but produced the wrong result.",
+        "description": "Marks were recorded completely, but assigned to incorrect student entries."
+      }
+    ],
+    "reflections": [
+      "The student name variable was reassigned out of order.",
+      "The scanner read two papers at the exact same instant.",
+      "The print template mapped column headers incorrectly."
+    ]
+  },
+  "case4": {
+    "caseId": "case4",
+    "title": "Train Journey",
+    "evidence": [
+      { "id": "ev-1", "label": "Passes scanned", "details": "Barcode passes scanned for Coaches A and B." },
+      { "id": "ev-2", "label": "Train in motion", "details": "Express train departed on schedule." },
+      { "id": "ev-3", "label": "Count mismatch", "details": "Handheld scanner displays 50; 120 seats occupied." },
+      { "id": "ev-4", "label": "Coach C skipped", "details": "Coach C scanner failed to log entries." }
+    ],
+    "timeline": [
+      { "id": "t-1", "text": "Passengers board at station platform" },
+      { "id": "t-2", "text": "Conductor scans passes across coaches" },
+      { "id": "t-3", "text": "Headcount display shows Coach C data missing" }
+    ],
+    "observations": [
+      "The work started.",
+      "The work stopped.",
+      "The work finished.",
+      "The result was different."
+    ],
+    "patterns": [
+      {
+        "id": "pat-1",
+        "title": "The work never started.",
+        "description": "Coach C passenger scan loop failed to initiate."
+      },
+      {
+        "id": "pat-2",
+        "title": "The work started but stopped.",
+        "description": "Scanning loop stopped after Coach B without processing Coach C."
+      },
+      {
+        "id": "pat-3",
+        "title": "The work finished but produced the wrong result.",
+        "description": "The count completed, but missed an entire category."
+      }
+    ],
+    "reflections": [
+      "The coach counter loop exited before reaching the last coach.",
+      "Coach C scanner lost signal connection midway.",
+      "The total variable was reset to zero between coaches."
+    ]
+  },
+  "case5": {
+    "caseId": "case5",
+    "title": "Hospital Machine",
+    "evidence": [
+      { "id": "ev-1", "label": "Vitals taken", "details": "Patient temperatures logged: 37°C, 36.5°C, 37.2°C." },
+      { "id": "ev-2", "label": "Average computed", "details": "Clinic summary script executed." },
+      { "id": "ev-3", "label": "Alarm triggered", "details": "Console displays average temperature 110.7°C." },
+      { "id": "ev-4", "label": "Dashboard paused", "details": "Medical staff halt vital reporting." }
+    ],
+    "timeline": [
+      { "id": "t-1", "text": "Nurse logs patient vitals in clinic" },
+      { "id": "t-2", "text": "Automated clinic summary script runs" },
+      { "id": "t-3", "text": "Console displays impossible 110.7°C average" }
+    ],
+    "observations": [
+      "The work started.",
+      "The work stopped.",
+      "The work finished.",
+      "The result was different."
+    ],
+    "patterns": [
+      {
+        "id": "pat-1",
+        "title": "The work never started.",
+        "description": "System failed before initial action could begin."
+      },
+      {
+        "id": "pat-2",
+        "title": "The work started but stopped.",
+        "description": "An unexpected halt interrupted execution midway."
+      },
+      {
+        "id": "pat-3",
+        "title": "The work finished but produced the wrong result.",
+        "description": "Vitals sum calculated, but division by patient count was missing."
+      }
+    ],
+    "reflections": [
+      "The script summed all temperatures without dividing by patient count.",
+      "The unit conversion multiplied by Fahrenheit instead of Celsius.",
+      "An extra temperature value was added by mistake."
+    ]
+  },
+  "case6": {
+    "caseId": "case6",
+    "title": "Smart Factory",
+    "evidence": [
+      { "id": "ev-1", "label": "Line online", "details": "Target 100 sealed solar lights on belt 1." },
+      { "id": "ev-2", "label": "Sensor passed", "details": "Unit 42 scored 85 points (Pass mark: 80)." },
+      { "id": "ev-3", "label": "Lever diverted", "details": "Passing unit thrown into reject bin." },
+      { "id": "ev-4", "label": "Bin inverted", "details": "Accept bin 0 items; Reject bin 100 items." }
+    ],
+    "timeline": [
+      { "id": "t-1", "text": "Solar light units enter assembly belt" },
+      { "id": "t-2", "text": "Optical sensor scores units above 80 points" },
+      { "id": "t-3", "text": "Sorting lever diverts passing units to reject bin" }
+    ],
+    "observations": [
+      "The work started.",
+      "The work stopped.",
+      "The work finished.",
+      "The result was different."
+    ],
+    "patterns": [
+      {
+        "id": "pat-1",
+        "title": "The work never started.",
+        "description": "System failed before initial action could begin."
+      },
+      {
+        "id": "pat-2",
+        "title": "The work started but stopped.",
+        "description": "An unexpected halt interrupted execution midway."
+      },
+      {
+        "id": "pat-3",
+        "title": "The work finished but produced the wrong result.",
+        "description": "The decision rule routed items to opposite bins."
+      }
+    ],
+    "reflections": [
+      "The sorting lever condition inverted less-than and greater-than checks.",
+      "The pass threshold variable was set to 100 instead of 80.",
+      "The bin labels were physically swapped on the conveyor line."
+    ]
+  }
+}

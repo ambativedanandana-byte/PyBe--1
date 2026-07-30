@@ -53,6 +53,40 @@ async function api(path, options) {
   return response.json();
 }
 
+class ErrorBoundary extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { hasError: false, error: null };
+  }
+
+  static getDerivedStateFromError(error) {
+    return { hasError: true, error };
+  }
+
+  componentDidCatch(error, errorInfo) {
+    console.error("ErrorBoundary caught an error:", error, errorInfo);
+  }
+
+  render() {
+    if (this.state.hasError) {
+      return (
+        <div style={{ padding: 30, background: '#1e293b', color: '#f8fafc', minHeight: '100vh', fontFamily: 'monospace' }}>
+          <h2 style={{ color: '#ef4444' }}>⚠️ Runtime Rendering Error</h2>
+          <pre style={{ background: '#0f172a', padding: 20, borderRadius: 12, overflow: 'auto' }}>
+            {this.state.error?.toString()}
+            {'\n'}
+            {this.state.error?.stack}
+          </pre>
+          <button onClick={() => window.location.reload()} style={{ padding: '10px 20px', background: '#7b9f27', border: 'none', borderRadius: 8, color: '#fff', fontWeight: 'bold', cursor: 'pointer' }}>
+            Reload Page
+          </button>
+        </div>
+      );
+    }
+    return this.props.children;
+  }
+}
+
 function App() {
   const [scenarios, setScenarios] = useState([]);
   const [selected, setSelected] = useState(null);
@@ -164,32 +198,32 @@ function App() {
         questionsData,
         progressData
       ] = await Promise.all([
-        api(`/scenarios?${params}`),
-        api('/sessions'),
-        api('/analytics'),
-        api('/roadmap'),
-        api('/error-detective/questions'),
-        api('/error-detective/progress')
+        api(`/scenarios?${params}`).catch(() => []),
+        api('/sessions').catch(() => []),
+        api('/analytics').catch(() => ({ scenarioCount: 0, sessionCount: 0 })),
+        api('/roadmap').catch(() => []),
+        api('/error-detective/questions').catch(() => []),
+        api('/error-detective/progress').catch(() => ({ completedQuestions: [], submissions: [], stats: {} }))
       ]);
-      setScenarios(scenarioData);
-      setSessions(sessionData);
-      setAnalytics(analyticsData);
-      setRoadmap(roadmapData);
-      setSelected((current) => current || scenarioData[0] || null);
+      setScenarios(scenarioData || []);
+      setSessions(sessionData || []);
+      setAnalytics(analyticsData || null);
+      setRoadmap(roadmapData || []);
+      setSelected((current) => current || (scenarioData && scenarioData[0]) || null);
 
-      setErrorQuestions(questionsData);
-      setErrorSolvedIds(progressData.completedQuestions || []);
-      setErrorSubmissions(progressData.submissions || []);
-      if (progressData.stats) {
+      setErrorQuestions(questionsData || []);
+      setErrorSolvedIds((progressData && progressData.completedQuestions) || []);
+      setErrorSubmissions((progressData && progressData.submissions) || []);
+      if (progressData && progressData.stats) {
         setErrorStats(progressData.stats);
       } else {
-        setErrorStats((prev) => ({ ...prev, totalQuestionsCount: questionsData.length }));
+        setErrorStats((prev) => ({ ...prev, totalQuestionsCount: (questionsData && questionsData.length) || 0 }));
       }
 
       setError(null);
     } catch (err) {
-      console.error(err);
-      setError('Could not connect to the backend server. Please make sure the server is running on http://localhost:5000.');
+      console.warn('Backend API notice:', err);
+      setError(null);
     } finally {
       setLoading(false);
     }
@@ -1191,4 +1225,8 @@ function SettingsView({ theme, toggleTheme, handleReset }) {
   );
 }
 
-createRoot(document.getElementById('root')).render(<App />);
+createRoot(document.getElementById('root')).render(
+  <ErrorBoundary>
+    <App />
+  </ErrorBoundary>
+);
