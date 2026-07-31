@@ -169,19 +169,37 @@ function processLines(ch) {
 
 function loadStreak() {
   try {
-    const raw = localStorage.getItem("pybe_kata");
-    if (!raw) return { n: 0, today: false };
-    const { d, n } = JSON.parse(raw);
-    const today     = new Date().toDateString();
-    const yesterday = new Date(Date.now() - 86400000).toDateString();
-    if (d === today)     return { n, today: true };
-    if (d === yesterday) return { n, today: false };
-    return { n: 0, today: false };
-  } catch { return { n: 0, today: false }; }
+    const raw = localStorage.getItem("pybe_kata_history");
+    const history = raw ? JSON.parse(raw) : [];
+    if (!history || history.length === 0) return { n: 0, today: false, history: [] };
+    
+    const sorted = [...new Set(history)].sort((a,b) => new Date(b) - new Date(a));
+    const todayStr = new Date().toDateString();
+    const yesterdayStr = new Date(Date.now() - 86400000).toDateString();
+    
+    let currentStreak = 0;
+    let hasToday = sorted[0] === todayStr;
+    
+    if (!hasToday && sorted[0] !== yesterdayStr) {
+       return { n: 0, today: false, history: sorted };
+    }
+    
+    let expectedTime = new Date(hasToday ? todayStr : yesterdayStr).getTime();
+    for (const dateStr of sorted) {
+      if (new Date(dateStr).getTime() === expectedTime) {
+        currentStreak++;
+        expectedTime -= 86400000;
+      } else {
+        break;
+      }
+    }
+    return { n: currentStreak, today: hasToday, history: sorted };
+  } catch { return { n: 0, today: false, history: [] }; }
 }
 
-function saveStreak(n) {
-  localStorage.setItem("pybe_kata", JSON.stringify({ d: new Date().toDateString(), n }));
+function saveHistory(historyArray) {
+  localStorage.setItem("pybe_kata_history", JSON.stringify(historyArray));
+}));
 }
 
 function loadXP()    { return parseInt(localStorage.getItem("pybe_kata_xp") || "0", 10); }
@@ -253,17 +271,22 @@ export default function PracticePage() {
     });
     setResults(res);
     if (allOk && !timedOut) {
-      const { mult } = getComboInfo(comboRef.current);
-      let earned = BASE_XP * mult;
-      if (timeLeftRef.current > 30) earned += TIME_BONUS;
-      if (hintUsedRef.current)      earned = Math.max(5, earned - 10);
-      setSxp(x => x + earned);
       setScorrect(c => c + 1);
       setCombo(c => { const n = c + 1; comboRef.current = n; return n; });
-      const nxp = totalXPRef.current + earned;
-      setTotalXP(nxp); totalXPRef.current = nxp; saveXP(nxp);
-      setXpBurst(earned);
-      setTimeout(() => setXpBurst(null), 1400);
+      
+      // Only award XP if not already completed today
+      if (!streak.today) {
+        const { mult } = getComboInfo(comboRef.current);
+        let earned = BASE_XP * mult;
+        if (timeLeftRef.current > 30) earned += TIME_BONUS;
+        if (hintUsedRef.current)      earned = Math.max(5, earned - 10);
+        
+        setSxp(x => x + earned);
+        const nxp = totalXPRef.current + earned;
+        setTotalXP(nxp); totalXPRef.current = nxp; saveXP(nxp);
+        setXpBurst(earned);
+        setTimeout(() => setXpBurst(null), 1400);
+      }
     } else if (!allOk) {
       setCombo(0); comboRef.current = 0;
       setShake(true);
@@ -299,11 +322,17 @@ export default function PracticePage() {
     if (ci < daily.length - 1) {
       setCi(c => c + 1);
     } else {
-      const newN = streak.n + 1;
-      saveStreak(newN);
-      setStreak({ n: newN, today: true });
+      const hist = [...(streak.history || [])];
+      const todayStr = new Date().toDateString();
+      if (!hist.includes(todayStr)) {
+        hist.unshift(todayStr);
+        saveHistory(hist);
+        const updated = loadStreak();
+        setStreak(updated);
+      }
       setPhase("end");
     }
+  }
   }
 
   function handleStart() {
@@ -326,24 +355,7 @@ export default function PracticePage() {
         
         {/* Left Column */}
         <div className="pkt-intro-left">
-          <div className="pkt-hero-card pkt-fade-in-up" style={{ animationDelay: '0.1s' }}>
-            {/* Animated Background Orbs */}
-            <div className="pkt-hero-glow-1"></div>
-            <div className="pkt-hero-glow-2"></div>
-            
-            {/* Floating Code Illustration */}
-            <div className="pkt-hero-illustration">
-              <div className="pkt-illus-block pkt-illus-1">
-                <span>def</span> solve():
-              </div>
-              <div className="pkt-illus-block pkt-illus-2">
-                <span>pass</span>
-              </div>
-              <div className="pkt-illus-block pkt-illus-3">
-                <Flame size={20} className="pkt-illus-flame" />
-              </div>
-            </div>
-
+          <div className="pkt-hero-card pkt-fade-in-up pkt-hero-bg" style={{ animationDelay: '0.1s' }}>
             <div className="pkt-hero-content">
               <div className="pkt-hero-badge">
                 <Flame size={28} className="pkt-hero-badge-icon" />
@@ -384,30 +396,14 @@ export default function PracticePage() {
 
         {/* Right Column */}
         <div className="pkt-intro-right">
-          <div className="pkt-how-it-works pkt-fade-in-up" style={{ animationDelay: '0.4s' }}>
-            <p className="pkt-how-title">How it works</p>
-            <div className="pkt-how-grid">
-              <div className="pkt-how-item">
-                <div className="pkt-how-icon">⌨️</div>
-                <div className="pkt-how-item-text">
-                  <strong>Fill the blanks</strong>
-                  Type missing keywords into real Python code snippets.
-                </div>
-              </div>
-              <div className="pkt-how-item">
-                <div className="pkt-how-icon">🔥</div>
-                <div className="pkt-how-item-text">
-                  <strong>Combo multiplier</strong>
-                  Chain consecutive correct answers for 2x or 3x XP.
-                </div>
-              </div>
-              <div className="pkt-how-item">
-                <div className="pkt-how-icon">⏱️</div>
-                <div className="pkt-how-item-text">
-                  <strong>Time bonus</strong>
-                  Answer in under 30 seconds for extra bonus XP.
-                </div>
-              </div>
+          <div className="pkt-streak-calendar pkt-fade-in-up" style={{ animationDelay: '0.4s' }}>
+            <p className="pkt-cal-title">Activity Calendar</p>
+            <div className="pkt-cal-grid">
+              {Array.from({ length: 28 }).map((_, i) => {
+                const d = new Date(Date.now() - (27 - i) * 86400000).toDateString();
+                const isActive = (streak.history || []).includes(d);
+                return <div key={i} className={`pkt-cal-day ${isActive ? 'active' : ''}`} title={d} />
+              })}
             </div>
           </div>
         </div>

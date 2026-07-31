@@ -4858,12 +4858,12 @@ meter {
 .pkt-stat-card, .pkt-how-it-works {
   transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
 }
-.pkt-stat-card:hover, .pkt-how-it-works:hover {
+.pkt-stat-card:hover,  {
   transform: translateY(-4px);
   box-shadow: 0 12px 24px rgba(0,0,0,0.12);
   border-color: rgba(163,230,53,0.25);
 }
-[data-theme="light"] .pkt-stat-card:hover, [data-theme="light"] .pkt-how-it-works:hover {
+[data-theme="light"] .pkt-stat-card:hover,  {
   box-shadow: 0 12px 24px rgba(0,0,0,0.06);
   border-color: rgba(123,159,39,0.3) !important;
 }
@@ -4874,100 +4874,68 @@ meter {
   z-index: 2; /* keep above glowing backgrounds and illustration */
 }
 
-/* Glowing Background Orbs */
-.pkt-hero-glow-1, .pkt-hero-glow-2 {
-  position: absolute;
-  border-radius: 50%;
-  filter: blur(40px);
-  z-index: 0;
-  animation: pktFloat 8s infinite alternate ease-in-out;
+
+
+/* ---------------------------------------------------------------
+   PRACTICE PAGE � BG & Calendar
+--------------------------------------------------------------- */
+.pkt-hero-bg {
+  background-image: linear-gradient(rgba(13,22,20,0.8), rgba(13,22,20,0.9)), url('/practice-hero.png');
+  background-size: cover;
+  background-position: center;
 }
-.pkt-hero-glow-1 {
-  width: 150px; height: 150px;
-  background: rgba(163,230,53,0.15);
-  top: -20px; left: -20px;
-}
-.pkt-hero-glow-2 {
-  width: 120px; height: 120px;
-  background: rgba(255,107,53,0.1);
-  bottom: -30px; right: 20%;
-  animation-delay: -3s;
+[data-theme="light"] .pkt-hero-bg {
+  background-image: linear-gradient(rgba(255,255,255,0.7), rgba(255,255,255,0.9)), url('/practice-hero.png') !important;
 }
 
-@keyframes pktFloat {
-  0% { transform: translate(0, 0) scale(1); }
-  100% { transform: translate(20px, -20px) scale(1.1); }
+/* Calendar Block */
+.pkt-streak-calendar {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 16px; padding: 22px;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+.pkt-streak-calendar:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px rgba(0,0,0,0.12);
+  border-color: rgba(163,230,53,0.25);
+}
+.pkt-cal-title {
+  font-size: 0.72rem; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 0.08em; color: #6a8a7e; margin: 0 0 16px;
+}
+.pkt-cal-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 8px;
+}
+.pkt-cal-day {
+  aspect-ratio: 1;
+  background: rgba(255,255,255,0.05);
+  border-radius: 4px;
+  border: 1px solid rgba(255,255,255,0.05);
+}
+.pkt-cal-day.active {
+  background: #a3e635;
+  border-color: #bef264;
+  box-shadow: 0 0 10px rgba(163,230,53,0.3);
 }
 
-/* Floating CSS Illustration */
-.pkt-hero-illustration {
-  position: absolute;
-  top: 30px;
-  right: -20px;
-  width: 200px;
-  height: 200px;
-  z-index: 1;
-  pointer-events: none;
-  opacity: 0.9;
+[data-theme="light"] .pkt-streak-calendar {
+  background: #ffffff !important;
+  border-color: #e0dbd0 !important;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.06) !important;
 }
-
-.pkt-illus-block {
-  position: absolute;
-  background: rgba(0,0,0,0.4);
-  border: 1px solid rgba(163,230,53,0.2);
-  border-radius: 8px;
-  padding: 8px 12px;
-  font-family: "JetBrains Mono", monospace;
-  font-size: 0.8rem;
-  color: #c4cdc8;
-  backdrop-filter: blur(4px);
-  box-shadow: 0 8px 24px rgba(0,0,0,0.2);
-  animation: pktFloatUpDown 6s infinite alternate ease-in-out;
+[data-theme="light"] .pkt-streak-calendar:hover {
+  box-shadow: 0 12px 24px rgba(0,0,0,0.06);
+  border-color: rgba(123,159,39,0.3) !important;
 }
-
-.pkt-illus-block span { color: #a3e635; font-weight: 700; }
-
-.pkt-illus-1 {
-  top: 10px; right: 40px;
-  animation-delay: 0s;
-  transform: rotate(-5deg);
+[data-theme="light"] .pkt-cal-day {
+  background: rgba(0,0,0,0.04) !important;
+  border-color: rgba(0,0,0,0.05) !important;
 }
-
-.pkt-illus-2 {
-  top: 60px; right: 10px;
-  padding-left: 24px;
-  animation-delay: -2s;
-  transform: rotate(3deg);
-  border-color: rgba(255,107,53,0.2);
+[data-theme="light"] .pkt-cal-day.active {
+  background: #65a30d !important;
+  border-color: #4d7c0f !important;
+  box-shadow: 0 0 10px rgba(101,163,13,0.3) !important;
 }
-.pkt-illus-2 span { color: #ff6b35; }
-
-.pkt-illus-3 {
-  top: 110px; right: 50px;
-  width: 40px; height: 40px;
-  display: flex; align-items: center; justify-content: center;
-  border-radius: 50%;
-  background: linear-gradient(135deg, #a3e635, #65a30d);
-  border: none;
-  color: #0d1614;
-  animation-delay: -4s;
-  box-shadow: 0 0 15px rgba(163,230,53,0.4);
-}
-
-@keyframes pktFloatUpDown {
-  0% { transform: translateY(0) rotate(var(--rot, 0deg)); }
-  100% { transform: translateY(-12px) rotate(var(--rot, 0deg)); }
-}
-
-/* Light mode overrides for illustration */
-[data-theme="light"] .pkt-hero-glow-1 { background: rgba(123,159,39,0.25); }
-[data-theme="light"] .pkt-hero-glow-2 { background: rgba(255,107,53,0.15); }
-[data-theme="light"] .pkt-illus-block {
-  background: rgba(255,255,255,0.8);
-  border-color: rgba(123,159,39,0.3);
-  color: #1c2824;
-  box-shadow: 0 8px 24px rgba(0,0,0,0.08);
-}
-[data-theme="light"] .pkt-illus-block span { color: #4a7010; }
-[data-theme="light"] .pkt-illus-2 { border-color: rgba(255,107,53,0.3); }
-[data-theme="light"] .pkt-illus-2 span { color: #c2410c; }

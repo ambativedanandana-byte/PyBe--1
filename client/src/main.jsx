@@ -272,10 +272,12 @@ function App() {
   }
 
   const resetErrorDetectiveProgress = async () => {
-    if (!window.confirm('Reset all debugging progress? This clears your score and statistics.')) return;
+    if (!window.confirm('Reset all progress? This clears your scores and statistics across all tabs.')) return;
     try {
-      const result = await api('/error-detective/reset', { method: 'POST' });
-      setErrorStats(result.stats || {
+      await api('/error-detective/reset', { method: 'POST' });
+      localStorage.removeItem('pybe_kata_history');
+      localStorage.removeItem('pybe_kata_xp');
+      setErrorStats({
         totalCompleted: 0,
         totalAttempts: 0,
         correctAttempts: 0,
@@ -283,8 +285,8 @@ function App() {
         accuracyPercentage: 0,
         totalQuestionsCount: errorQuestions.length
       });
-      setErrorSolvedIds(result.completedQuestions || []);
-      setErrorSubmissions(result.submissions || []);
+      setErrorSolvedIds([]);
+      setErrorSubmissions([]);
       setSelectedLevel(null);
       setSelectedTopic(null);
       setSelectedQuestionId(null);
