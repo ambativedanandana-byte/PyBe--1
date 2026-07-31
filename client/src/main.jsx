@@ -36,6 +36,7 @@ import {
 } from 'lucide-react';
 import './styles.css';
 import ErrorDetectivePage from './pages/ErrorDetectivePage';
+import ScenariosPage from './pages/ScenariosPage';
 
 // Topic lists per level — mirrors LEVELS in ErrorDetectivePage (kept here for sidebar use)
 const LEVEL_TOPICS = {
@@ -305,87 +306,7 @@ function App() {
   const renderContent = () => {
     switch (route) {
       case '/learn-python':
-        return (
-          <section className="workspace">
-            <header className="hero">
-              <div>
-                <p>AI-native learning journey</p>
-                <h1>Learn Python by reasoning through real situations first.</h1>
-              </div>
-              <div className="hero-stats">
-                <span>{analytics?.scenarioCount || 0}<small>Scenarios</small></span>
-                <span>{analytics?.sessionCount || 0}<small>Sessions</small></span>
-                <span>{analytics?.averagePromptScore || 0}<small>Prompt score</small></span>
-              </div>
-            </header>
-
-            <div className="main-grid">
-              <section className="panel learning-panel">
-                <div className="section-title">
-                  <Compass size={20} />
-                  <h2>{selected?.title}</h2>
-                </div>
-                <p className="context">{selected?.context}</p>
-                <div className="objective-row">
-                  {selected?.objectives.map((item) => <span key={item}>{item}</span>)}
-                </div>
-                <form onSubmit={submitSession} className="learning-form">
-                  <label>
-                    Your reasoning
-                    <textarea
-                      required
-                      value={form.reasoning}
-                      onChange={(event) => setForm({ ...form, reasoning: event.target.value })}
-                      placeholder={selected?.prompt}
-                    />
-                  </label>
-                  <label>
-                    Prompt you would give an AI mentor
-                    <textarea
-                      value={form.promptText}
-                      onChange={(event) => setForm({ ...form, promptText: event.target.value })}
-                      placeholder="Explain my approach step by step, then show the Python concept and code..."
-                    />
-                  </label>
-                  <label>
-                    Reflection
-                    <textarea
-                      value={form.reflection}
-                      onChange={(event) => setForm({ ...form, reflection: event.target.value })}
-                      placeholder="What did you notice about your thinking?"
-                    />
-                  </label>
-                  <button className="primary" disabled={submitting}>
-                    <Send size={18} />{submitting ? 'Mapping...' : 'Map My Reasoning'}
-                  </button>
-                </form>
-              </section>
-
-              <section className="panel result-panel">
-                <div className="section-title">
-                  <Sparkles size={20} />
-                  <h2>AI Mentor Output</h2>
-                </div>
-                {!activeResult ? <EmptyResult /> : <Result result={activeResult} />}
-              </section>
-            </div>
-
-            <section className="dashboard">
-              <div className="panel">
-                <div className="section-title"><ChartNoAxesCombined size={20} /><h2>Learner Analytics</h2></div>
-                <Analytics analytics={analytics} />
-              </div>
-              <div className="panel">
-                <div className="section-title"><Route size={20} /><h2>Roadmap</h2></div>
-                <Roadmap roadmap={roadmap} />
-              </div>
-              <div className="panel">
-                <div className="section-title"><MessageSquareText size={20} /><h2>Recent Sessions</h2></div>
-                <SessionList sessions={sessions} />
-              </div>
-            </section>
-          </section>
-        );
+        return <ScenariosPage scenarios={scenarios} />;
 
       case '/error-detective':
         return (
@@ -751,116 +672,6 @@ function App() {
                 <div className="sb-empty">
                   <Search size={20} opacity={0.4} />
                   <span>No challenges found</span>
-                </div>
-              )}
-            </div>
-          </>
-        )}
-
-        {route === '/learn-python' && (
-          <>
-            {/* ── Search ── */}
-            <div className="sb-section-label">
-              <Compass size={12} /> Scenarios
-              <span className="sb-count-chip">{scenarios.length}</span>
-            </div>
-            <label className="search-modern">
-              <Search size={15} className="search-icon" />
-              <input
-                value={filters.q}
-                onChange={(event) => {
-                  setFilters({ ...filters, q: event.target.value });
-                }}
-                placeholder="Search scenarios…"
-              />
-              {filters.q && (
-                <button className="search-clear" onClick={() => setFilters({ ...filters, q: '' })}>✕</button>
-              )}
-            </label>
-
-            {/* ── All Levels Dropdown ── */}
-            <div className="sb-filter-card">
-              <div className="sb-filter-header">
-                <span className="sb-filter-icon sb-icon-level"><Layers size={14} /></span>
-                <span className="sb-filter-title">All Levels</span>
-                {filters.difficulty && <span className="sb-active-pill">{filters.difficulty}</span>}
-              </div>
-              <div className="sb-select-wrap">
-                <select
-                  value={filters.difficulty}
-                  onChange={(event) => {
-                    setFilters({ ...filters, difficulty: event.target.value });
-                  }}
-                  className="sb-select"
-                >
-                  <option value="">All Levels</option>
-                  <option>Beginner</option>
-                  <option>Explorer</option>
-                  <option>Builder</option>
-                </select>
-                <ChevronDown size={14} className="sb-chevron" />
-              </div>
-            </div>
-
-            {/* ── All Concepts Dropdown ── */}
-            <div className="sb-filter-card">
-              <div className="sb-filter-header">
-                <span className="sb-filter-icon sb-icon-concept"><Filter size={14} /></span>
-                <span className="sb-filter-title">All Concepts</span>
-                {filters.concept && <span className="sb-active-pill">{filters.concept}</span>}
-              </div>
-              <div className="sb-select-wrap">
-                <select
-                  value={filters.concept}
-                  onChange={(event) => {
-                    setFilters({ ...filters, concept: event.target.value });
-                  }}
-                  className="sb-select"
-                >
-                  <option value="">All Concepts</option>
-                  {concepts.map((concept) => <option key={concept}>{concept}</option>)}
-                </select>
-                <ChevronDown size={14} className="sb-chevron" />
-              </div>
-            </div>
-
-            {/* ── Bookmark Filter Toggle ── */}
-            <button
-              className={`sb-bookmark-toggle${showBookmarksOnly ? ' active' : ''}`}
-              onClick={() => setShowBookmarksOnly(v => !v)}
-            >
-              {showBookmarksOnly ? <BookmarkCheck size={13} /> : <BookmarkPlus size={13} />}
-              {showBookmarksOnly ? `Bookmarked (${bookmarks.length})` : 'All Scenarios'}
-            </button>
-
-            <div className="scenario-list">
-              {displayScenarios.map((scenario) => (
-                <div key={scenario._id} className="scenario-card-wrap">
-                  <button
-                    className={selected?._id === scenario._id ? 'scenario active' : 'scenario'}
-                    onClick={() => {
-                      setSelected(scenario);
-                      setActiveResult(null);
-                    }}
-                  >
-                    <span>{scenario.difficulty}</span>
-                    <strong>{scenario.title}</strong>
-                    <small>{scenario.concepts.join(' / ')}</small>
-                  </button>
-                  <button
-                    className={`sb-bookmark-btn${bookmarks.includes(scenario._id) ? ' bookmarked' : ''}`}
-                    onClick={(e) => { e.stopPropagation(); toggleBookmark(scenario._id); }}
-                    aria-label={bookmarks.includes(scenario._id) ? 'Remove bookmark' : 'Bookmark'}
-                    title={bookmarks.includes(scenario._id) ? 'Remove bookmark' : 'Bookmark this scenario'}
-                  >
-                    {bookmarks.includes(scenario._id) ? <BookmarkCheck size={13} /> : <BookmarkPlus size={13} />}
-                  </button>
-                </div>
-              ))}
-              {displayScenarios.length === 0 && (
-                <div className="sb-empty">
-                  <Compass size={20} opacity={0.4} />
-                  <span>{showBookmarksOnly ? 'No bookmarks yet' : 'No scenarios found'}</span>
                 </div>
               )}
             </div>
