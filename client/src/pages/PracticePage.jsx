@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef, useMemo } from "react";
 import {
   Flame, Zap, Trophy, Star, Clock, ChevronRight,
-  RotateCcw, Lightbulb, CheckCircle, XCircle, Calendar
+  RotateCcw, Lightbulb, CheckCircle, XCircle, Calendar, ArrowLeft
 } from "lucide-react";
 
 /* =============================================================
@@ -481,10 +481,19 @@ export default function PracticePage() {
   return (
     <section className="workspace pkt-play-section">
       <div className="pkt-topbar">
-        <div className="pkt-step-dots">
-          {daily.map((_, i) => (
-            <div key={i} className={`pkt-step-dot${i < ci ? " done" : i === ci ? " active" : ""}`} />
-          ))}
+        <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
+          <button 
+            className="pkt-retry-btn" 
+            style={{ padding: '6px 12px', background: 'transparent', color: 'inherit', border: '1px solid rgba(255,255,255,0.1)' }} 
+            onClick={() => setPhase('intro')}
+          >
+            <ArrowLeft size={14} /> Quit
+          </button>
+          <div className="pkt-step-dots">
+            {daily.map((_, i) => (
+              <div key={i} className={`pkt-step-dot${i < ci ? " done" : i === ci ? " active" : ""}`} />
+            ))}
+          </div>
         </div>
         <div className="pkt-topbar-right">
           {ci_info.label && <span className={`pkt-combo-badge ${ci_info.cls}`}>{ci_info.label}</span>}

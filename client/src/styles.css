@@ -1,4 +1,4 @@
-﻿:root {
+:root {
   font-family: 'Inter', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -4574,6 +4574,22 @@ meter {
 }
 .pkt-retry-btn:hover { background: rgba(163,230,53,0.1); }
 
+/* ---------------------------------------------------------------
+   LIGHT MODE OVERRIDES for Practice Page
+--------------------------------------------------------------- */
+[data-theme="light"] .pkt-intro-h1  { color: #0d1614 !important; }
+[data-theme="light"] .pkt-intro-sub { color: rgba(13,22,20,0.8) !important; }
+[data-theme="light"] .pkt-intro-rule-chip {
+  background: rgba(101,163,13,0.12) !important;
+  color: #4d7c0f !important;
+  border-color: rgba(101,163,13,0.2) !important;
+}
+
+[data-theme="light"] .pkt-stat-card {
+  background: rgba(123,159,39,0.08) !important;
+  border-color: rgba(123,159,39,0.2) !important;
+}
+
 /* -- Playing screen ----------------------------------------- */
 .pkt-play-section {
   display: flex; flex-direction: column;
@@ -4731,18 +4747,6 @@ meter {
 }
 
 /* ---------------------------------------------------------------
-   LIGHT MODE OVERRIDES for Practice Page
---------------------------------------------------------------- */
-[data-theme="light"] .pkt-hero-card {
-  background: linear-gradient(135deg, #1a3a28 0%, #22502e 100%) !important;
-}
-[data-theme="light"] .pkt-intro-h1  { color: #f0f4f0 !important; }
-[data-theme="light"] .pkt-intro-sub { color: rgba(240,244,240,0.7) !important; }
-
-[data-theme="light"] .pkt-stat-card {
-  background: rgba(123,159,39,0.08) !important;
-  border-color: rgba(123,159,39,0.2) !important;
-}
 [data-theme="light"] .pkt-stat-val  { color: #5a8022 !important; }
 [data-theme="light"] .pkt-stat-lbl  { color: #53615c !important; }
 
