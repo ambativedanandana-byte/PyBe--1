@@ -516,24 +516,6 @@ function App() {
 
         {route === '/error-detective' && (
           <>
-            {/* ── Search ── */}
-            <div className="sb-section-label">
-              <Search size={12} /> Challenges
-              <span className="sb-count-chip">{errorQuestions.length}</span>
-            </div>
-            <label className="search-modern">
-              <Search size={15} className="search-icon" />
-              <input
-                value={errorFilters.q}
-                onChange={(event) => {
-                  setErrorFilters({ ...errorFilters, q: event.target.value });
-                }}
-                placeholder="Search challenges…"
-              />
-              {errorFilters.q && (
-                <button className="search-clear" onClick={() => setErrorFilters({ ...errorFilters, q: '' })}>✕</button>
-              )}
-            </label>
 
             {/* ── Level Dropdown ── */}
             <div className="sb-filter-card">
