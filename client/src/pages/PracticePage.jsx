@@ -199,7 +199,6 @@ function loadStreak() {
 
 function saveHistory(historyArray) {
   localStorage.setItem("pybe_kata_history", JSON.stringify(historyArray));
-}));
 }
 
 function loadXP()    { return parseInt(localStorage.getItem("pybe_kata_xp") || "0", 10); }
