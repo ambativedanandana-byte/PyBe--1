@@ -30,7 +30,9 @@ import {
   TrendingUp,
   User,
   Settings,
-  RefreshCw
+  RefreshCw,
+  Menu,
+  X
 } from 'lucide-react';
 import './styles.css';
 import ErrorDetectivePage from './pages/ErrorDetectivePage';
@@ -108,6 +110,11 @@ function App() {
     catch { return []; }
   });
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [sidebarVisible, setSidebarVisible] = useState(true);
+
+  const toggleSidebar = () => {
+    setSidebarVisible(prev => !prev);
+  };
 
   // Apply theme to <html> element
   useEffect(() => {
@@ -470,7 +477,19 @@ function App() {
   };
 
   return (
-    <main className="app-shell" data-theme={theme}>
+    <main className={`app-shell${!sidebarVisible ? ' sidebar-collapsed' : ''}`} data-theme={theme}>
+      {/* ── Menu Toggle Button (shown only when sidebar is closed) ── */}
+      {!sidebarVisible && (
+        <button
+          className="sidebar-toggle-btn"
+          onClick={toggleSidebar}
+          title="Open Navigation Menu"
+          aria-label="Open navigation menu"
+        >
+          <Menu size={20} />
+        </button>
+      )}
+
       {/* ── Theme Switcher Floating Icon on Dashboard ── */}
       <button className="workspace-theme-toggle" onClick={toggleTheme} aria-label="Toggle theme" title="Switch Theme">
         {theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}
@@ -481,8 +500,8 @@ function App() {
 
       {/* ── Mobile top bar ── */}
       <div className="mobile-topbar">
-        <button className="mobile-menu-btn" onClick={() => setSidebarOpen(v => !v)} aria-label="Toggle menu">
-          <span /><span /><span />
+        <button className="mobile-menu-btn" onClick={toggleSidebar} aria-label="Toggle menu">
+          <Menu size={20} />
         </button>
         <span className="mobile-brand">PyBe</span>
         <button className="theme-toggle-btn mobile-theme-btn" onClick={toggleTheme} aria-label="Toggle theme">
@@ -490,10 +509,10 @@ function App() {
         </button>
       </div>
 
-      <aside className={`sidebar${sidebarOpen ? ' sidebar-mobile-open' : ''}`}>
-        {/* ── Brand + Theme toggle ── */}
+      <aside className={`sidebar${sidebarOpen ? ' sidebar-mobile-open' : ''}${!sidebarVisible ? ' hidden' : ''}`}>
+        {/* ── Brand ── */}
         <div className="brand">
-          <div className="brand-icon-wrap">
+          <div className="brand-icon-wrap" onClick={toggleSidebar} style={{ cursor: 'pointer' }} title="Click to collapse menu">
             <Brain size={22} />
           </div>
           <div style={{ flex: 1 }}>
@@ -508,18 +527,15 @@ function App() {
             className={`nav-card ${route === '/' || route === '/dashboard' ? 'active' : ''}`}
             onClick={() => { setSidebarOpen(false); navigateTo('/'); }}
           >
-            <span className="nav-card-icon nav-icon-dashboard"><LayoutDashboard size={16} /></span>
+            <LayoutDashboard className="nav-card-svg" size={18} />
             <span className="nav-card-label">Dashboard</span>
           </button>
           <button
             className={`nav-card ${route === '/learn-python' ? 'active' : ''}`}
             onClick={() => { setSidebarOpen(false); navigateTo('/learn-python'); }}
           >
-            <span className="nav-card-icon nav-icon-scenarios"><Compass size={16} /></span>
+            <Compass className="nav-card-svg" size={18} />
             <span className="nav-card-label">Learn Python</span>
-            {scenarios.length > 0 && (
-              <span className="nav-card-badge">{scenarios.length}</span>
-            )}
           </button>
           <button
             className={`nav-card ${route === '/error-detective' ? 'active' : ''}`}
@@ -531,79 +547,67 @@ function App() {
               navigateTo('/error-detective');
             }}
           >
-            <span className="nav-card-icon nav-icon-detective"><Code2 size={16} /></span>
+            <Code2 className="nav-card-svg" size={18} />
             <span className="nav-card-label">Error Detective</span>
-            {errorStats.totalCompleted > 0 && (
-              <span className="nav-card-badge nav-badge-green">{errorStats.totalCompleted}</span>
-            )}
           </button>
           <button
             className={`nav-card ${route === '/practice' ? 'active' : ''}`}
             onClick={() => { setSidebarOpen(false); navigateTo('/practice'); }}
           >
-            <span className="nav-card-icon nav-icon-practice"><Terminal size={16} /></span>
+            <Terminal className="nav-card-svg" size={18} />
             <span className="nav-card-label">Practice</span>
           </button>
           <button
             className={`nav-card ${route === '/quiz' ? 'active' : ''}`}
             onClick={() => { setSidebarOpen(false); navigateTo('/quiz'); }}
           >
-            <span className="nav-card-icon nav-icon-quiz"><HelpCircle size={16} /></span>
+            <HelpCircle className="nav-card-svg" size={18} />
             <span className="nav-card-label">Quiz</span>
           </button>
           <button
             className={`nav-card ${route === '/achievements' ? 'active' : ''}`}
             onClick={() => { setSidebarOpen(false); navigateTo('/achievements'); }}
           >
-            <span className="nav-card-icon nav-icon-achievements"><Trophy size={16} /></span>
+            <Trophy className="nav-card-svg" size={18} />
             <span className="nav-card-label">Achievements</span>
           </button>
           <button
             className={`nav-card ${route === '/progress' ? 'active' : ''}`}
             onClick={() => { setSidebarOpen(false); navigateTo('/progress'); }}
           >
-            <span className="nav-card-icon nav-icon-progress"><TrendingUp size={16} /></span>
+            <TrendingUp className="nav-card-svg" size={18} />
             <span className="nav-card-label">Progress</span>
           </button>
           <button
             className={`nav-card ${route === '/profile' ? 'active' : ''}`}
             onClick={() => { setSidebarOpen(false); navigateTo('/profile'); }}
           >
-            <span className="nav-card-icon nav-icon-profile"><User size={16} /></span>
+            <User className="nav-card-svg" size={18} />
             <span className="nav-card-label">Profile</span>
           </button>
           <button
             className={`nav-card ${route === '/settings' ? 'active' : ''}`}
             onClick={() => { setSidebarOpen(false); navigateTo('/settings'); }}
           >
-            <span className="nav-card-icon nav-icon-settings"><Settings size={16} /></span>
+            <Settings className="nav-card-svg" size={18} />
             <span className="nav-card-label">Settings</span>
           </button>
         </nav>
 
-        {/* ── Divider ── */}
-        <div className="sidebar-divider" />
-
-        {/* ── Mini Progress Dashboard ── */}
-        <div className="sb-dashboard">
-          <div className="sb-dashboard-row">
-            <Award size={11} className="sb-dashboard-icon" />
-            <span className="sb-dashboard-label">Level</span>
-            <span className="sb-dashboard-value sb-level-badge">{currentLevel}</span>
+        {/* ── Static Non-Scrollable Progress Box ── */}
+        <div className="sidebar-static-box">
+          <div className="sb-static-header">
+            <span className="sb-static-title"><Award size={12} style={{ display: 'inline-block', verticalAlign: 'middle', marginRight: 4 }} /> LEVEL</span>
+            <span className="sb-level-pill">{currentLevel}</span>
           </div>
-          <div className="sb-dashboard-row">
-            <span className="sb-dashboard-label">Scenarios</span>
-            <span className="sb-dashboard-value">{scenarioPct}%</span>
+          <div className="sb-static-stat">
+            <span className="sb-static-label">SCENARIOS</span>
+            <span className="sb-static-value">{scenarioPct}%</span>
           </div>
-          <div className="sb-dashboard-bar-wrap">
-            <div className="sb-dashboard-bar" style={{ width: `${scenarioPct}%`, background: 'linear-gradient(90deg,#3b82f6,#60a5fa)' }} />
-          </div>
-          <div className="sb-dashboard-row" style={{ marginTop: 6 }}>
-            <span className="sb-dashboard-label">Error Detective</span>
-            <span className="sb-dashboard-value">{edPct}%</span>
-          </div>
-          <div className="sb-dashboard-bar-wrap">
-            <div className="sb-dashboard-bar" style={{ width: `${edPct}%`, background: 'linear-gradient(90deg,#7b9f27,#d8f07c)' }} />
+          <div className="sb-static-divider" />
+          <div className="sb-static-stat">
+            <span className="sb-static-label">ERROR DETECTIVE</span>
+            <span className="sb-static-value">{edPct}%</span>
           </div>
         </div>
 

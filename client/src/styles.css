@@ -24,30 +24,87 @@ select {
 .app-shell {
   min-height: 100vh;
   display: grid;
-  grid-template-columns: 300px 1fr;
+  grid-template-columns: 280px 1fr;
+  transition: grid-template-columns 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.app-shell.sidebar-collapsed {
+  grid-template-columns: 0px 1fr;
+}
+
+.sidebar-toggle-btn {
+  position: fixed;
+  top: 14px;
+  left: 14px;
+  z-index: 100;
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  background: rgba(13, 22, 20, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: #a3e635;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  backdrop-filter: blur(8px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  transition: all 0.2s ease;
+}
+
+.sidebar-toggle-btn:hover {
+  background: #182723;
+  border-color: #a3e635;
+  transform: scale(1.05);
+}
+
+.brand-menu-toggle {
+  background: transparent;
+  border: none;
+  color: #64748b;
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.brand-menu-toggle:hover {
+  color: #f8fafc;
+  background: rgba(255, 255, 255, 0.08);
 }
 
 .sidebar {
-  background: #16231f;
+  background: #0d1614;
   color: #f8f4ec;
-  padding: 20px 18px;
+  padding: 16px 14px;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  justify-content: space-between;
   position: sticky;
   top: 0;
   height: 100vh;
-  overflow-x: hidden;
-  overflow-y: auto;
-  scrollbar-width: thin;
-  scrollbar-color: rgba(255,255,255,0.1) transparent;
+  overflow: hidden; /* Static & NOT scrollable */
+  z-index: 50;
+  box-shadow: 2px 0 16px rgba(0, 0, 0, 0.25);
+  transition: opacity 0.3s ease, width 0.3s ease, padding 0.3s ease;
+}
+
+.sidebar.hidden {
+  width: 0;
+  padding: 0;
+  opacity: 0;
+  pointer-events: none;
+  overflow: hidden;
 }
 
 .brand {
   display: flex;
   align-items: center;
   gap: 12px;
-  margin-bottom: 4px;
+  margin-bottom: 8px;
   padding: 4px 2px;
 }
 
@@ -61,7 +118,7 @@ select {
   justify-content: center;
   color: #fff;
   flex-shrink: 0;
-  box-shadow: 0 4px 12px rgba(123, 159, 39, 0.35);
+  box-shadow: 0 4px 14px rgba(123, 159, 39, 0.4);
 }
 
 .brand strong {
@@ -644,18 +701,18 @@ meter {
 }
 
 .nav-card {
-  background: rgba(255,255,255,0.03);
-  border: 1px solid rgba(255,255,255,0.06);
-  color: #8fa89e;
+  background: transparent;
+  border: 1px solid transparent;
+  color: #8eacb0;
   text-align: left;
-  padding: 8px 12px;
-  border-radius: 10px;
+  padding: 10px 14px;
+  border-radius: 12px;
   cursor: pointer;
   display: flex;
   align-items: center;
-  gap: 9px;
-  font-weight: 600;
-  font-size: 0.87rem;
+  gap: 12px;
+  font-weight: 500;
+  font-size: 0.92rem;
   transition: all 0.22s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
   overflow: hidden;
@@ -667,27 +724,42 @@ meter {
   left: 0;
   top: 0;
   bottom: 0;
-  width: 3px;
+  width: 3.5px;
   border-radius: 0 2px 2px 0;
   background: transparent;
   transition: background 0.22s ease;
 }
 
 .nav-card:hover {
-  background: rgba(255,255,255,0.07);
-  color: #e2ede9;
-  border-color: rgba(255,255,255,0.1);
+  background: rgba(255, 255, 255, 0.05);
+  color: #f8fafc;
   transform: translateX(2px);
 }
 
 .nav-card.active {
-  background: linear-gradient(135deg, rgba(123,159,39,0.15) 0%, rgba(74,124,89,0.10) 100%);
+  background: rgba(163, 230, 53, 0.08);
   color: #d8f07c;
-  border-color: rgba(123,159,39,0.3);
+  font-weight: 600;
+  border-color: rgba(163, 230, 53, 0.15);
 }
 
 .nav-card.active::before {
-  background: linear-gradient(180deg, #d8f07c 0%, #7b9f27 100%);
+  background: #a3e635;
+}
+
+.nav-card-svg {
+  color: #8eacb0;
+  flex-shrink: 0;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.nav-card:hover .nav-card-svg {
+  color: #f8fafc;
+  transform: scale(1.08);
+}
+
+.nav-card.active .nav-card-svg {
+  color: #a3e635;
 }
 
 .nav-card-icon {
@@ -797,6 +869,67 @@ meter {
 
 .nav-card-label {
   flex: 1;
+}
+
+/* ── Sidebar Static Bottom Box ── */
+.sidebar-static-box {
+  background: rgba(0, 0, 0, 0.32);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  padding: 12px 14px;
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.sb-static-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 4px;
+}
+
+.sb-static-title {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: #64748b;
+}
+
+.sb-level-pill {
+  background: rgba(163, 230, 53, 0.18);
+  color: #a3e635;
+  border: 1px solid rgba(163, 230, 53, 0.3);
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 12px;
+}
+
+.sb-static-stat {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.75rem;
+}
+
+.sb-static-label {
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: #64748b;
+}
+
+.sb-static-value {
+  font-weight: 700;
+  color: #f8fafc;
+}
+
+.sb-static-divider {
+  height: 1px;
+  background: rgba(255, 255, 255, 0.06);
+  margin: 2px 0;
 }
 
 .nav-card-badge {
