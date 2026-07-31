@@ -365,17 +365,7 @@ export default function PracticePage() {
 
         {/* Right Column */}
         <div className="pkt-intro-right">
-          <div className="pkt-preview-card">
-            <h3 className="pkt-preview-card-title">Today's Concepts</h3>
-            <div className="pkt-preview-row">
-              {daily.map((c, i) => (
-                <div key={i} className={`pkt-pre-dot pkt-diff-${c.difficulty.toLowerCase()}`} title={c.difficulty}>
-                  <div className="pkt-pre-dot-letter">{c.difficulty[0]}</div>
-                  <span className="pkt-pre-dot-concept">{c.concept}</span>
-                </div>
-              ))}
-            </div>
-          </div>
+
 
           <div className="pkt-how-it-works">
             <p className="pkt-how-title">How it works</p>

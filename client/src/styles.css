@@ -1,4 +1,4 @@
-:root {
+﻿:root {
   font-family: 'Inter', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -133,7 +133,7 @@ select {
   letter-spacing: 0.01em;
 }
 
-/* Legacy .search kept for compat — replaced by .search-modern below */
+/* Legacy .search kept for compat â€” replaced by .search-modern below */
 .search {
   display: flex;
   align-items: center;
@@ -686,9 +686,9 @@ meter {
 }
 
 
-/* ─────────────────────────────────────────────
+/* â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
    Premium Sidebar Navigation
-───────────────────────────────────────────── */
+â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 
 /* Sidebar divider */
 .sidebar-divider {
@@ -698,7 +698,7 @@ meter {
   flex-shrink: 0;
 }
 
-/* ── Nav Cards ── */
+/* â”€â”€ Nav Cards â”€â”€ */
 .main-nav {
   display: flex;
   flex-direction: column;
@@ -876,7 +876,7 @@ meter {
   flex: 1;
 }
 
-/* ── Sidebar Static Bottom Box ── */
+/* â”€â”€ Sidebar Static Bottom Box â”€â”€ */
 .sidebar-static-box {
   background: rgba(0, 0, 0, 0.32);
   border: 1px solid rgba(255, 255, 255, 0.08);
@@ -960,7 +960,7 @@ meter {
   border-color: rgba(123,159,39,0.3) !important;
 }
 
-/* ── Section Labels ── */
+/* â”€â”€ Section Labels â”€â”€ */
 .sb-section-label {
   display: flex;
   align-items: center;
@@ -985,7 +985,7 @@ meter {
   border: 1px solid rgba(255,255,255,0.06);
 }
 
-/* ── Modern Search ── */
+/* â”€â”€ Modern Search â”€â”€ */
 .search-modern {
   display: flex;
   align-items: center;
@@ -1044,7 +1044,7 @@ meter {
   color: #b9c7bf;
 }
 
-/* ── Filter Cards (dropdown wrappers) ── */
+/* â”€â”€ Filter Cards (dropdown wrappers) â”€â”€ */
 .sb-filter-card {
   background: rgba(255,255,255,0.03);
   border: 1px solid rgba(255,255,255,0.07);
@@ -1164,7 +1164,7 @@ meter {
   color: #7b9f27;
 }
 
-/* ── Topic Button List ── */
+/* â”€â”€ Topic Button List â”€â”€ */
 .sb-topic-list {
   display: flex;
   flex-direction: column;
@@ -1286,7 +1286,7 @@ meter {
   background: linear-gradient(90deg, #34d399, #6ee7b7);
 }
 
-/* ── Empty state ── */
+/* â”€â”€ Empty state â”€â”€ */
 .sb-empty {
   display: flex;
   flex-direction: column;
@@ -2090,11 +2090,11 @@ meter {
 }
 
 
-/* ════════════════════════════════════════════
-   EXAM MODE — Error Detective
-════════════════════════════════════════════ */
+/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+   EXAM MODE â€” Error Detective
+â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
 
-/* Centred container — fills available space, no whitespace columns */
+/* Centred container â€” fills available space, no whitespace columns */
 .exam-wrapper {
   max-width: 100%;
   width: 100%;
@@ -2105,7 +2105,7 @@ meter {
   padding-bottom: 40px;
 }
 
-/* ── Exam header ── */
+/* â”€â”€ Exam header â”€â”€ */
 .exam-header {
   background: #fff;
   border: 1.5px solid #dcd7ce;
@@ -2190,7 +2190,7 @@ meter {
 .exam-dot-done    { background: #7b9f27; }
 .exam-dot-active  { background: #17231f; transform: scale(1.4); box-shadow: 0 0 0 2px #fff, 0 0 0 3.5px #17231f; }
 
-/* ── Question card ── */
+/* â”€â”€ Question card â”€â”€ */
 .eq-card {
   background: #fff;
   border: 1.5px solid #dcd7ce;
@@ -2290,7 +2290,7 @@ meter {
   padding: 2px 0;
 }
 
-/* ── Answer options ── */
+/* â”€â”€ Answer options â”€â”€ */
 .eq-options {
   display: flex;
   flex-direction: column;
@@ -2391,7 +2391,7 @@ meter {
   opacity: 0.45;
 }
 
-/* ── Action row ── */
+/* â”€â”€ Action row â”€â”€ */
 .eq-action-row {
   display: flex;
   align-items: center;
@@ -2474,7 +2474,7 @@ meter {
   transform: translateY(-1px);
 }
 
-/* ── Feedback panel ── */
+/* â”€â”€ Feedback panel â”€â”€ */
 .eq-feedback {
   border-radius: 12px;
   padding: 20px 24px;
@@ -2573,7 +2573,7 @@ meter {
 .ed-crumb-current { color: #17231f !important; cursor: default !important; }
 .ed-crumb-current:hover { text-decoration: none !important; }
 
-/* ── Responsive ── */
+/* â”€â”€ Responsive â”€â”€ */
 @media (max-width: 900px) {
   .exam-wrapper { max-width: 100%; }
   .eq-card { padding: 20px 18px; }
@@ -2588,9 +2588,9 @@ meter {
   .exam-dot { width: 8px; height: 8px; }
 }
 
-/* ════════════════════════════════════════════
-   LOCK / UNLOCK SYSTEM — Error Detective
-════════════════════════════════════════════ */
+/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+   LOCK / UNLOCK SYSTEM â€” Error Detective
+â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
 
 /* Locked level card */
 .level-card-locked {
@@ -2649,14 +2649,14 @@ meter {
   vertical-align: middle;
 }
 
-/* ═══════════════════════════════════════════════════════════
-   NEW UI ENHANCEMENTS — Dark/Light Mode, Mobile, Dashboard,
+/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+   NEW UI ENHANCEMENTS â€” Dark/Light Mode, Mobile, Dashboard,
    Bookmarks (pure additions, zero overrides of existing logic)
-═══════════════════════════════════════════════════════════ */
+â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
 
-/* ──────────────────────────────────────────
-   CSS CUSTOM PROPERTIES — DARK (default)
-────────────────────────────────────────── */
+/* â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+   CSS CUSTOM PROPERTIES â€” DARK (default)
+â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 :root {
   --bg-app:        #f4f1ea;
   --bg-sidebar:    #16231f;
@@ -2670,9 +2670,9 @@ meter {
   --shadow-panel:  0 16px 42px rgba(40,34,23,.08);
 }
 
-/* ──────────────────────────────────────────
+/* â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
    LIGHT MODE overrides (applied via data-theme="light" on <html>)
-────────────────────────────────────────── */
+â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 [data-theme="light"] .sidebar {
   background: #1e3530;
 }
@@ -2681,9 +2681,9 @@ meter {
   background: #f9f7f3;
 }
 
-/* ──────────────────────────────────────────
+/* â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
    THEME TOGGLE BUTTON
-────────────────────────────────────────── */
+â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 .theme-toggle-btn {
   flex-shrink: 0;
   width: 32px;
@@ -2706,16 +2706,16 @@ meter {
   transform: rotate(15deg);
 }
 
-/* ──────────────────────────────────────────
+/* â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
    MOBILE TOP BAR (hidden on desktop)
-────────────────────────────────────────── */
+â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 .mobile-topbar {
   display: none;
 }
 
-/* ──────────────────────────────────────────
+/* â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
    MOBILE HAMBURGER BUTTON
-────────────────────────────────────────── */
+â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 .mobile-menu-btn {
   width: 36px;
   height: 36px;
@@ -2739,16 +2739,16 @@ meter {
   transition: all 0.22s ease;
 }
 
-/* ──────────────────────────────────────────
+/* â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
    SIDEBAR OVERLAY (mobile)
-────────────────────────────────────────── */
+â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 .sidebar-overlay {
   display: none;
 }
 
-/* ──────────────────────────────────────────
+/* â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
    MINI PROGRESS DASHBOARD (sidebar)
-────────────────────────────────────────── */
+â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 .sb-dashboard {
   background: rgba(255,255,255,0.03);
   border: 1px solid rgba(255,255,255,0.07);
@@ -2809,9 +2809,9 @@ meter {
   transition: width 0.5s ease;
 }
 
-/* ──────────────────────────────────────────
+/* â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
    BOOKMARK TOGGLE BUTTON (above scenario list)
-────────────────────────────────────────── */
+â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 .sb-bookmark-toggle {
   display: flex;
   align-items: center;
@@ -2842,9 +2842,9 @@ meter {
   color: #fbbf24;
 }
 
-/* ──────────────────────────────────────────
+/* â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
    SCENARIO CARD WRAP + BOOKMARK BUTTON
-────────────────────────────────────────── */
+â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 .scenario-card-wrap {
   position: relative;
 }
@@ -2889,9 +2889,9 @@ meter {
   width: 100%;
 }
 
-/* ──────────────────────────────────────────
+/* â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
    FULL MOBILE RESPONSIVE
-────────────────────────────────────────── */
+â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 @media (max-width: 768px) {
 
   /* Show mobile topbar */
@@ -3093,10 +3093,10 @@ meter {
   }
 }
 
-/* ──────────────────────────────────────────
+/* â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
    FULL THEME SWITCHER OVERRIDES
    (Pure CSS layer, 0 changes to app code)
-────────────────────────────────────────── */
+â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 
 /* Floating dashboard theme toggle button */
 .workspace-theme-toggle {
@@ -3136,7 +3136,7 @@ meter {
   box-shadow: 0 6px 20px rgba(0,0,0,0.45) !important;
 }
 
-/* ── DARK THEME OVERRIDES ── */
+/* â”€â”€ DARK THEME OVERRIDES â”€â”€ */
 [data-theme="dark"] {
   background-color: #0f1614 !important;
   color: #d1e0db !important;
@@ -3363,7 +3363,7 @@ meter {
   color: #fde047 !important;
 }
 
-/* ── LIGHT THEME OVERRIDES ── */
+/* â”€â”€ LIGHT THEME OVERRIDES â”€â”€ */
 [data-theme="light"] {
   background-color: #f6f5ef !important;
   color: #1c2824 !important;
@@ -3560,7 +3560,7 @@ meter {
   background: #1c2824 !important;
 }
 
-/* ── NEW EXAM AND NAVIGATION REDESIGN STYLES ── */
+/* â”€â”€ NEW EXAM AND NAVIGATION REDESIGN STYLES â”€â”€ */
 
 /* Topic Progress Bar at the Top */
 .exam-progress-wrapper {
@@ -3798,9 +3798,9 @@ meter {
   padding: 20px 0;
 }
 
-/* ─────────────────────────────────────────────────────────────
+/* â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
    SCENARIO LIBRARY (.scn-*) STYLES WITH FULL THEME HARMONY
-   ───────────────────────────────────────────────────────────── */
+   â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 
 .scn-page {
   display: flex;
@@ -4398,7 +4398,7 @@ meter {
 /* ---------------------------------------------------------------
 
 /* ---------------------------------------------------------------
-   PRACTICE PAGE � Daily Code Kata  (.pkt-*)
+   PRACTICE PAGE — Daily Code Kata  (.pkt-*)
    Full dark + light theme support
 --------------------------------------------------------------- */
 
@@ -4513,38 +4513,6 @@ meter {
   font-size: 0.75rem; font-weight: 500; color: #6a8a7e;
 }
 
-/* Right column cards */
-.pkt-preview-card {
-  background: rgba(255,255,255,0.04);
-  border: 1px solid rgba(255,255,255,0.08);
-  border-radius: 16px; padding: 22px 22px;
-}
-.pkt-preview-card-title {
-  font-size: 0.72rem; font-weight: 700; text-transform: uppercase;
-  letter-spacing: 0.08em; color: #6a8a7e;
-  margin: 0 0 16px;
-}
-.pkt-preview-row {
-  display: flex; gap: 10px; align-items: center;
-}
-.pkt-pre-dot {
-  flex: 1; border-radius: 10px; padding: 10px 6px;
-  display: flex; flex-direction: column; align-items: center; gap: 6px;
-  font-size: 0.68rem; font-weight: 700; color: rgba(255,255,255,0.9);
-  text-align: center;
-}
-.pkt-pre-dot-letter {
-  width: 32px; height: 32px; border-radius: 50%;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 0.75rem; font-weight: 800; color: #fff;
-}
-.pkt-diff-beginner  .pkt-pre-dot-letter { background: linear-gradient(135deg,#22c55e,#16a34a); }
-.pkt-diff-explorer  .pkt-pre-dot-letter { background: linear-gradient(135deg,#3b82f6,#1d4ed8); }
-.pkt-diff-builder   .pkt-pre-dot-letter { background: linear-gradient(135deg,#a855f7,#7c3aed); }
-.pkt-diff-beginner  { background: rgba(34,197,94,0.08);   border: 1px solid rgba(34,197,94,0.15); }
-.pkt-diff-explorer  { background: rgba(59,130,246,0.08);  border: 1px solid rgba(59,130,246,0.15); }
-.pkt-diff-builder   { background: rgba(168,85,247,0.08);  border: 1px solid rgba(168,85,247,0.15); }
-.pkt-pre-dot-concept { font-size: 0.62rem; opacity: 0.75; }
 
 /* How it works card */
 .pkt-how-it-works {
@@ -4777,18 +4745,6 @@ meter {
 }
 [data-theme="light"] .pkt-stat-val  { color: #5a8022 !important; }
 [data-theme="light"] .pkt-stat-lbl  { color: #53615c !important; }
-
-[data-theme="light"] .pkt-preview-card {
-  background: #ffffff !important;
-  border-color: #e0dbd0 !important;
-  box-shadow: 0 2px 12px rgba(0,0,0,0.06) !important;
-}
-[data-theme="light"] .pkt-preview-card-title { color: #73827d !important; }
-[data-theme="light"] .pkt-pre-dot { border-color: rgba(0,0,0,0.08) !important; }
-[data-theme="light"] .pkt-diff-beginner  { background: rgba(34,197,94,0.06)  !important; }
-[data-theme="light"] .pkt-diff-explorer  { background: rgba(59,130,246,0.06) !important; }
-[data-theme="light"] .pkt-diff-builder   { background: rgba(168,85,247,0.06) !important; }
-[data-theme="light"] .pkt-pre-dot-concept { color: #53615c !important; }
 
 [data-theme="light"] .pkt-how-it-works {
   background: #ffffff !important;
