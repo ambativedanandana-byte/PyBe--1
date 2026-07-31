@@ -326,37 +326,56 @@ export default function PracticePage() {
         
         {/* Left Column */}
         <div className="pkt-intro-left">
-          <div className="pkt-hero-card">
-            <div className="pkt-hero-badge">
-              <Flame size={28} className="pkt-hero-badge-icon" />
-              <div className="pkt-streak-bubble">{streak.n}</div>
-            </div>
-            <h1 className="pkt-intro-h1">Daily Code Kata</h1>
-            <p className="pkt-intro-sub">
-              5 short Python fill-in-the-blank challenges to build muscle memory.
-              <span className="pkt-intro-rule">
-                <span className="pkt-intro-rule-chip">Type only</span>
-                <span className="pkt-intro-rule-chip">No copy-paste</span>
-                <span className="pkt-intro-rule-chip">60s per challenge</span>
-              </span>
-            </p>
+          <div className="pkt-hero-card pkt-fade-in-up" style={{ animationDelay: '0.1s' }}>
+            {/* Animated Background Orbs */}
+            <div className="pkt-hero-glow-1"></div>
+            <div className="pkt-hero-glow-2"></div>
             
-            <button className="pkt-start-btn" onClick={handleStart}>
-              <Zap size={18} /> {streak.today ? "Practice Again" : "Start Today's Kata"}
-            </button>
-            {streak.today && (
-              <p className="pkt-done-today" style={{ marginTop: '12px' }}>
-                You have already completed today's set.<br/>New challenges tomorrow!
+            {/* Floating Code Illustration */}
+            <div className="pkt-hero-illustration">
+              <div className="pkt-illus-block pkt-illus-1">
+                <span>def</span> solve():
+              </div>
+              <div className="pkt-illus-block pkt-illus-2">
+                <span>pass</span>
+              </div>
+              <div className="pkt-illus-block pkt-illus-3">
+                <Flame size={20} className="pkt-illus-flame" />
+              </div>
+            </div>
+
+            <div className="pkt-hero-content">
+              <div className="pkt-hero-badge">
+                <Flame size={28} className="pkt-hero-badge-icon" />
+                <div className="pkt-streak-bubble">{streak.n}</div>
+              </div>
+              <h1 className="pkt-intro-h1">Daily Code Kata</h1>
+              <p className="pkt-intro-sub">
+                5 short Python fill-in-the-blank challenges to build muscle memory.
+                <span className="pkt-intro-rule">
+                  <span className="pkt-intro-rule-chip">Type only</span>
+                  <span className="pkt-intro-rule-chip">No copy-paste</span>
+                  <span className="pkt-intro-rule-chip">60s per challenge</span>
+                </span>
               </p>
-            )}
+              
+              <button className="pkt-start-btn pkt-pulse-btn" onClick={handleStart}>
+                <Zap size={18} /> {streak.today ? "Practice Again" : "Start Today's Kata"}
+              </button>
+              {streak.today && (
+                <p className="pkt-done-today" style={{ marginTop: '12px' }}>
+                  You have already completed today's set.<br/>New challenges tomorrow!
+                </p>
+              )}
+            </div>
           </div>
 
           <div className="pkt-stats-row">
-            <div className="pkt-stat-card">
+            <div className="pkt-stat-card pkt-fade-in-up" style={{ animationDelay: '0.2s' }}>
               <span className="pkt-stat-val">{streak.n}</span>
               <span className="pkt-stat-lbl">Day Streak</span>
             </div>
-            <div className="pkt-stat-card">
+            <div className="pkt-stat-card pkt-fade-in-up" style={{ animationDelay: '0.3s' }}>
               <span className="pkt-stat-val">{totalXP}</span>
               <span className="pkt-stat-lbl">Total XP</span>
             </div>
@@ -365,9 +384,7 @@ export default function PracticePage() {
 
         {/* Right Column */}
         <div className="pkt-intro-right">
-
-
-          <div className="pkt-how-it-works">
+          <div className="pkt-how-it-works pkt-fade-in-up" style={{ animationDelay: '0.4s' }}>
             <p className="pkt-how-title">How it works</p>
             <div className="pkt-how-grid">
               <div className="pkt-how-item">

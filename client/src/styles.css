@@ -4827,3 +4827,147 @@ meter {
   color: #ffffff !important;
   box-shadow: 0 4px 18px rgba(123,159,39,0.3) !important;
 }
+
+/* ═══════════════════════════════════════════════════════════════
+   PRACTICE PAGE — Animations & Effects
+═══════════════════════════════════════════════════════════════ */
+
+/* Fade & Slide Up Animation for Cards */
+.pkt-fade-in-up {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: pktFadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes pktFadeInUp {
+  0% { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+/* Pulsing Start Button */
+.pkt-pulse-btn {
+  animation: pktPulseShadow 2.5s infinite;
+}
+@keyframes pktPulseShadow {
+  0% { box-shadow: 0 0 0 0 rgba(163,230,53,0.4); }
+  70% { box-shadow: 0 0 0 12px rgba(163,230,53,0); }
+  100% { box-shadow: 0 0 0 0 rgba(163,230,53,0); }
+}
+
+/* Hover effects for stat cards */
+.pkt-stat-card, .pkt-how-it-works {
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+.pkt-stat-card:hover, .pkt-how-it-works:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px rgba(0,0,0,0.12);
+  border-color: rgba(163,230,53,0.25);
+}
+[data-theme="light"] .pkt-stat-card:hover, [data-theme="light"] .pkt-how-it-works:hover {
+  box-shadow: 0 12px 24px rgba(0,0,0,0.06);
+  border-color: rgba(123,159,39,0.3) !important;
+}
+
+/* Hero Content Stack */
+.pkt-hero-content {
+  position: relative;
+  z-index: 2; /* keep above glowing backgrounds and illustration */
+}
+
+/* Glowing Background Orbs */
+.pkt-hero-glow-1, .pkt-hero-glow-2 {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(40px);
+  z-index: 0;
+  animation: pktFloat 8s infinite alternate ease-in-out;
+}
+.pkt-hero-glow-1 {
+  width: 150px; height: 150px;
+  background: rgba(163,230,53,0.15);
+  top: -20px; left: -20px;
+}
+.pkt-hero-glow-2 {
+  width: 120px; height: 120px;
+  background: rgba(255,107,53,0.1);
+  bottom: -30px; right: 20%;
+  animation-delay: -3s;
+}
+
+@keyframes pktFloat {
+  0% { transform: translate(0, 0) scale(1); }
+  100% { transform: translate(20px, -20px) scale(1.1); }
+}
+
+/* Floating CSS Illustration */
+.pkt-hero-illustration {
+  position: absolute;
+  top: 30px;
+  right: -20px;
+  width: 200px;
+  height: 200px;
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0.9;
+}
+
+.pkt-illus-block {
+  position: absolute;
+  background: rgba(0,0,0,0.4);
+  border: 1px solid rgba(163,230,53,0.2);
+  border-radius: 8px;
+  padding: 8px 12px;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.8rem;
+  color: #c4cdc8;
+  backdrop-filter: blur(4px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+  animation: pktFloatUpDown 6s infinite alternate ease-in-out;
+}
+
+.pkt-illus-block span { color: #a3e635; font-weight: 700; }
+
+.pkt-illus-1 {
+  top: 10px; right: 40px;
+  animation-delay: 0s;
+  transform: rotate(-5deg);
+}
+
+.pkt-illus-2 {
+  top: 60px; right: 10px;
+  padding-left: 24px;
+  animation-delay: -2s;
+  transform: rotate(3deg);
+  border-color: rgba(255,107,53,0.2);
+}
+.pkt-illus-2 span { color: #ff6b35; }
+
+.pkt-illus-3 {
+  top: 110px; right: 50px;
+  width: 40px; height: 40px;
+  display: flex; align-items: center; justify-content: center;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #a3e635, #65a30d);
+  border: none;
+  color: #0d1614;
+  animation-delay: -4s;
+  box-shadow: 0 0 15px rgba(163,230,53,0.4);
+}
+
+@keyframes pktFloatUpDown {
+  0% { transform: translateY(0) rotate(var(--rot, 0deg)); }
+  100% { transform: translateY(-12px) rotate(var(--rot, 0deg)); }
+}
+
+/* Light mode overrides for illustration */
+[data-theme="light"] .pkt-hero-glow-1 { background: rgba(123,159,39,0.25); }
+[data-theme="light"] .pkt-hero-glow-2 { background: rgba(255,107,53,0.15); }
+[data-theme="light"] .pkt-illus-block {
+  background: rgba(255,255,255,0.8);
+  border-color: rgba(123,159,39,0.3);
+  color: #1c2824;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+}
+[data-theme="light"] .pkt-illus-block span { color: #4a7010; }
+[data-theme="light"] .pkt-illus-2 { border-color: rgba(255,107,53,0.3); }
+[data-theme="light"] .pkt-illus-2 span { color: #c2410c; }
