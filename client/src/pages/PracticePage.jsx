@@ -150,9 +150,9 @@ function getDailyChallenges() {
 }
 
 function getComboInfo(count) {
-  if (count >= 5) return { label: "? 3x COMBO", mult: 3, cls: "cmax" };
-  if (count >= 3) return { label: "?? 2x Combo", mult: 2, cls: "chigh" };
-  if (count >= 1) return { label: "? On a roll!", mult: 1, cls: "clow" };
+  if (count >= 5) return { label: "🔥 3x COMBO", mult: 3, cls: "cmax" };
+  if (count >= 3) return { label: "⚡ 2x Combo", mult: 2, cls: "chigh" };
+  if (count >= 1) return { label: "👍 On a roll!", mult: 1, cls: "clow" };
   return { label: "", mult: 1, cls: "" };
 }
 
@@ -412,7 +412,7 @@ export default function PracticePage() {
 
   // -- END ----------------------------------------------------
   if (phase === "end") {
-    const emoji = scorrect === 5 ? "??" : scorrect >= 3 ? "??" : "??";
+    const emoji = scorrect === 5 ? "🏆" : scorrect >= 3 ? "⭐" : "💪";
     const msg   = scorrect === 5 ? "Perfect Session!" : `${scorrect} of 5 Correct`;
     return (
       <section className="workspace">
@@ -425,11 +425,14 @@ export default function PracticePage() {
           <div className="pkt-end-grid">
             <div className="pkt-end-cell"><span className="pkt-end-big">{sxp}</span><span className="pkt-end-label">XP Earned</span></div>
             <div className="pkt-end-cell"><span className="pkt-end-big">{scorrect}/5</span><span className="pkt-end-label">Correct</span></div>
-            <div className="pkt-end-cell"><span className="pkt-end-big">?? {streak.n}</span><span className="pkt-end-label">Day Streak</span></div>
+            <div className="pkt-end-cell"><span className="pkt-end-big">🔥 {streak.n}</span><span className="pkt-end-label">Day Streak</span></div>
             <div className="pkt-end-cell"><span className="pkt-end-big">{totalXP}</span><span className="pkt-end-label">Total XP</span></div>
           </div>
           <p className="pkt-end-tomorrow">Come back tomorrow for 5 new challenges!</p>
-          <button className="pkt-retry-btn" onClick={handleStart}><RotateCcw size={14} /> Practice Again</button>
+          <div style={{ display: 'flex', gap: '12px', justifyContent: 'center' }}>
+            <button className="pkt-retry-btn" style={{ background: 'transparent', color: '#a3e635', border: '1px solid rgba(163,230,53,0.3)' }} onClick={() => setPhase('intro')}>Back to Intro</button>
+            <button className="pkt-retry-btn" onClick={handleStart}><RotateCcw size={14} /> Practice Again</button>
+          </div>
         </div>
       </section>
     );
