@@ -332,7 +332,6 @@ export default function PracticePage() {
       setPhase("end");
     }
   }
-  }
 
   function handleStart() {
     setCi(0); setCombo(0); comboRef.current = 0;
