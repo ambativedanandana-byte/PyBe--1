@@ -4589,6 +4589,10 @@ meter {
   background: rgba(123,159,39,0.08) !important;
   border-color: rgba(123,159,39,0.2) !important;
 }
+[data-theme="light"] .pkt-stat-val  { color: #3f6212 !important; }
+[data-theme="light"] .pkt-stat-lbl  { color: #3d4f49 !important; }
+
+[data-theme="light"] .pkt-done-today { color: #3f6212 !important; }
 
 /* -- Playing screen ----------------------------------------- */
 .pkt-play-section {
