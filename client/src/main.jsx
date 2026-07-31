@@ -37,6 +37,7 @@ import {
 import './styles.css';
 import ErrorDetectivePage from './pages/ErrorDetectivePage';
 import ScenariosPage from './pages/ScenariosPage';
+import PracticePage from './pages/PracticePage';
 
 // Topic lists per level — mirrors LEVELS in ErrorDetectivePage (kept here for sidebar use)
 const LEVEL_TOPICS = {
@@ -329,7 +330,7 @@ function App() {
         );
 
       case '/practice':
-        return <PracticeView stats={errorStats} solvedCount={edDone} />;
+        return <PracticePage />;
       case '/quiz':
         return <QuizView stats={errorStats} solvedCount={edDone} />;
       case '/achievements':
