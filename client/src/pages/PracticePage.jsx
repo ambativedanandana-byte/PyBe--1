@@ -204,7 +204,16 @@ function saveHistory(historyArray) {
 function loadXP()    { return parseInt(localStorage.getItem("pybe_kata_xp") || "0", 10); }
 function saveXP(xp)  { localStorage.setItem("pybe_kata_xp", String(xp)); }
 
+
+const SNAKE_PATH = [
+  0, 1, 2, 3, 4, 5, 6,
+  13, 12, 11, 10, 9, 8, 7,
+  14, 15, 16, 17, 18, 19, 20,
+  27, 26, 25, 24, 23, 22, 21
+];
+
 // -- Main Component --------------------------------------------
+
 export default function PracticePage() {
   const [phase,    setPhase]    = useState("intro");
   const daily                   = useMemo(getDailyChallenges, []);
@@ -219,6 +228,21 @@ export default function PracticePage() {
   const [showHint, setShowHint] = useState(false);
   const [hintUsed, setHintUsed] = useState(false);
   const [shake,    setShake]    = useState(false);
+
+  const [snakePos, setSnakePos] = useState(0);
+
+  useEffect(() => {
+    if (phase !== "intro") return;
+    const interval = setInterval(() => {
+      setSnakePos(p => (p + 1) % 28);
+    }, 150);
+    return () => clearInterval(interval);
+  }, [phase]);
+
+  const snakeLen = 4;
+  const snakeBody = Array.from({length: snakeLen}).map((_, i) => SNAKE_PATH[(snakePos - i + 28) % 28]);
+  const snakeHead = snakeBody[0];
+
   const [xpBurst,  setXpBurst]  = useState(null);
   const [streak,   setStreak]   = useState(loadStreak);
   const [totalXP,  setTotalXP]  = useState(loadXP);
@@ -397,10 +421,25 @@ export default function PracticePage() {
           <div className="pkt-streak-calendar pkt-fade-in-up" style={{ animationDelay: '0.4s' }}>
             <p className="pkt-cal-title">Activity Calendar</p>
             <div className="pkt-cal-grid">
+              {["S", "M", "T", "W", "T", "F", "S"].map((d, i) => (
+                <div key={"hdr"+i} className="pkt-cal-hdr">{d}</div>
+              ))}
               {Array.from({ length: 28 }).map((_, i) => {
-                const d = new Date(Date.now() - (27 - i) * 86400000).toDateString();
-                const isActive = (streak.history || []).includes(d);
-                return <div key={i} className={`pkt-cal-day ${isActive ? 'active' : ''}`} title={d} />
+                const dObj = new Date(Date.now() - (27 - i) * 86400000);
+                const dStr = dObj.toDateString();
+                const isActive = (streak.history || []).includes(dStr);
+                const isHead = i === snakeHead;
+                const isBody = snakeBody.includes(i);
+                
+                let cls = `pkt-cal-day ${isActive ? 'active' : ''}`;
+                if (isHead) cls += ' pkt-snake-head';
+                else if (isBody) cls += ' pkt-snake-body';
+
+                return (
+                  <div key={i} className={cls} title={dStr}>
+                    {dObj.getDate()}
+                  </div>
+                );
               })}
             </div>
           </div>
