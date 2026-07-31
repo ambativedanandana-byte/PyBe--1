@@ -451,23 +451,6 @@ function App() {
                 <p>Complete {currentLevel === 'Beginner' ? 'Beginner' : currentLevel === 'Explorer' ? 'Explorer' : 'Builder'} level to unlock.</p>
               </div>
             </div>
-
-            <section className="dashboard dashboard-2col">
-              <div className="panel dashboard-main-col">
-                <div className="section-title"><Route size={20} /><h2>Roadmap</h2></div>
-                <Roadmap roadmap={roadmap} />
-              </div>
-              <div className="dashboard-side-col">
-                <div className="panel">
-                  <div className="section-title"><ChartNoAxesCombined size={20} /><h2>Learner Analytics</h2></div>
-                  <Analytics analytics={analytics} />
-                </div>
-                <div className="panel" style={{ marginTop: '16px' }}>
-                  <div className="section-title"><MessageSquareText size={20} /><h2>Recent Sessions</h2></div>
-                  <SessionList sessions={sessions} />
-                </div>
-              </div>
-            </section>
           </section>
         );
     }
