@@ -30,10 +30,13 @@ import {
   TrendingUp,
   User,
   Settings,
-  RefreshCw
+  RefreshCw,
+  Menu,
+  X
 } from 'lucide-react';
 import './styles.css';
 import ErrorDetectivePage from './pages/ErrorDetectivePage';
+import ScenariosPage from './pages/ScenariosPage';
 
 // Topic lists per level — mirrors LEVELS in ErrorDetectivePage (kept here for sidebar use)
 const LEVEL_TOPICS = {
@@ -108,6 +111,11 @@ function App() {
     catch { return []; }
   });
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [sidebarVisible, setSidebarVisible] = useState(true);
+
+  const toggleSidebar = () => {
+    setSidebarVisible(prev => !prev);
+  };
 
   // Apply theme to <html> element
   useEffect(() => {
@@ -298,87 +306,7 @@ function App() {
   const renderContent = () => {
     switch (route) {
       case '/learn-python':
-        return (
-          <section className="workspace">
-            <header className="hero">
-              <div>
-                <p>AI-native learning journey</p>
-                <h1>Learn Python by reasoning through real situations first.</h1>
-              </div>
-              <div className="hero-stats">
-                <span>{analytics?.scenarioCount || 0}<small>Scenarios</small></span>
-                <span>{analytics?.sessionCount || 0}<small>Sessions</small></span>
-                <span>{analytics?.averagePromptScore || 0}<small>Prompt score</small></span>
-              </div>
-            </header>
-
-            <div className="main-grid">
-              <section className="panel learning-panel">
-                <div className="section-title">
-                  <Compass size={20} />
-                  <h2>{selected?.title}</h2>
-                </div>
-                <p className="context">{selected?.context}</p>
-                <div className="objective-row">
-                  {selected?.objectives.map((item) => <span key={item}>{item}</span>)}
-                </div>
-                <form onSubmit={submitSession} className="learning-form">
-                  <label>
-                    Your reasoning
-                    <textarea
-                      required
-                      value={form.reasoning}
-                      onChange={(event) => setForm({ ...form, reasoning: event.target.value })}
-                      placeholder={selected?.prompt}
-                    />
-                  </label>
-                  <label>
-                    Prompt you would give an AI mentor
-                    <textarea
-                      value={form.promptText}
-                      onChange={(event) => setForm({ ...form, promptText: event.target.value })}
-                      placeholder="Explain my approach step by step, then show the Python concept and code..."
-                    />
-                  </label>
-                  <label>
-                    Reflection
-                    <textarea
-                      value={form.reflection}
-                      onChange={(event) => setForm({ ...form, reflection: event.target.value })}
-                      placeholder="What did you notice about your thinking?"
-                    />
-                  </label>
-                  <button className="primary" disabled={submitting}>
-                    <Send size={18} />{submitting ? 'Mapping...' : 'Map My Reasoning'}
-                  </button>
-                </form>
-              </section>
-
-              <section className="panel result-panel">
-                <div className="section-title">
-                  <Sparkles size={20} />
-                  <h2>AI Mentor Output</h2>
-                </div>
-                {!activeResult ? <EmptyResult /> : <Result result={activeResult} />}
-              </section>
-            </div>
-
-            <section className="dashboard">
-              <div className="panel">
-                <div className="section-title"><ChartNoAxesCombined size={20} /><h2>Learner Analytics</h2></div>
-                <Analytics analytics={analytics} />
-              </div>
-              <div className="panel">
-                <div className="section-title"><Route size={20} /><h2>Roadmap</h2></div>
-                <Roadmap roadmap={roadmap} />
-              </div>
-              <div className="panel">
-                <div className="section-title"><MessageSquareText size={20} /><h2>Recent Sessions</h2></div>
-                <SessionList sessions={sessions} />
-              </div>
-            </section>
-          </section>
-        );
+        return <ScenariosPage scenarios={scenarios} />;
 
       case '/error-detective':
         return (
@@ -423,11 +351,6 @@ function App() {
                 <p>Welcome Back, Python Developer</p>
                 <h1>Explore your progress and continue learning.</h1>
               </div>
-              <div className="hero-stats">
-                <span>{scenariosDone} / {totalScenarios}<small>Scenarios</small></span>
-                <span>{edDone} / {edTotal}<small>Errors Debugged</small></span>
-                <span>{(edDone * 10) + (scenariosDone * 50)}<small>Total XP</small></span>
-              </div>
             </header>
 
             <div className="dashboard-summary-cards">
@@ -449,28 +372,25 @@ function App() {
                 <p>Complete {currentLevel === 'Beginner' ? 'Beginner' : currentLevel === 'Explorer' ? 'Explorer' : 'Builder'} level to unlock.</p>
               </div>
             </div>
-
-            <section className="dashboard">
-              <div className="panel">
-                <div className="section-title"><ChartNoAxesCombined size={20} /><h2>Learner Analytics</h2></div>
-                <Analytics analytics={analytics} />
-              </div>
-              <div className="panel">
-                <div className="section-title"><Route size={20} /><h2>Roadmap</h2></div>
-                <Roadmap roadmap={roadmap} />
-              </div>
-              <div className="panel">
-                <div className="section-title"><MessageSquareText size={20} /><h2>Recent Sessions</h2></div>
-                <SessionList sessions={sessions} />
-              </div>
-            </section>
           </section>
         );
     }
   };
 
   return (
-    <main className="app-shell" data-theme={theme}>
+    <main className={`app-shell${!sidebarVisible ? ' sidebar-collapsed' : ''}`} data-theme={theme}>
+      {/* ── Menu Toggle Button (shown only when sidebar is closed) ── */}
+      {!sidebarVisible && (
+        <button
+          className="sidebar-toggle-btn"
+          onClick={toggleSidebar}
+          title="Open Navigation Menu"
+          aria-label="Open navigation menu"
+        >
+          <Menu size={20} />
+        </button>
+      )}
+
       {/* ── Theme Switcher Floating Icon on Dashboard ── */}
       <button className="workspace-theme-toggle" onClick={toggleTheme} aria-label="Toggle theme" title="Switch Theme">
         {theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}
@@ -481,8 +401,8 @@ function App() {
 
       {/* ── Mobile top bar ── */}
       <div className="mobile-topbar">
-        <button className="mobile-menu-btn" onClick={() => setSidebarOpen(v => !v)} aria-label="Toggle menu">
-          <span /><span /><span />
+        <button className="mobile-menu-btn" onClick={toggleSidebar} aria-label="Toggle menu">
+          <Menu size={20} />
         </button>
         <span className="mobile-brand">PyBe</span>
         <button className="theme-toggle-btn mobile-theme-btn" onClick={toggleTheme} aria-label="Toggle theme">
@@ -490,10 +410,10 @@ function App() {
         </button>
       </div>
 
-      <aside className={`sidebar${sidebarOpen ? ' sidebar-mobile-open' : ''}`}>
-        {/* ── Brand + Theme toggle ── */}
+      <aside className={`sidebar${sidebarOpen ? ' sidebar-mobile-open' : ''}${!sidebarVisible ? ' hidden' : ''}`}>
+        {/* ── Brand ── */}
         <div className="brand">
-          <div className="brand-icon-wrap">
+          <div className="brand-icon-wrap" onClick={toggleSidebar} style={{ cursor: 'pointer' }} title="Click to collapse menu">
             <Brain size={22} />
           </div>
           <div style={{ flex: 1 }}>
@@ -508,18 +428,15 @@ function App() {
             className={`nav-card ${route === '/' || route === '/dashboard' ? 'active' : ''}`}
             onClick={() => { setSidebarOpen(false); navigateTo('/'); }}
           >
-            <span className="nav-card-icon nav-icon-dashboard"><LayoutDashboard size={16} /></span>
+            <LayoutDashboard className="nav-card-svg" size={18} />
             <span className="nav-card-label">Dashboard</span>
           </button>
           <button
             className={`nav-card ${route === '/learn-python' ? 'active' : ''}`}
             onClick={() => { setSidebarOpen(false); navigateTo('/learn-python'); }}
           >
-            <span className="nav-card-icon nav-icon-scenarios"><Compass size={16} /></span>
+            <Compass className="nav-card-svg" size={18} />
             <span className="nav-card-label">Learn Python</span>
-            {scenarios.length > 0 && (
-              <span className="nav-card-badge">{scenarios.length}</span>
-            )}
           </button>
           <button
             className={`nav-card ${route === '/error-detective' ? 'active' : ''}`}
@@ -531,79 +448,67 @@ function App() {
               navigateTo('/error-detective');
             }}
           >
-            <span className="nav-card-icon nav-icon-detective"><Code2 size={16} /></span>
+            <Code2 className="nav-card-svg" size={18} />
             <span className="nav-card-label">Error Detective</span>
-            {errorStats.totalCompleted > 0 && (
-              <span className="nav-card-badge nav-badge-green">{errorStats.totalCompleted}</span>
-            )}
           </button>
           <button
             className={`nav-card ${route === '/practice' ? 'active' : ''}`}
             onClick={() => { setSidebarOpen(false); navigateTo('/practice'); }}
           >
-            <span className="nav-card-icon nav-icon-practice"><Terminal size={16} /></span>
+            <Terminal className="nav-card-svg" size={18} />
             <span className="nav-card-label">Practice</span>
           </button>
           <button
             className={`nav-card ${route === '/quiz' ? 'active' : ''}`}
             onClick={() => { setSidebarOpen(false); navigateTo('/quiz'); }}
           >
-            <span className="nav-card-icon nav-icon-quiz"><HelpCircle size={16} /></span>
+            <HelpCircle className="nav-card-svg" size={18} />
             <span className="nav-card-label">Quiz</span>
           </button>
           <button
             className={`nav-card ${route === '/achievements' ? 'active' : ''}`}
             onClick={() => { setSidebarOpen(false); navigateTo('/achievements'); }}
           >
-            <span className="nav-card-icon nav-icon-achievements"><Trophy size={16} /></span>
+            <Trophy className="nav-card-svg" size={18} />
             <span className="nav-card-label">Achievements</span>
           </button>
           <button
             className={`nav-card ${route === '/progress' ? 'active' : ''}`}
             onClick={() => { setSidebarOpen(false); navigateTo('/progress'); }}
           >
-            <span className="nav-card-icon nav-icon-progress"><TrendingUp size={16} /></span>
+            <TrendingUp className="nav-card-svg" size={18} />
             <span className="nav-card-label">Progress</span>
           </button>
           <button
             className={`nav-card ${route === '/profile' ? 'active' : ''}`}
             onClick={() => { setSidebarOpen(false); navigateTo('/profile'); }}
           >
-            <span className="nav-card-icon nav-icon-profile"><User size={16} /></span>
+            <User className="nav-card-svg" size={18} />
             <span className="nav-card-label">Profile</span>
           </button>
           <button
             className={`nav-card ${route === '/settings' ? 'active' : ''}`}
             onClick={() => { setSidebarOpen(false); navigateTo('/settings'); }}
           >
-            <span className="nav-card-icon nav-icon-settings"><Settings size={16} /></span>
+            <Settings className="nav-card-svg" size={18} />
             <span className="nav-card-label">Settings</span>
           </button>
         </nav>
 
-        {/* ── Divider ── */}
-        <div className="sidebar-divider" />
-
-        {/* ── Mini Progress Dashboard ── */}
-        <div className="sb-dashboard">
-          <div className="sb-dashboard-row">
-            <Award size={11} className="sb-dashboard-icon" />
-            <span className="sb-dashboard-label">Level</span>
-            <span className="sb-dashboard-value sb-level-badge">{currentLevel}</span>
+        {/* ── Static Non-Scrollable Progress Box ── */}
+        <div className="sidebar-static-box">
+          <div className="sb-static-header">
+            <span className="sb-static-title"><Award size={12} style={{ display: 'inline-block', verticalAlign: 'middle', marginRight: 4 }} /> LEVEL</span>
+            <span className="sb-level-pill">{currentLevel}</span>
           </div>
-          <div className="sb-dashboard-row">
-            <span className="sb-dashboard-label">Scenarios</span>
-            <span className="sb-dashboard-value">{scenarioPct}%</span>
+          <div className="sb-static-stat">
+            <span className="sb-static-label">SCENARIOS</span>
+            <span className="sb-static-value">{scenarioPct}%</span>
           </div>
-          <div className="sb-dashboard-bar-wrap">
-            <div className="sb-dashboard-bar" style={{ width: `${scenarioPct}%`, background: 'linear-gradient(90deg,#3b82f6,#60a5fa)' }} />
-          </div>
-          <div className="sb-dashboard-row" style={{ marginTop: 6 }}>
-            <span className="sb-dashboard-label">Error Detective</span>
-            <span className="sb-dashboard-value">{edPct}%</span>
-          </div>
-          <div className="sb-dashboard-bar-wrap">
-            <div className="sb-dashboard-bar" style={{ width: `${edPct}%`, background: 'linear-gradient(90deg,#7b9f27,#d8f07c)' }} />
+          <div className="sb-static-divider" />
+          <div className="sb-static-stat">
+            <span className="sb-static-label">ERROR DETECTIVE</span>
+            <span className="sb-static-value">{edPct}%</span>
           </div>
         </div>
 
@@ -767,116 +672,6 @@ function App() {
                 <div className="sb-empty">
                   <Search size={20} opacity={0.4} />
                   <span>No challenges found</span>
-                </div>
-              )}
-            </div>
-          </>
-        )}
-
-        {route === '/learn-python' && (
-          <>
-            {/* ── Search ── */}
-            <div className="sb-section-label">
-              <Compass size={12} /> Scenarios
-              <span className="sb-count-chip">{scenarios.length}</span>
-            </div>
-            <label className="search-modern">
-              <Search size={15} className="search-icon" />
-              <input
-                value={filters.q}
-                onChange={(event) => {
-                  setFilters({ ...filters, q: event.target.value });
-                }}
-                placeholder="Search scenarios…"
-              />
-              {filters.q && (
-                <button className="search-clear" onClick={() => setFilters({ ...filters, q: '' })}>✕</button>
-              )}
-            </label>
-
-            {/* ── All Levels Dropdown ── */}
-            <div className="sb-filter-card">
-              <div className="sb-filter-header">
-                <span className="sb-filter-icon sb-icon-level"><Layers size={14} /></span>
-                <span className="sb-filter-title">All Levels</span>
-                {filters.difficulty && <span className="sb-active-pill">{filters.difficulty}</span>}
-              </div>
-              <div className="sb-select-wrap">
-                <select
-                  value={filters.difficulty}
-                  onChange={(event) => {
-                    setFilters({ ...filters, difficulty: event.target.value });
-                  }}
-                  className="sb-select"
-                >
-                  <option value="">All Levels</option>
-                  <option>Beginner</option>
-                  <option>Explorer</option>
-                  <option>Builder</option>
-                </select>
-                <ChevronDown size={14} className="sb-chevron" />
-              </div>
-            </div>
-
-            {/* ── All Concepts Dropdown ── */}
-            <div className="sb-filter-card">
-              <div className="sb-filter-header">
-                <span className="sb-filter-icon sb-icon-concept"><Filter size={14} /></span>
-                <span className="sb-filter-title">All Concepts</span>
-                {filters.concept && <span className="sb-active-pill">{filters.concept}</span>}
-              </div>
-              <div className="sb-select-wrap">
-                <select
-                  value={filters.concept}
-                  onChange={(event) => {
-                    setFilters({ ...filters, concept: event.target.value });
-                  }}
-                  className="sb-select"
-                >
-                  <option value="">All Concepts</option>
-                  {concepts.map((concept) => <option key={concept}>{concept}</option>)}
-                </select>
-                <ChevronDown size={14} className="sb-chevron" />
-              </div>
-            </div>
-
-            {/* ── Bookmark Filter Toggle ── */}
-            <button
-              className={`sb-bookmark-toggle${showBookmarksOnly ? ' active' : ''}`}
-              onClick={() => setShowBookmarksOnly(v => !v)}
-            >
-              {showBookmarksOnly ? <BookmarkCheck size={13} /> : <BookmarkPlus size={13} />}
-              {showBookmarksOnly ? `Bookmarked (${bookmarks.length})` : 'All Scenarios'}
-            </button>
-
-            <div className="scenario-list">
-              {displayScenarios.map((scenario) => (
-                <div key={scenario._id} className="scenario-card-wrap">
-                  <button
-                    className={selected?._id === scenario._id ? 'scenario active' : 'scenario'}
-                    onClick={() => {
-                      setSelected(scenario);
-                      setActiveResult(null);
-                    }}
-                  >
-                    <span>{scenario.difficulty}</span>
-                    <strong>{scenario.title}</strong>
-                    <small>{scenario.concepts.join(' / ')}</small>
-                  </button>
-                  <button
-                    className={`sb-bookmark-btn${bookmarks.includes(scenario._id) ? ' bookmarked' : ''}`}
-                    onClick={(e) => { e.stopPropagation(); toggleBookmark(scenario._id); }}
-                    aria-label={bookmarks.includes(scenario._id) ? 'Remove bookmark' : 'Bookmark'}
-                    title={bookmarks.includes(scenario._id) ? 'Remove bookmark' : 'Bookmark this scenario'}
-                  >
-                    {bookmarks.includes(scenario._id) ? <BookmarkCheck size={13} /> : <BookmarkPlus size={13} />}
-                  </button>
-                </div>
-              ))}
-              {displayScenarios.length === 0 && (
-                <div className="sb-empty">
-                  <Compass size={20} opacity={0.4} />
-                  <span>{showBookmarksOnly ? 'No bookmarks yet' : 'No scenarios found'}</span>
                 </div>
               )}
             </div>
