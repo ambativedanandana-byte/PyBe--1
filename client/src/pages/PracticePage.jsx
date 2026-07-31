@@ -323,42 +323,88 @@ export default function PracticePage() {
   if (phase === "intro") return (
     <section className="workspace">
       <div className="pkt-intro-wrap">
-        <div className="pkt-flame-ring">
-          <Flame size={34} className="pkt-flame-icon" />
-          <span className="pkt-streak-num">{streak.n}</span>
-        </div>
-        <h1 className="pkt-intro-h1">Daily Code Kata</h1>
-        <p className="pkt-intro-sub">
-          5 Python fill-in-the-blank challenges
-          <br />
-          <span className="pkt-intro-rule">Type only &nbsp;∑&nbsp; No copy-paste &nbsp;∑&nbsp; 60s per challenge</span>
-        </p>
-        <div className="pkt-intro-meta">
-          <span className="pkt-meta-chip"><Calendar size={13} /> Day {streak.n} streak</span>
-          <span className="pkt-meta-chip"><Star size={13} /> {totalXP} XP total</span>
-        </div>
-        <div className="pkt-preview-row">
-          {daily.map((c, i) => (
-            <div key={i} className={`pkt-pre-dot pkt-diff-${c.difficulty.toLowerCase()}`} title={c.difficulty}>
-              {c.difficulty[0]}
+        
+        {/* Left Column */}
+        <div className="pkt-intro-left">
+          <div className="pkt-hero-card">
+            <div className="pkt-hero-badge">
+              <Flame size={28} className="pkt-hero-badge-icon" />
+              <div className="pkt-streak-bubble">{streak.n}</div>
             </div>
-          ))}
-        </div>
-        <button className="pkt-start-btn" onClick={handleStart}>
-          <Zap size={16} /> {streak.today ? "Practice Again" : "Start Today's Kata"}
-        </button>
-        {streak.today && (
-          <p className="pkt-done-today">You have already completed today's set. New challenges tomorrow!</p>
-        )}
-        <div className="pkt-how-it-works">
-          <p className="pkt-how-title">How it works</p>
-          <div className="pkt-how-grid">
-            <div className="pkt-how-item"><span>??</span><span>Fill in the blanks in real Python code</span></div>
-            <div className="pkt-how-item"><span>?</span><span>Chain correct answers for a combo multiplier</span></div>
-            <div className="pkt-how-item"><span>??</span><span>Build your daily streak ó don't break the chain!</span></div>
-            <div className="pkt-how-item"><span>??</span><span>Finish faster for a time bonus</span></div>
+            <h1 className="pkt-intro-h1">Daily Code Kata</h1>
+            <p className="pkt-intro-sub">
+              5 short Python fill-in-the-blank challenges to build muscle memory.
+              <span className="pkt-intro-rule">
+                <span className="pkt-intro-rule-chip">Type only</span>
+                <span className="pkt-intro-rule-chip">No copy-paste</span>
+                <span className="pkt-intro-rule-chip">60s per challenge</span>
+              </span>
+            </p>
+            
+            <button className="pkt-start-btn" onClick={handleStart}>
+              <Zap size={18} /> {streak.today ? "Practice Again" : "Start Today's Kata"}
+            </button>
+            {streak.today && (
+              <p className="pkt-done-today" style={{ marginTop: '12px' }}>
+                You have already completed today's set.<br/>New challenges tomorrow!
+              </p>
+            )}
+          </div>
+
+          <div className="pkt-stats-row">
+            <div className="pkt-stat-card">
+              <span className="pkt-stat-val">{streak.n}</span>
+              <span className="pkt-stat-lbl">Day Streak</span>
+            </div>
+            <div className="pkt-stat-card">
+              <span className="pkt-stat-val">{totalXP}</span>
+              <span className="pkt-stat-lbl">Total XP</span>
+            </div>
           </div>
         </div>
+
+        {/* Right Column */}
+        <div className="pkt-intro-right">
+          <div className="pkt-preview-card">
+            <h3 className="pkt-preview-card-title">Today's Concepts</h3>
+            <div className="pkt-preview-row">
+              {daily.map((c, i) => (
+                <div key={i} className={`pkt-pre-dot pkt-diff-${c.difficulty.toLowerCase()}`} title={c.difficulty}>
+                  <div className="pkt-pre-dot-letter">{c.difficulty[0]}</div>
+                  <span className="pkt-pre-dot-concept">{c.concept}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="pkt-how-it-works">
+            <p className="pkt-how-title">How it works</p>
+            <div className="pkt-how-grid">
+              <div className="pkt-how-item">
+                <div className="pkt-how-icon">‚å®Ô∏è</div>
+                <div className="pkt-how-item-text">
+                  <strong>Fill the blanks</strong>
+                  Type missing keywords into real Python code snippets.
+                </div>
+              </div>
+              <div className="pkt-how-item">
+                <div className="pkt-how-icon">üî•</div>
+                <div className="pkt-how-item-text">
+                  <strong>Combo multiplier</strong>
+                  Chain consecutive correct answers for 2x or 3x XP.
+                </div>
+              </div>
+              <div className="pkt-how-item">
+                <div className="pkt-how-icon">‚è±Ô∏è</div>
+                <div className="pkt-how-item-text">
+                  <strong>Time bonus</strong>
+                  Answer in under 30 seconds for extra bonus XP.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
       </div>
     </section>
   );
