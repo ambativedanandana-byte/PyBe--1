@@ -7305,6 +7305,8 @@ meter {
   -webkit-overflow-scrolling: touch;
   scrollbar-width: thin;
   scrollbar-color: #3a5650 transparent;
+  height: 100%;
+  max-height: 220px;
 }
 
 .sp-comic-strip::-webkit-scrollbar {
