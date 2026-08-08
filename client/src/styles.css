@@ -5025,6 +5025,125 @@ meter {
 
 [data-theme="light"] .ba-textarea { background: #fff; }
 
+/* Step Locking */
+.ba-locked {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.ba-locked-text {
+  font-style: italic;
+  color: #9ca3af;
+  font-size: 0.8rem;
+}
+
+.ba-step-badge.locked {
+  background: #9ca3af;
+}
+
+.ba-step-badge.done {
+  background: #10b981;
+}
+
+.ba-question.ba-done {
+  opacity: 0.7;
+}
+
+.ba-question.ba-done .ba-textarea,
+.ba-question.ba-done .ba-line-input,
+.ba-question.ba-done .ba-dropdown-trigger {
+  background: rgba(16, 185, 129, 0.05);
+  border-color: rgba(16, 185, 129, 0.3);
+  cursor: default;
+}
+
+.ba-line-selected.done {
+  color: #10b981;
+}
+
+.ba-check-icon {
+  color: #10b981;
+  flex-shrink: 0;
+}
+
+/* Confirm Button */
+.ba-confirm-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 10px;
+  padding: 7px 18px;
+  border: 1px solid #7b9f27;
+  border-radius: 8px;
+  background: rgba(123, 159, 39, 0.1);
+  color: #7b9f27;
+  font-size: 0.8rem;
+  font-weight: 700;
+  font-family: inherit;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.ba-confirm-btn:hover {
+  background: #7b9f27;
+  color: #fff;
+}
+
+.ba-confirm-btn:active {
+  transform: scale(0.97);
+}
+
+[data-theme="dark"] .ba-confirm-btn {
+  border-color: rgba(123, 159, 39, 0.5);
+  background: rgba(123, 159, 39, 0.12);
+}
+
+[data-theme="dark"] .ba-confirm-btn:hover {
+  background: #7b9f27;
+  color: #fff;
+}
+
+/* Validation Message */
+.ba-validation {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 12px;
+  padding: 10px 14px;
+  border-radius: 8px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  animation: ba-fadeIn 0.25s ease;
+}
+
+.ba-validation.error {
+  background: rgba(239, 68, 68, 0.08);
+  border: 1px solid rgba(239, 68, 68, 0.25);
+  color: #ef4444;
+}
+
+.ba-validation.ok {
+  background: rgba(16, 185, 129, 0.08);
+  border: 1px solid rgba(16, 185, 129, 0.25);
+  color: #10b981;
+}
+
+[data-theme="dark"] .ba-validation.error {
+  background: rgba(239, 68, 68, 0.1);
+  border-color: rgba(239, 68, 68, 0.2);
+}
+
+[data-theme="dark"] .ba-validation.ok {
+  background: rgba(16, 185, 129, 0.1);
+  border-color: rgba(16, 185, 129, 0.2);
+}
+
+.ir-nav-btn-primary.disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
 /* Line Input for Locate Step */
 .ba-line-input-row {
   display: flex;
