@@ -380,7 +380,6 @@ function App() {
           </div>
         </div>
 
-        <div className="sidebar-divider" />
       </aside>
 
       {renderContent()}
