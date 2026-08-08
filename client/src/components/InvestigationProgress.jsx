@@ -1,9 +1,8 @@
 import React from 'react';
-import { BookOpen, Search, Bug, Wrench, CheckCircle2 } from 'lucide-react';
+import { BookOpen, Bug, Wrench, CheckCircle2 } from 'lucide-react';
 
 const STEPS = [
   { id: 'story', label: 'Story', icon: BookOpen },
-  { id: 'evidence', label: 'Evidence', icon: Search },
   { id: 'analysis', label: 'Analysis', icon: Bug },
   { id: 'fix', label: 'Fix', icon: Wrench },
   { id: 'results', label: 'Results', icon: CheckCircle2 },

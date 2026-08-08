@@ -140,11 +140,11 @@ export default function ErrorDetectivePage() {
   };
 
   const handleStartInvestigation = () => {
-    setView('room');
+    setView('analysis');
   };
 
   const handleBackToRoom = () => {
-    setView('room');
+    setView('detail');
   };
 
   const handleContinueToAnalysis = () => {
@@ -190,20 +190,6 @@ export default function ErrorDetectivePage() {
         levelName={selectedLevel.name}
         onBack={handleBackToInvestigations}
         onStartInvestigation={handleStartInvestigation}
-      />
-    );
-  }
-
-  if (view === 'room') {
-    const story = getStory(selectedInvestigation.id);
-    const investigation = getInvestigation(selectedInvestigation.id);
-    return (
-      <InvestigationRoom
-        investigation={investigation}
-        story={story}
-        levelName={selectedLevel.name}
-        onBack={handleBackToStory}
-        onContinue={handleContinueToAnalysis}
       />
     );
   }
