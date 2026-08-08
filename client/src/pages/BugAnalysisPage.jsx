@@ -558,39 +558,6 @@ export default function BugAnalysisPage({
 
       <div className="ba-layout">
         <div className="ba-left">
-          <div className="panel ba-evidence-card">
-            <div className="ba-card-header">
-              <Search size={18} />
-              <h3>Evidence Summary</h3>
-            </div>
-            <ul className="ba-evidence-list">
-              {investigation.evidenceClues.map((clue, idx) => (
-                <li key={idx} className="ba-evidence-item">
-                  <span className="ba-evidence-bullet">•</span>
-                  <span>{clue}</span>
-                </li>
-              ))}
-            </ul>
-            {investigation.error && (
-              <div className="ba-error-output">
-                <div className="ba-error-label">
-                  <AlertTriangle size={12} />
-                  <span>Error Message</span>
-                </div>
-                <pre className="ba-error-text">{investigation.error}</pre>
-              </div>
-            )}
-            {investigation.output && (
-              <div className="ba-success-output">
-                <div className="ba-error-label success">
-                  <CheckCircle2 size={12} />
-                  <span>Program Output</span>
-                </div>
-                <pre className="ba-success-text">{investigation.output}</pre>
-              </div>
-            )}
-          </div>
-
           <div className="panel ba-notebook-card">
             <div className="ba-card-header">
               <PenLine size={18} />
