@@ -6619,3 +6619,154 @@ meter {
   .sp-start-btn { width: 100%; justify-content: center; }
 }
 
+/* ─── Narration Player ─── */
+.np-wrapper {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-left: auto;
+}
+
+.np-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  border-radius: 8px;
+  border: 1px solid rgba(123, 159, 39, 0.3);
+  background: rgba(123, 159, 39, 0.08);
+  color: #7b9f27;
+  font-size: 0.78rem;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+  line-height: 1;
+}
+
+.np-btn:hover:not(:disabled) {
+  background: rgba(123, 159, 39, 0.18);
+  border-color: rgba(123, 159, 39, 0.5);
+}
+
+.np-btn:active:not(:disabled) {
+  transform: scale(0.97);
+}
+
+.np-btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+/* Playing state */
+.np-btn--playing {
+  background: rgba(123, 159, 39, 0.2);
+  border-color: #7b9f27;
+  color: #fff;
+  box-shadow: 0 0 0 2px rgba(123, 159, 39, 0.15);
+}
+
+/* Pulse ring while playing */
+.np-btn--playing::after {
+  content: '';
+  position: absolute;
+  inset: -3px;
+  border-radius: 10px;
+  border: 1.5px solid rgba(123, 159, 39, 0.35);
+  animation: np-pulse 1.8s ease-in-out infinite;
+  pointer-events: none;
+}
+
+.np-btn--playing {
+  position: relative;
+}
+
+@keyframes np-pulse {
+  0%, 100% { opacity: 0.4; transform: scale(1); }
+  50% { opacity: 0; transform: scale(1.08); }
+}
+
+/* Paused state */
+.np-btn--paused {
+  background: rgba(245, 158, 11, 0.1);
+  border-color: rgba(245, 158, 11, 0.4);
+  color: #f59e0b;
+}
+
+.np-btn--paused:hover:not(:disabled) {
+  background: rgba(245, 158, 11, 0.2);
+  border-color: rgba(245, 158, 11, 0.6);
+}
+
+/* Ended state */
+.np-btn--ended {
+  background: rgba(59, 130, 246, 0.1);
+  border-color: rgba(59, 130, 246, 0.35);
+  color: #3b82f6;
+}
+
+.np-btn--ended:hover:not(:disabled) {
+  background: rgba(59, 130, 246, 0.2);
+  border-color: rgba(59, 130, 246, 0.5);
+}
+
+.np-btn-label {
+  font-size: inherit;
+}
+
+.np-state-label {
+  font-size: 0.72rem;
+  color: #7b9f27;
+  font-style: italic;
+  white-space: nowrap;
+  opacity: 0.8;
+}
+
+.np-btn--paused + .np-state-label { color: #f59e0b; }
+.np-btn--ended + .np-state-label { color: #3b82f6; }
+
+.np-sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Story section label with narration player */
+.sp-story-section-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: -8px;
+}
+
+[data-theme="dark"] .np-btn {
+  border-color: rgba(123, 159, 39, 0.25);
+  background: rgba(123, 159, 39, 0.06);
+}
+
+[data-theme="dark"] .np-btn:hover:not(:disabled) {
+  background: rgba(123, 159, 39, 0.14);
+}
+
+[data-theme="dark"] .np-state-label {
+  color: rgba(123, 159, 39, 0.7);
+}
+
+[data-theme="dark"] .np-btn--playing {
+  background: rgba(123, 159, 39, 0.16);
+  box-shadow: 0 0 0 2px rgba(123, 159, 39, 0.12);
+}
+
+@media (max-width: 640px) {
+  .np-btn { padding: 5px 10px; font-size: 0.72rem; }
+  .np-btn-label { display: none; }
+  .np-state-label { font-size: 0.65rem; }
+}
+

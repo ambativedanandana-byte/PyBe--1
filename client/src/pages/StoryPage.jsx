@@ -7,6 +7,7 @@ import {
   FileText,
 } from 'lucide-react';
 import { getIllustration } from '../data/illustrations';
+import NarrationPlayer from '../components/NarrationPlayer';
 
 const DIFFICULTY_COLORS = {
   Beginner: { bg: 'rgba(16, 185, 129, 0.12)', color: '#10b981', border: 'rgba(16, 185, 129, 0.25)' },
@@ -85,9 +86,12 @@ export default function StoryPage({ story, investigationId, levelName, onBack, o
         </div>
 
         {/* Story Section Label */}
-        <div className="sp-section-label">
-          <FileText size={14} />
-          <span>Story</span>
+        <div className="sp-story-section-header">
+          <div className="sp-section-label" style={{ marginBottom: 0 }}>
+            <FileText size={14} />
+            <span>Story</span>
+          </div>
+          <NarrationPlayer text={story.story} />
         </div>
 
         {/* Story Text */}
