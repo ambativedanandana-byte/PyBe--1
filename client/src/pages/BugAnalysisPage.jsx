@@ -558,21 +558,6 @@ export default function BugAnalysisPage({
 
       <div className="ba-layout">
         <div className="ba-left">
-          <div className="panel ba-notebook-card">
-            <div className="ba-card-header">
-              <PenLine size={18} />
-              <h3>Detective Notebook</h3>
-            </div>
-            <p className="ba-notebook-hint">Record your reasoning as you analyze.</p>
-            <textarea
-              className="ba-notebook-input"
-              value={notebookText}
-              onChange={(e) => setNotebookText(e.target.value)}
-              placeholder={`Why you chose that line...\nWhy you think the error occurred...\nWhat the correct behavior should be...`}
-              rows={8}
-            />
-          </div>
-
           <div className="panel ba-questions-card">
             <div className="ba-card-header">
               <ClipboardList size={18} />
@@ -637,6 +622,21 @@ export default function BugAnalysisPage({
                 })}
               </pre>
             </div>
+          </div>
+
+          <div className="panel ba-notebook-card">
+            <div className="ba-card-header">
+              <PenLine size={18} />
+              <h3>Detective Notebook</h3>
+            </div>
+            <p className="ba-notebook-hint">Record your reasoning as you analyze.</p>
+            <textarea
+              className="ba-notebook-input"
+              value={notebookText}
+              onChange={(e) => setNotebookText(e.target.value)}
+              placeholder={`Why you chose that line...\nWhy you think the error occurred...\nWhat the correct behavior should be...`}
+              rows={8}
+            />
           </div>
 
           <div className="panel ba-analysis-card">
