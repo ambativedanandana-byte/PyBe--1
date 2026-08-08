@@ -6730,6 +6730,10 @@ meter {
   max-height: 220px;
 }
 
+.sp-illustration-card:has(.sp-comic-grid) {
+  max-height: none;
+}
+
 .sp-illustration-svg {
   width: 100%;
   height: auto;
@@ -7291,74 +7295,40 @@ meter {
   border-radius: 12px;
 }
 
-/* ---- Comic Strip: 9 panels horizontal row ---- */
-.sp-comic-strip {
-  display: flex;
-  flex-direction: row;
-  gap: 6px;
-  padding: 8px;
+/* ---- Comic Grid: 3x3 grid (9 panels visible at once) ---- */
+.sp-comic-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  gap: 4px;
+  padding: 6px;
   background: #1a2b25;
   border-radius: 12px;
-  overflow-x: auto;
-  overflow-y: hidden;
-  scroll-snap-type: x mandatory;
-  -webkit-overflow-scrolling: touch;
-  scrollbar-width: thin;
-  scrollbar-color: #3a5650 transparent;
-  height: 100%;
-  max-height: 220px;
+  border: 2px solid #3a5650;
 }
 
-.sp-comic-strip::-webkit-scrollbar {
-  height: 6px;
-}
-
-.sp-comic-strip::-webkit-scrollbar-track {
-  background: transparent;
-}
-
-.sp-comic-strip::-webkit-scrollbar-thumb {
-  background: #3a5650;
-  border-radius: 3px;
-}
-
-.sp-comic-panel {
-  flex: 1 1 0%;
-  min-width: 80px;
-  max-width: 140px;
-  border-radius: 8px;
+.sp-comic-cell {
+  border-radius: 6px;
   overflow: hidden;
-  scroll-snap-align: start;
   background: #0d1614;
   display: flex;
   align-items: center;
   justify-content: center;
+  aspect-ratio: 1;
 }
 
-.sp-comic-panel-img {
+.sp-comic-cell-img {
   width: 100%;
   height: 100%;
-  object-fit: contain;
+  object-fit: cover;
   display: block;
-  border-radius: 8px;
-}
-
-@media (max-width: 960px) {
-  .sp-comic-panel {
-    min-width: 70px;
-    max-width: 120px;
-  }
+  border-radius: 6px;
 }
 
 @media (max-width: 640px) {
-  .sp-comic-strip {
-    gap: 4px;
-    padding: 6px;
-  }
-
-  .sp-comic-panel {
-    min-width: 60px;
-    max-width: 100px;
+  .sp-comic-grid {
+    gap: 3px;
+    padding: 4px;
   }
 }
 

@@ -4,11 +4,11 @@ import React, { useState } from 'react';
  * ComicImage: Shows PNG comic illustration if available,
  * otherwise falls back to the SVG component.
  *
- * panels: array of panel IDs e.g. ['b-syn-1-p1','b-syn-1-p2',...] for 9-panel strip.
- * If panels is provided, renders a horizontal strip. Otherwise single image.
+ * panels: array of panel IDs e.g. ['b-syn-1-p1','b-syn-1-p2',...] for 9-panel 3x3 grid.
+ * If panels is provided, renders a 3x3 grid. Otherwise single image.
  */
 function ComicImage({ id, panels, FallbackSVG, alt }) {
-  // Multi-panel strip mode
+  // Multi-panel 3x3 grid mode
   if (panels && panels.length > 0) {
     const [failedPanels, setFailedPanels] = useState({});
 
@@ -20,14 +20,14 @@ function ComicImage({ id, panels, FallbackSVG, alt }) {
     if (allFailed) return <FallbackSVG />;
 
     return (
-      <div className="sp-comic-strip">
+      <div className="sp-comic-grid">
         {panels.map((panelId, idx) => (
-          <div key={panelId} className="sp-comic-panel">
+          <div key={panelId} className="sp-comic-cell">
             {!failedPanels[panelId] ? (
               <img
                 src={`/illustrations/${panelId}.png`}
                 alt={`${alt} panel ${idx + 1}`}
-                className="sp-comic-panel-img"
+                className="sp-comic-cell-img"
                 onError={() => handlePanelError(panelId)}
               />
             ) : (
