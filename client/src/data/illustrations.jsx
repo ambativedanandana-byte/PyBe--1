@@ -1,4 +1,28 @@
-import React from 'react';
+import React, { useState } from 'react';
+
+/**
+ * ComicImage: Shows PNG comic illustration if available,
+ * otherwise falls back to the SVG component.
+ */
+function ComicImage({ id, FallbackSVG, alt }) {
+  const [imgError, setImgError] = useState(false);
+  const src = `/illustrations/${id}.png`;
+
+  if (!imgError) {
+    return (
+      <div className="sp-comic-img-wrapper">
+        <img
+          src={src}
+          alt={alt}
+          className="sp-comic-img"
+          onError={() => setImgError(true)}
+        />
+      </div>
+    );
+  }
+  return <FallbackSVG />;
+}
+
 
 /* ===== CASE 001 — The Bakery Order ===== */
 function BakeryOrderIllustration() {
@@ -2040,13 +2064,13 @@ function ScoreAnalyzerIllustration() {
 
 /* ===== ILLUSTRATION MAP ===== */
 const ILLUSTRATION_MAP = {
-  'b-syn-1': BakeryOrderIllustration,
-  'b-syn-2': LibraryShelfIllustration,
-  'b-syn-3': PhoneCallIllustration,
-  'b-syn-4': TravelJournalIllustration,
-  'b-syn-5': ScienceLabIllustration,
-  'b-syn-6': GroceryListIllustration,
-  'b-syn-7': ConcertTicketsIllustration,
+  'b-syn-1': () => <ComicImage id="b-syn-1" FallbackSVG={BakeryOrderIllustration} alt="The Bakery Order" />,
+  'b-syn-2': () => <ComicImage id="b-syn-2" FallbackSVG={LibraryShelfIllustration} alt="The Library Shelf" />,
+  'b-syn-3': () => <ComicImage id="b-syn-3" FallbackSVG={PhoneCallIllustration} alt="The Phone Call" />,
+  'b-syn-4': () => <ComicImage id="b-syn-4" FallbackSVG={TravelJournalIllustration} alt="Unmatched Quotes" />,
+  'b-syn-5': () => <ComicImage id="b-syn-5" FallbackSVG={ScienceLabIllustration} alt="Misspelled Keywords" />,
+  'b-syn-6': () => <ComicImage id="b-syn-6" FallbackSVG={GroceryListIllustration} alt="Missing Comma" />,
+  'b-syn-7': () => <ComicImage id="b-syn-7" FallbackSVG={ConcertTicketsIllustration} alt="Missing Closing Bracket" />,
   'b-run-1': SchoolCeremonyIllustration,
   'b-run-2': RecipeDisasterIllustration,
   'b-run-3': TrainScheduleIllustration,

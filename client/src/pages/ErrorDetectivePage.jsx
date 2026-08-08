@@ -271,42 +271,33 @@ export default function ErrorDetectivePage() {
           </div>
         </header>
 
-        <div className="ed-investigations-list">
+        <div className="ed-investigations-grid">
           {Object.entries(selectedLevel.categories).map(([category, investigations]) => {
             const meta = CATEGORY_META[category];
             const Icon = meta.icon;
-            const isOpen = openCategories[category];
 
             return (
-              <div key={category} className="ed-category-group">
-                <button
-                  className={`ed-category-header ${isOpen ? 'open' : ''}`}
-                  onClick={() => toggleCategory(category)}
-                >
-                  <div className="ed-category-left">
-                    <span className="ed-category-icon" style={{ background: meta.color }}>
-                      <Icon size={16} />
-                    </span>
-                    <span className="ed-category-name">{meta.label}</span>
-                    <span className="ed-category-count">{investigations.length}</span>
-                  </div>
-                  {isOpen ? <ChevronUp size={18} /> : <ChevronDown size={18} />}
-                </button>
+              <div key={category} className="ed-category-col">
+                <div className="ed-category-col-header">
+                  <span className="ed-category-icon" style={{ background: meta.color }}>
+                    <Icon size={16} />
+                  </span>
+                  <span className="ed-category-name">{meta.label}</span>
+                  <span className="ed-category-count">{investigations.length}</span>
+                </div>
 
-                {isOpen && (
-                  <div className="ed-category-items">
-                    {investigations.map((inv) => (
-                      <button
-                        key={inv.id}
-                        className="ed-investigation-item"
-                        onClick={() => handleSelectInvestigation(inv)}
-                      >
-                        <span className="ed-investigation-title">{inv.title}</span>
-                        <ChevronRight size={16} className="ed-investigation-arrow" />
-                      </button>
-                    ))}
-                  </div>
-                )}
+                <div className="ed-category-items">
+                  {investigations.map((inv) => (
+                    <button
+                      key={inv.id}
+                      className="ed-investigation-item"
+                      onClick={() => handleSelectInvestigation(inv)}
+                    >
+                      <span className="ed-investigation-title">{inv.title}</span>
+                      <ChevronRight size={16} className="ed-investigation-arrow" />
+                    </button>
+                  ))}
+                </div>
               </div>
             );
           })}
@@ -314,6 +305,7 @@ export default function ErrorDetectivePage() {
       </section>
     );
   }
+
 
   return (
     <section className="workspace ed-page">
