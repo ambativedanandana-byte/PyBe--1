@@ -6889,3 +6889,278 @@ meter {
   .np-state-label { font-size: 0.65rem; }
 }
 
+/* ============================================================
+   ERROR DETECTIVE — LEVELS PAGE
+   3 cards side-by-side, free scroll
+   ============================================================ */
+
+.ed-page {
+  display: flex !important;
+  flex-direction: column;
+  overflow-y: auto;
+  padding: 24px 32px !important;
+  gap: 20px !important;
+}
+
+.ed-hero {
+  min-height: unset !important;
+  flex-shrink: 0;
+  padding: 28px 36px !important;
+}
+
+.ed-levels-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+/* ---- Level Card ---- */
+.ed-level-card {
+  background: #fff;
+  border-radius: 16px;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  padding: 28px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  box-shadow: 0 2px 12px rgba(15, 28, 24, 0.07);
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+  overflow: hidden;
+}
+
+.ed-level-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 32px rgba(15, 28, 24, 0.14);
+}
+
+.ed-level-header {
+  display: flex;
+  align-items: center;
+}
+
+.ed-difficulty-badge {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 999px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.ed-diff-beginner { background: #dcfce7; color: #166534; }
+.ed-diff-explorer  { background: #fef9c3; color: #854d0e; }
+.ed-diff-builder   { background: #ede9fe; color: #4c1d95; }
+
+.ed-level-name {
+  margin: 0;
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: #17201d;
+  line-height: 1.2;
+}
+
+.ed-level-desc {
+  margin: 0;
+  font-size: 0.9rem;
+  color: #4b5563;
+  line-height: 1.5;
+}
+
+.ed-level-meta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.ed-level-investigations {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.82rem;
+  color: #6b7280;
+  font-weight: 500;
+}
+
+.ed-level-progress { display: flex; flex-direction: column; gap: 6px; }
+
+.ed-progress-bar {
+  height: 6px;
+  background: #e5e7eb;
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.ed-progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #a3e635, #65a30d);
+  border-radius: 999px;
+  transition: width 0.4s ease;
+}
+
+.ed-progress-text { font-size: 0.75rem; color: #9ca3af; font-weight: 500; }
+
+.ed-continue-btn {
+  margin-top: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 14px 20px;
+  font-size: 0.92rem;
+  font-weight: 700;
+  border-radius: 10px;
+  cursor: pointer;
+  background: #0d1614;
+  color: #d8f07c;
+  border: none;
+  transition: background 0.18s ease, transform 0.12s ease;
+}
+
+.ed-continue-btn:hover {
+  background: #1a2e28;
+  transform: scale(1.02);
+}
+
+/* ---- Back button ---- */
+.ed-back-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: rgba(255,255,255,0.12);
+  border: 1px solid rgba(255,255,255,0.2);
+  color: #fff;
+  border-radius: 8px;
+  padding: 6px 14px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  margin-bottom: 10px;
+  transition: background 0.15s ease;
+}
+
+.ed-back-btn:hover { background: rgba(255,255,255,0.2); }
+
+/* ---- Dark mode ---- */
+[data-theme="dark"] .ed-level-card { background: #111e1b; border-color: rgba(255,255,255,0.08); }
+[data-theme="dark"] .ed-level-name { color: #f0fdf4; }
+[data-theme="dark"] .ed-level-desc { color: #9ca3af; }
+[data-theme="dark"] .ed-progress-bar { background: #1f2d2a; }
+
+/* ============================================================
+   ERROR DETECTIVE — INVESTIGATIONS VIEW
+   3 category columns side-by-side, free scroll
+   ============================================================ */
+
+.ed-investigations-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.ed-category-col {
+  background: #fff;
+  border-radius: 14px;
+  border: 1px solid rgba(0,0,0,0.08);
+  box-shadow: 0 2px 10px rgba(15,28,24,0.07);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.ed-category-col-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 16px 18px;
+  border-bottom: 1px solid rgba(0,0,0,0.07);
+  background: #fafafa;
+  flex-shrink: 0;
+}
+
+.ed-category-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 8px;
+  color: #fff;
+  flex-shrink: 0;
+}
+
+.ed-category-name { font-size: 0.88rem; font-weight: 700; color: #17201d; flex: 1; }
+
+.ed-category-count {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 24px;
+  height: 24px;
+  padding: 0 8px;
+  background: #f3f4f6;
+  border-radius: 999px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #6b7280;
+}
+
+.ed-category-items { display: flex; flex-direction: column; padding: 8px 0; }
+
+.ed-investigation-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 11px 18px;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid rgba(0,0,0,0.05);
+  cursor: pointer;
+  text-align: left;
+  transition: background 0.14s ease;
+  gap: 8px;
+}
+
+.ed-investigation-item:last-child { border-bottom: none; }
+.ed-investigation-item:hover { background: #f0fdf4; }
+
+.ed-investigation-title { font-size: 0.85rem; font-weight: 500; color: #17201d; line-height: 1.4; }
+
+.ed-investigation-arrow {
+  color: #9ca3af;
+  flex-shrink: 0;
+  transition: transform 0.14s ease, color 0.14s ease;
+}
+
+.ed-investigation-item:hover .ed-investigation-arrow { color: #16a34a; transform: translateX(2px); }
+
+/* ---- Dark mode investigations ---- */
+[data-theme="dark"] .ed-category-col { background: #111e1b; border-color: rgba(255,255,255,0.08); }
+[data-theme="dark"] .ed-category-col-header { background: #0d1614; border-bottom-color: rgba(255,255,255,0.07); }
+[data-theme="dark"] .ed-category-name { color: #f0fdf4; }
+[data-theme="dark"] .ed-category-count { background: #1f2d2a; color: #9ca3af; }
+[data-theme="dark"] .ed-investigation-item { border-bottom-color: rgba(255,255,255,0.05); }
+[data-theme="dark"] .ed-investigation-item:hover { background: rgba(163,230,53,0.06); }
+[data-theme="dark"] .ed-investigation-title { color: #d1fae5; }
+
+/* ---- Comic Image (PNG illustrations) ---- */
+.sp-comic-img-wrapper {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #1a2b25;
+  border-radius: 12px;
+  overflow: hidden;
+  min-height: 220px;
+}
+
+.sp-comic-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  border-radius: 12px;
+}
+
