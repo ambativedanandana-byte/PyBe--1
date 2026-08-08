@@ -5,23 +5,11 @@ import {
   Play,
   Copy,
   RotateCcw,
-  CheckCircle2,
-  Circle,
   FileText,
-  ClipboardList,
   Search,
   Eye,
   Terminal,
 } from 'lucide-react';
-
-const CHECKLIST_STEPS = [
-  { id: 'read', label: 'Read the story', icon: FileText },
-  { id: 'observe', label: 'Observe the program', icon: Eye },
-  { id: 'run', label: 'Run the code', icon: Play },
-  { id: 'analyze', label: 'Analyze the evidence', icon: Search },
-  { id: 'fix', label: 'Fix the program', icon: ClipboardList },
-  { id: 'verify', label: 'Verify the solution', icon: CheckCircle2 },
-];
 
 function highlightPython(line) {
   let result = line;
@@ -58,7 +46,6 @@ export default function InvestigationRoom({
   onBack,
   onContinue,
 }) {
-  const [completedSteps, setCompletedSteps] = useState(new Set(['read']));
   const [codeRan, setCodeRan] = useState(false);
   const [notebookText, setNotebookText] = useState('');
   const [copied, setCopied] = useState(false);
@@ -83,23 +70,8 @@ export default function InvestigationRoom({
     );
   }
 
-  const toggleStep = (stepId) => {
-    setCompletedSteps((prev) => {
-      const next = new Set(prev);
-      if (next.has(stepId)) {
-        next.delete(stepId);
-      } else {
-        next.add(stepId);
-      }
-      return next;
-    });
-  };
-
   const handleRunCode = () => {
     setCodeRan(true);
-    if (!completedSteps.has('run')) {
-      setCompletedSteps((prev) => new Set([...prev, 'run']));
-    }
   };
 
   const handleCopy = () => {
@@ -112,8 +84,6 @@ export default function InvestigationRoom({
   const handleReset = () => {
     setCodeRan(false);
   };
-
-  const progressPercent = Math.round((completedSteps.size / CHECKLIST_STEPS.length) * 100);
 
   return (
     <section className="workspace ed-page">
@@ -135,50 +105,6 @@ export default function InvestigationRoom({
       <div className="ir-layout">
         {/* Left Side */}
         <div className="ir-left">
-          {/* Investigation Progress */}
-          <div className="panel ir-progress-card">
-            <div className="ir-card-header">
-              <ClipboardList size={18} />
-              <h3>Investigation Progress</h3>
-            </div>
-            <div className="ir-progress-bar-wrap">
-              <div className="ir-progress-bar">
-                <div className="ir-progress-fill" style={{ width: `${progressPercent}%` }} />
-              </div>
-              <span className="ir-progress-label">{completedSteps.size}/{CHECKLIST_STEPS.length} steps</span>
-            </div>
-          </div>
-
-          {/* Investigation Checklist */}
-          <div className="panel ir-checklist-card">
-            <div className="ir-card-header">
-              <CheckCircle2 size={18} />
-              <h3>Investigation Checklist</h3>
-            </div>
-            <ul className="ir-checklist">
-              {CHECKLIST_STEPS.map((step) => {
-                const Icon = step.icon;
-                const done = completedSteps.has(step.id);
-                return (
-                  <li key={step.id}>
-                    <button
-                      className={`ir-checklist-item ${done ? 'done' : ''}`}
-                      onClick={() => toggleStep(step.id)}
-                    >
-                      {done ? (
-                        <CheckCircle2 size={16} className="ir-check-icon done" />
-                      ) : (
-                        <Circle size={16} className="ir-check-icon" />
-                      )}
-                      <Icon size={14} className="ir-step-icon" />
-                      <span>{step.label}</span>
-                    </button>
-                  </li>
-                );
-              })}
-            </ul>
-          </div>
-
           {/* Evidence Board */}
           <div className="panel ir-evidence-card">
             <div className="ir-card-header">
