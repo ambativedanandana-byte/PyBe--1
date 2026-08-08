@@ -23,8 +23,7 @@ import {
 } from 'lucide-react';
 import './styles.css';
 import ScenariosPage from './pages/ScenariosPage';
-import ErrorDetectivePage from './pages/ErrorDetectivePage';
-
+import PracticePage from './pages/PracticePage';
 
 
 const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
@@ -202,6 +201,32 @@ function App() {
     );
   }
 
+  const resetErrorDetectiveProgress = async () => {
+    if (!window.confirm('Reset all progress? This clears your scores and statistics across all tabs.')) return;
+    try {
+      await api('/error-detective/reset', { method: 'POST' });
+      localStorage.removeItem('pybe_kata_history');
+      localStorage.removeItem('pybe_kata_xp');
+      setErrorStats({
+        totalCompleted: 0,
+        totalAttempts: 0,
+        correctAttempts: 0,
+        progressPercentage: 0,
+        accuracyPercentage: 0,
+        totalQuestionsCount: errorQuestions.length
+      });
+      setErrorSolvedIds([]);
+      setErrorSubmissions([]);
+      setSelectedLevel(null);
+      setSelectedTopic(null);
+      setSelectedQuestionId(null);
+      alert('Progress successfully reset!');
+    } catch (error) {
+      console.error('Error resetting progress:', error);
+      alert('Failed to reset progress.');
+    }
+  };
+
   // Overall progress for dashboard panel
   const scenariosDone = sessions.length;
   const totalScenarios = scenarios.length || 1;
@@ -216,7 +241,7 @@ function App() {
         return <ErrorDetectivePage />;
 
       case '/practice':
-        return <PracticeView />;
+        return <PracticePage />;
       case '/quiz':
         return <QuizView />;
       case '/achievements':
@@ -380,7 +405,6 @@ function App() {
           </div>
         </div>
 
-        <div className="sidebar-divider" />
       </aside>
 
       {renderContent()}
