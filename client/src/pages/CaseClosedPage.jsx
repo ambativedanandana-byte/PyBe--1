@@ -17,6 +17,8 @@ import {
   Home,
 } from 'lucide-react';
 import { getExpectedSolution } from '../data/expectedSolutions';
+import CaseHeader from '../components/CaseHeader';
+import InvestigationProgress from '../components/InvestigationProgress';
 
 function formatTime(seconds) {
   if (seconds < 60) return `${seconds}s`;
@@ -150,16 +152,17 @@ export default function CaseClosedPage({
         </div>
       )}
 
-      <header className="hero ed-hero cc-hero">
-        <div>
-          <p className="cc-eyebrow">Investigation Complete</p>
-          <h1 className="cc-title">Case Successfully Solved</h1>
-        </div>
-        <div className="hero-stats">
-          <span className="cc-case-badge">#{story.caseNumber}</span>
-          <span>{story.difficulty}<small>Difficulty</small></span>
-        </div>
-      </header>
+      <CaseHeader
+        levelName="Case Closed"
+        caseNumber={story.caseNumber}
+        title={story.title}
+        difficulty={story.difficulty}
+        duration={story.estimatedTime}
+        backLabel="Back to Fix Code"
+        onBack={onBack}
+      />
+
+      <InvestigationProgress currentStep="results" />
 
       <div className="cc-layout">
         {/* Success Banner */}

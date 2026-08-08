@@ -7,6 +7,7 @@ import FixCodePage from './FixCodePage';
 import CaseClosedPage from './CaseClosedPage';
 import { getStory } from '../data/stories';
 import { getInvestigation } from '../data/investigations';
+import CaseHeader from '../components/CaseHeader';
 
 const LEVELS = [
   {
@@ -258,18 +259,11 @@ export default function ErrorDetectivePage() {
     const total = getTotalInvestigations(selectedLevel);
     return (
       <section className="workspace ed-page">
-        <header className="hero ed-hero">
-          <div>
-            <button className="ed-back-btn" onClick={handleBackToLevels}>
-              <ChevronLeft size={16} /> Back to Levels
-            </button>
-            <p>{selectedLevel.difficulty} Level</p>
-            <h1>{selectedLevel.name}</h1>
-          </div>
-          <div className="hero-stats">
-            <span>{total}<small>Investigations</small></span>
-          </div>
-        </header>
+        <CaseHeader
+          levelName={selectedLevel.name}
+          backLabel="Back to Levels"
+          onBack={handleBackToLevels}
+        />
 
         <div className="ed-investigations-grid">
           {Object.entries(selectedLevel.categories).map(([category, investigations]) => {

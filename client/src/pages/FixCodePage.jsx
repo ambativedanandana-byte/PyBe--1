@@ -15,6 +15,8 @@ import {
   CheckCircle2,
 } from 'lucide-react';
 import { getExpectedSolution } from '../data/expectedSolutions';
+import CaseHeader from '../components/CaseHeader';
+import InvestigationProgress from '../components/InvestigationProgress';
 
 function normalizeCode(lines) {
   return lines
@@ -185,21 +187,17 @@ export default function FixCodePage({
 
   return (
     <section className="workspace ed-page fc-page">
-      <header className="hero ed-hero fc-hero">
-        <div>
-          <button className="ed-back-btn" onClick={onBack}>
-            <ChevronLeft size={16} /> Back to Analysis
-          </button>
-          <p>Fix the Code</p>
-          <h1>Case #{story.caseNumber} — {story.title}</h1>
-        </div>
-        <div className="hero-stats">
-          <span>{story.difficulty}<small>Difficulty</small></span>
-          <span className={`fc-status-badge ${isSolved ? 'solved' : ''}`}>
-            {isSolved ? <><CheckCircle2 size={14} /> Solved</> : 'Debugging'}
-          </span>
-        </div>
-      </header>
+      <CaseHeader
+        levelName="Fix the Code"
+        caseNumber={story.caseNumber}
+        title={story.title}
+        difficulty={story.difficulty}
+        statusBadge={isSolved ? '✓ Solved' : 'Debugging'}
+        backLabel="Back to Analysis"
+        onBack={onBack}
+      />
+
+      <InvestigationProgress currentStep="fix" />
 
       <div className="fc-layout">
         {/* Left Panel */}

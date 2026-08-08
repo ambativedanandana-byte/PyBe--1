@@ -16,6 +16,8 @@ import {
   Lock,
   Unlock,
 } from 'lucide-react';
+import CaseHeader from '../components/CaseHeader';
+import InvestigationProgress from '../components/InvestigationProgress';
 
 const ERROR_TYPES = [
   {
@@ -542,19 +544,17 @@ export default function BugAnalysisPage({
 
   return (
     <section className="workspace ed-page">
-      <header className="hero ed-hero ba-hero">
-        <div>
-          <button className="ed-back-btn" onClick={onBack}>
-            <ChevronLeft size={16} /> Back to Investigation Room
-          </button>
-          <p>Bug Analysis</p>
-          <h1>Case #{story.caseNumber} — {story.title}</h1>
-        </div>
-        <div className="hero-stats">
-          <span>{story.difficulty}<small>Difficulty</small></span>
-          <span className="ba-status-badge">Analyze the Problem</span>
-        </div>
-      </header>
+      <CaseHeader
+        levelName="Bug Analysis"
+        caseNumber={story.caseNumber}
+        title={story.title}
+        difficulty={story.difficulty}
+        statusBadge="Analyze the Problem"
+        backLabel="Back to Investigation Room"
+        onBack={onBack}
+      />
+
+      <InvestigationProgress currentStep="analysis" />
 
       <div className="ba-layout">
         <div className="ba-left">

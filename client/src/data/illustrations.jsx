@@ -3,8 +3,43 @@ import React, { useState } from 'react';
 /**
  * ComicImage: Shows PNG comic illustration if available,
  * otherwise falls back to the SVG component.
+ *
+ * panels: array of panel IDs e.g. ['b-syn-1-p1','b-syn-1-p2',...] for 9-panel strip
+ * If panels is provided, renders a horizontal strip. Otherwise single image.
  */
-function ComicImage({ id, FallbackSVG, alt }) {
+function ComicImage({ id, panels, FallbackSVG, alt }) {
+  const [failedPanels, setFailedPanels] = useState({});
+
+  const handlePanelError = (panelId) => {
+    setFailedPanels((prev) => ({ ...prev, [panelId]: true }));
+  };
+
+  // Multi-panel strip mode
+  if (panels && panels.length > 0) {
+    const allFailed = panels.every((p) => failedPanels[p]);
+    if (allFailed) return <FallbackSVG />;
+
+    return (
+      <div className="sp-comic-strip">
+        {panels.map((panelId, idx) => (
+          <div key={panelId} className="sp-comic-panel">
+            {!failedPanels[panelId] ? (
+              <img
+                src={`/illustrations/${panelId}.png`}
+                alt={`${alt} panel ${idx + 1}`}
+                className="sp-comic-panel-img"
+                onError={() => handlePanelError(panelId)}
+              />
+            ) : (
+              <FallbackSVG />
+            )}
+          </div>
+        ))}
+      </div>
+    );
+  }
+
+  // Single image mode (existing behavior)
   const [imgError, setImgError] = useState(false);
   const src = `/illustrations/${id}.png`;
 
@@ -2063,47 +2098,51 @@ function ScoreAnalyzerIllustration() {
 }
 
 /* ===== ILLUSTRATION MAP ===== */
+function makePanels(caseId) {
+  return Array.from({ length: 9 }, (_, i) => `${caseId}-p${i + 1}`);
+}
+
 const ILLUSTRATION_MAP = {
-  'b-syn-1': () => <ComicImage id="b-syn-1" FallbackSVG={BakeryOrderIllustration} alt="The Bakery Order" />,
-  'b-syn-2': () => <ComicImage id="b-syn-2" FallbackSVG={LibraryShelfIllustration} alt="The Library Shelf" />,
-  'b-syn-3': () => <ComicImage id="b-syn-3" FallbackSVG={PhoneCallIllustration} alt="The Phone Call" />,
-  'b-syn-4': () => <ComicImage id="b-syn-4" FallbackSVG={TravelJournalIllustration} alt="Unmatched Quotes" />,
-  'b-syn-5': () => <ComicImage id="b-syn-5" FallbackSVG={ScienceLabIllustration} alt="Misspelled Keywords" />,
-  'b-syn-6': () => <ComicImage id="b-syn-6" FallbackSVG={GroceryListIllustration} alt="Missing Comma" />,
-  'b-syn-7': () => <ComicImage id="b-syn-7" FallbackSVG={ConcertTicketsIllustration} alt="Missing Closing Bracket" />,
-  'b-run-1': SchoolCeremonyIllustration,
-  'b-run-2': RecipeDisasterIllustration,
-  'b-run-3': TrainScheduleIllustration,
-  'b-run-4': VotingBoothIllustration,
-  'b-log-1': PizzaPartyIllustration,
-  'b-log-2': ThermostatIllustration,
-  'b-log-3': ExamScoreIllustration,
-  'b-log-4': TrafficLightIllustration,
-  'e-syn-1': RoomOrganizerIllustration,
-  'e-syn-2': MorningGreetingIllustration,
-  'e-syn-3': FruitBasketIllustration,
-  'e-syn-4': ScoreCalculatorIllustration,
-  'e-run-1': ColorPaletteIllustration,
-  'e-run-2': ContactCardIllustration,
-  'e-run-3': TextEditorIllustration,
-  'e-run-4': DiaryReaderIllustration,
-  'e-run-5': ToolboxIllustration,
-  'e-run-6': ClockAppIllustration,
-  'e-log-1': VotingCounterIllustration,
-  'e-log-2': EndlessMeetingIllustration,
-  'e-log-3': InventoryCheckIllustration,
-  'e-log-4': ClubEntryIllustration,
-  'e-log-5': ShoppingBillIllustration,
-  'bu-syn-1': DataFilterIllustration,
-  'bu-run-1': DictionaryExplorerIllustration,
-  'bu-run-2': DivisionToolIllustration,
-  'bu-run-3': NumberConverterIllustration,
-  'bu-log-1': BookSearchIllustration,
-  'bu-log-2': FruitFinderIllustration,
-  'bu-log-3': AgeGateIllustration,
-  'bu-log-4': NumberSorterIllustration,
-  'bu-log-5': TemperatureLabIllustration,
-  'bu-log-6': ScoreAnalyzerIllustration,
+  'b-syn-1': () => <ComicImage id="b-syn-1" panels={makePanels('b-syn-1')} FallbackSVG={BakeryOrderIllustration} alt="The Bakery Order" />,
+  'b-syn-2': () => <ComicImage id="b-syn-2" panels={makePanels('b-syn-2')} FallbackSVG={LibraryShelfIllustration} alt="The Library Shelf" />,
+  'b-syn-3': () => <ComicImage id="b-syn-3" panels={makePanels('b-syn-3')} FallbackSVG={PhoneCallIllustration} alt="The Phone Call" />,
+  'b-syn-4': () => <ComicImage id="b-syn-4" panels={makePanels('b-syn-4')} FallbackSVG={TravelJournalIllustration} alt="Unmatched Quotes" />,
+  'b-syn-5': () => <ComicImage id="b-syn-5" panels={makePanels('b-syn-5')} FallbackSVG={ScienceLabIllustration} alt="Misspelled Keywords" />,
+  'b-syn-6': () => <ComicImage id="b-syn-6" panels={makePanels('b-syn-6')} FallbackSVG={GroceryListIllustration} alt="Missing Comma" />,
+  'b-syn-7': () => <ComicImage id="b-syn-7" panels={makePanels('b-syn-7')} FallbackSVG={ConcertTicketsIllustration} alt="Missing Closing Bracket" />,
+  'b-run-1': () => <ComicImage id="b-run-1" panels={makePanels('b-run-1')} FallbackSVG={SchoolCeremonyIllustration} alt="School Ceremony" />,
+  'b-run-2': () => <ComicImage id="b-run-2" panels={makePanels('b-run-2')} FallbackSVG={RecipeDisasterIllustration} alt="Recipe Disaster" />,
+  'b-run-3': () => <ComicImage id="b-run-3" panels={makePanels('b-run-3')} FallbackSVG={TrainScheduleIllustration} alt="Train Schedule" />,
+  'b-run-4': () => <ComicImage id="b-run-4" panels={makePanels('b-run-4')} FallbackSVG={VotingBoothIllustration} alt="Voting Booth" />,
+  'b-log-1': () => <ComicImage id="b-log-1" panels={makePanels('b-log-1')} FallbackSVG={PizzaPartyIllustration} alt="Pizza Party" />,
+  'b-log-2': () => <ComicImage id="b-log-2" panels={makePanels('b-log-2')} FallbackSVG={ThermostatIllustration} alt="Thermostat" />,
+  'b-log-3': () => <ComicImage id="b-log-3" panels={makePanels('b-log-3')} FallbackSVG={ExamScoreIllustration} alt="Exam Score" />,
+  'b-log-4': () => <ComicImage id="b-log-4" panels={makePanels('b-log-4')} FallbackSVG={TrafficLightIllustration} alt="Traffic Light" />,
+  'e-syn-1': () => <ComicImage id="e-syn-1" panels={makePanels('e-syn-1')} FallbackSVG={RoomOrganizerIllustration} alt="Room Organizer" />,
+  'e-syn-2': () => <ComicImage id="e-syn-2" panels={makePanels('e-syn-2')} FallbackSVG={MorningGreetingIllustration} alt="Morning Greeting" />,
+  'e-syn-3': () => <ComicImage id="e-syn-3" panels={makePanels('e-syn-3')} FallbackSVG={FruitBasketIllustration} alt="Fruit Basket" />,
+  'e-syn-4': () => <ComicImage id="e-syn-4" panels={makePanels('e-syn-4')} FallbackSVG={ScoreCalculatorIllustration} alt="Score Calculator" />,
+  'e-run-1': () => <ComicImage id="e-run-1" panels={makePanels('e-run-1')} FallbackSVG={ColorPaletteIllustration} alt="Color Palette" />,
+  'e-run-2': () => <ComicImage id="e-run-2" panels={makePanels('e-run-2')} FallbackSVG={ContactCardIllustration} alt="Contact Card" />,
+  'e-run-3': () => <ComicImage id="e-run-3" panels={makePanels('e-run-3')} FallbackSVG={TextEditorIllustration} alt="Text Editor" />,
+  'e-run-4': () => <ComicImage id="e-run-4" panels={makePanels('e-run-4')} FallbackSVG={DiaryReaderIllustration} alt="Diary Reader" />,
+  'e-run-5': () => <ComicImage id="e-run-5" panels={makePanels('e-run-5')} FallbackSVG={ToolboxIllustration} alt="Toolbox" />,
+  'e-run-6': () => <ComicImage id="e-run-6" panels={makePanels('e-run-6')} FallbackSVG={ClockAppIllustration} alt="Clock App" />,
+  'e-log-1': () => <ComicImage id="e-log-1" panels={makePanels('e-log-1')} FallbackSVG={VotingCounterIllustration} alt="Voting Counter" />,
+  'e-log-2': () => <ComicImage id="e-log-2" panels={makePanels('e-log-2')} FallbackSVG={EndlessMeetingIllustration} alt="Endless Meeting" />,
+  'e-log-3': () => <ComicImage id="e-log-3" panels={makePanels('e-log-3')} FallbackSVG={InventoryCheckIllustration} alt="Inventory Check" />,
+  'e-log-4': () => <ComicImage id="e-log-4" panels={makePanels('e-log-4')} FallbackSVG={ClubEntryIllustration} alt="Club Entry" />,
+  'e-log-5': () => <ComicImage id="e-log-5" panels={makePanels('e-log-5')} FallbackSVG={ShoppingBillIllustration} alt="Shopping Bill" />,
+  'bu-syn-1': () => <ComicImage id="bu-syn-1" panels={makePanels('bu-syn-1')} FallbackSVG={DataFilterIllustration} alt="Data Filter" />,
+  'bu-run-1': () => <ComicImage id="bu-run-1" panels={makePanels('bu-run-1')} FallbackSVG={DictionaryExplorerIllustration} alt="Dictionary Explorer" />,
+  'bu-run-2': () => <ComicImage id="bu-run-2" panels={makePanels('bu-run-2')} FallbackSVG={DivisionToolIllustration} alt="Division Tool" />,
+  'bu-run-3': () => <ComicImage id="bu-run-3" panels={makePanels('bu-run-3')} FallbackSVG={NumberConverterIllustration} alt="Number Converter" />,
+  'bu-log-1': () => <ComicImage id="bu-log-1" panels={makePanels('bu-log-1')} FallbackSVG={BookSearchIllustration} alt="Book Search" />,
+  'bu-log-2': () => <ComicImage id="bu-log-2" panels={makePanels('bu-log-2')} FallbackSVG={FruitFinderIllustration} alt="Fruit Finder" />,
+  'bu-log-3': () => <ComicImage id="bu-log-3" panels={makePanels('bu-log-3')} FallbackSVG={AgeGateIllustration} alt="Age Gate" />,
+  'bu-log-4': () => <ComicImage id="bu-log-4" panels={makePanels('bu-log-4')} FallbackSVG={NumberSorterIllustration} alt="Number Sorter" />,
+  'bu-log-5': () => <ComicImage id="bu-log-5" panels={makePanels('bu-log-5')} FallbackSVG={TemperatureLabIllustration} alt="Temperature Lab" />,
+  'bu-log-6': () => <ComicImage id="bu-log-6" panels={makePanels('bu-log-6')} FallbackSVG={ScoreAnalyzerIllustration} alt="Score Analyzer" />,
 };
 
 export function getIllustration(investigationId) {
