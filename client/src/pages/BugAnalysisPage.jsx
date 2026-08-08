@@ -575,6 +575,45 @@ export default function BugAnalysisPage({
               </div>
             )}
           </div>
+
+          <div className="panel ba-analysis-card">
+            <div className="ba-card-header">
+              <Target size={18} />
+              <h3>Bug Analysis</h3>
+            </div>
+            <div className="ba-analysis-summary">
+              <div className="ba-analysis-row">
+                <span className="ba-analysis-label"><Eye size={14} /> Observed:</span>
+                <span className="ba-analysis-value">
+                  {observation || <em className="ba-placeholder">Not yet answered</em>}
+                </span>
+              </div>
+              <div className="ba-analysis-row">
+                <span className="ba-analysis-label"><Crosshair size={14} /> Suspected Line:</span>
+                <span className="ba-analysis-value">
+                  {selectedLine ? `Line ${selectedLine}` : <em className="ba-placeholder">Not yet selected</em>}
+                </span>
+              </div>
+              <div className="ba-analysis-row">
+                <span className="ba-analysis-label"><Tag size={14} /> Error Type:</span>
+                <span className="ba-analysis-value">
+                  {selectedTypeError?.label || <em className="ba-placeholder">Not yet classified</em>}
+                </span>
+              </div>
+              <div className="ba-analysis-row">
+                <span className="ba-analysis-label"><AlertTriangle size={14} /> Specific Issue:</span>
+                <span className="ba-analysis-value">
+                  {errorIssue || <em className="ba-placeholder">Not yet identified</em>}
+                </span>
+              </div>
+              <div className="ba-analysis-row">
+                <span className="ba-analysis-label"><CheckCircle2 size={14} /> Confidence:</span>
+                <span className="ba-analysis-value">
+                  {confidence}% — {confidenceLabels[confidence]}
+                </span>
+              </div>
+            </div>
+          </div>
         </div>
 
         <div className="ba-right">
@@ -637,45 +676,6 @@ export default function BugAnalysisPage({
               placeholder={`Why you chose that line...\nWhy you think the error occurred...\nWhat the correct behavior should be...`}
               rows={8}
             />
-          </div>
-
-          <div className="panel ba-analysis-card">
-            <div className="ba-card-header">
-              <Target size={18} />
-              <h3>Bug Analysis</h3>
-            </div>
-            <div className="ba-analysis-summary">
-              <div className="ba-analysis-row">
-                <span className="ba-analysis-label"><Eye size={14} /> Observed:</span>
-                <span className="ba-analysis-value">
-                  {observation || <em className="ba-placeholder">Not yet answered</em>}
-                </span>
-              </div>
-              <div className="ba-analysis-row">
-                <span className="ba-analysis-label"><Crosshair size={14} /> Suspected Line:</span>
-                <span className="ba-analysis-value">
-                  {selectedLine ? `Line ${selectedLine}` : <em className="ba-placeholder">Not yet selected</em>}
-                </span>
-              </div>
-              <div className="ba-analysis-row">
-                <span className="ba-analysis-label"><Tag size={14} /> Error Type:</span>
-                <span className="ba-analysis-value">
-                  {selectedTypeError?.label || <em className="ba-placeholder">Not yet classified</em>}
-                </span>
-              </div>
-              <div className="ba-analysis-row">
-                <span className="ba-analysis-label"><AlertTriangle size={14} /> Specific Issue:</span>
-                <span className="ba-analysis-value">
-                  {errorIssue || <em className="ba-placeholder">Not yet identified</em>}
-                </span>
-              </div>
-              <div className="ba-analysis-row">
-                <span className="ba-analysis-label"><CheckCircle2 size={14} /> Confidence:</span>
-                <span className="ba-analysis-value">
-                  {confidence}% — {confidenceLabels[confidence]}
-                </span>
-              </div>
-            </div>
           </div>
         </div>
       </div>
