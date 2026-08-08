@@ -267,8 +267,11 @@ export default function ErrorDetectivePage() {
                 </div>
 
                 <div className="ed-category-items">
-                  {investigations.map((inv) => {
-                    const locked = true;
+                  {investigations.map((inv, invIdx) => {
+                    const isBeginner = selectedLevel.id === 'beginner';
+                    const isFirstCategory = Object.keys(selectedLevel.categories)[0] === category;
+                    const isFirstInvestigation = invIdx === 0;
+                    const locked = !(isBeginner && isFirstCategory && isFirstInvestigation);
                     return (
                       <button
                         key={inv.id}
@@ -304,7 +307,7 @@ export default function ErrorDetectivePage() {
       <div className="ed-levels-grid">
         {LEVELS.map((level) => {
           const total = getTotalInvestigations(level);
-          const locked = true;
+          const locked = level.id !== 'beginner';
           return (
             <div key={level.id} className={`panel ed-level-card ${locked ? 'ed-locked' : ''}`}>
               <div className="ed-level-header">
