@@ -7065,9 +7065,35 @@ meter {
   box-shadow: 0 8px 32px rgba(15, 28, 24, 0.14);
 }
 
+.ed-level-card.ed-locked {
+  opacity: 0.65;
+  pointer-events: none;
+}
+
+.ed-level-card.ed-locked:hover {
+  transform: none;
+  box-shadow: 0 2px 12px rgba(15, 28, 24, 0.07);
+}
+
 .ed-level-header {
   display: flex;
   align-items: center;
+  gap: 8px;
+}
+
+.ed-lock-icon {
+  color: #9ca3af;
+}
+
+.ed-locked-btn {
+  background: #374151 !important;
+  color: #9ca3af !important;
+  cursor: not-allowed !important;
+}
+
+.ed-locked-btn:hover {
+  background: #374151 !important;
+  transform: none !important;
 }
 
 .ed-difficulty-badge {
@@ -7265,6 +7291,20 @@ meter {
 }
 
 .ed-investigation-item:hover .ed-investigation-arrow { color: #16a34a; transform: translateX(2px); }
+
+.ed-investigation-item.ed-locked {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.ed-investigation-item.ed-locked:hover {
+  background: transparent;
+}
+
+.ed-inv-lock {
+  color: #9ca3af;
+  flex-shrink: 0;
+}
 
 /* ---- Dark mode investigations ---- */
 [data-theme="dark"] .ed-category-col { background: #111e1b; border-color: rgba(255,255,255,0.08); }

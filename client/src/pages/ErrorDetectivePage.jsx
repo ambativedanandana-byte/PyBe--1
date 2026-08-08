@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ChevronLeft, ChevronRight, ChevronDown, ChevronUp, Search, Code2, Bug, Lightbulb, BookOpen } from 'lucide-react';
+import { ChevronLeft, ChevronRight, ChevronDown, ChevronUp, Search, Code2, Bug, Lightbulb, BookOpen, Lock } from 'lucide-react';
 import StoryPage from './StoryPage';
 import InvestigationRoom from './InvestigationRoom';
 import BugAnalysisPage from './BugAnalysisPage';
@@ -267,16 +267,21 @@ export default function ErrorDetectivePage() {
                 </div>
 
                 <div className="ed-category-items">
-                  {investigations.map((inv) => (
-                    <button
-                      key={inv.id}
-                      className="ed-investigation-item"
-                      onClick={() => handleSelectInvestigation(inv)}
-                    >
-                      <span className="ed-investigation-title">{inv.title}</span>
-                      <ChevronRight size={16} className="ed-investigation-arrow" />
-                    </button>
-                  ))}
+                  {investigations.map((inv) => {
+                    const locked = true;
+                    return (
+                      <button
+                        key={inv.id}
+                        className={`ed-investigation-item ${locked ? 'ed-locked' : ''}`}
+                        disabled={locked}
+                        onClick={() => !locked && handleSelectInvestigation(inv)}
+                      >
+                        {locked && <Lock size={12} className="ed-inv-lock" />}
+                        <span className="ed-investigation-title">{inv.title}</span>
+                        {!locked && <ChevronRight size={16} className="ed-investigation-arrow" />}
+                      </button>
+                    );
+                  })}
                 </div>
               </div>
             );
@@ -299,12 +304,14 @@ export default function ErrorDetectivePage() {
       <div className="ed-levels-grid">
         {LEVELS.map((level) => {
           const total = getTotalInvestigations(level);
+          const locked = true;
           return (
-            <div key={level.id} className="panel ed-level-card">
+            <div key={level.id} className={`panel ed-level-card ${locked ? 'ed-locked' : ''}`}>
               <div className="ed-level-header">
                 <span className={`ed-difficulty-badge ed-diff-${level.id}`}>
                   {level.difficulty}
                 </span>
+                {locked && <Lock size={14} className="ed-lock-icon" />}
               </div>
               <h2 className="ed-level-name">{level.name}</h2>
               <p className="ed-level-desc">{level.description}</p>
@@ -320,10 +327,11 @@ export default function ErrorDetectivePage() {
                 <span className="ed-progress-text">0% complete</span>
               </div>
               <button
-                className="primary ed-continue-btn"
+                className={`ed-continue-btn ${locked ? 'ed-locked-btn' : 'primary'}`}
+                disabled={locked}
                 onClick={() => handleSelectLevel(level)}
               >
-                Continue <ChevronRight size={16} />
+                {locked ? <><Lock size={14} /> Coming Soon</> : <>Continue <ChevronRight size={16} /></>}
               </button>
             </div>
           );
