@@ -1,836 +1,713 @@
 const INVESTIGATIONS = {
   'b-syn-1': {
     code: [
-      '# Bakery Order System',
-      'def calculate_price(item, quantity):',
-      '    price = quantity * 2.50',
-      '    print(f"{item}: ${price}")',
-      '    return price',
+      'def greet():',
+      '    print("Hello!")',
+      'def add(a, b)',
+      '    return a + b',
       '',
-      'def print_total()',
-      '    total = calculate_price("cupcakes", 24)',
-      '    total = total + calculate_price("croissants", 12)',
-      '    print(f"Total: ${total}")',
-      '',
-      'print_total()',
+      'greet()',
+      'result = add(2, 3)',
+      'print(result)',
     ],
     output: null,
-    error: `  File "bakery.py", line 7
-    def print_total()
-                   ^
+    error: `  File "app.py", line 3
+    def add(a, b)
+               ^
 SyntaxError: expected ':'`,
     evidenceClues: [
-      'The program did not produce the expected result.',
-      'Python stopped running before completing the task.',
-      'There is an issue on line 7 of the program.',
+      'The program stopped before finishing.',
+      'Python found a problem on line 3.',
+      'A small character is missing.',
     ],
   },
   'b-syn-2': {
     code: [
-      '# Library Book Organizer',
-      'sections = ["fiction", "non-fiction", "reference"]',
+      'colors = ["red", "green", "blue"]',
       '',
-      'for section in sections',
-      '    print(f"Setting up: {section}")',
-      '    books = get_books(section)',
-      '    for book in books:',
-      '        place_on_shelf(book, section)',
-      '',
-      'print("All sections organized!")',
+      'for color in colors',
+      '    print(color)',
     ],
     output: null,
-    error: `  File "library.py", line 4
-    for section in sections
-                         ^
+    error: `  File "app.py", line 3
+    for color in colors
+                   ^
 SyntaxError: expected ':'`,
     evidenceClues: [
-      'The volunteers could not follow the instructions.',
-      'The program stopped before organizing any books.',
-      'Python found something wrong on line 4.',
+      'The loop does not start running.',
+      'Python expects something at the end of line 3.',
+      'A colon is missing.',
     ],
   },
   'b-syn-3': {
     code: [
-      '# Phone Contact List',
-      'contacts = ["Alice", "Bob", "Carol"',
-      '            "Dave", "Emily", "Frank"',
-      '            "Grace", "Henry"]',
+      'fruits = ["apple", "banana"',
+      '          "cherry", "grape"]',
       '',
-      'print(f"Total contacts: {len(contacts)}")',
-      '',
-      'for name in contacts:',
-      '    print(f"Calling {name}...")',
+      'print(fruits)',
     ],
     output: null,
-    error: `  File "phone.py", line 2
-            "Dave", "Emily", "Frank"
-            ^
+    error: `  File "app.py", line 2
+          "cherry", "grape"]
+          ^
 SyntaxError: invalid syntax`,
     evidenceClues: [
-      'Tom\'s phone kept freezing when processing the list.',
-      'The list appears incomplete to the program.',
-      'Python cannot parse the contact list correctly.',
+      'The list is not readable by Python.',
+      'Items appear stuck together.',
+      'A comma is missing between items.',
     ],
   },
   'b-syn-4': {
     code: [
-      '# Travel Journal Entry',
-      'entry = "I visited the most wonderful place today"',
-      'review = "The pasta was delicious"',
+      'name = "Alice"',
+      'age = 25',
       '',
-      'quote = "The waiter said, "The Chef\'s special is amazing""',
-      '',
-      'print(entry)',
-      'print(review)',
-      'print(quote)',
+      'print(name)',
+      'print(age)',
     ],
-    output: null,
-    error: `  File "journal.py", line 5
-    quote = "The waiter said, "The Chef's special is amazing""
-                                 ^
-SyntaxError: invalid syntax`,
+    output: `Alice
+25`,
+    error: null,
     evidenceClues: [
-      'Maya\'s journal entry disappeared when she added a quote.',
-      'The text vanished after a certain pair of characters.',
-      'Python is confused about where the string ends.',
+      'This code runs fine.',
+      'The output matches expectations.',
+      'No bug here — check the story for clues.',
     ],
   },
   'b-syn-5': {
     code: [
-      '# Science Lab Instructions',
-      'def meisure_volume(amount):',
-      '    print(f"Measuring {amount}ml of solution")',
+      'def measure(amount):',
+      '    print(f"Measuring {amount}ml")',
       '    return amount',
       '',
-      'def obsurbe_color(mixture):',
-      '    print(f"Observing color change in {mixture}")',
-      '    return "color_changed"',
-      '',
-      'solution = meisure_volume(50)',
-      'result = obsurbe_color(solution)',
-      'print(f"Experiment complete: {result}")',
+      'x = measure(50)',
+      'print(x)',
     ],
-    output: `Measuring 50ml of solution
-Observing color change in 50
-Experiment complete: color_changed`,
+    output: `Measuring 50ml
+50`,
     error: null,
     evidenceClues: [
-      'The students could not find the tools mentioned.',
-      'The instructions use words that don\'t match standard terms.',
-      'The program runs, but the function names are unusual.',
+      'The program runs but uses odd names.',
+      'Function names look like misspellings.',
+      'The code works but is hard to read.',
     ],
   },
   'b-syn-6': {
     code: [
-      '# Grocery List Manager',
       'items = ["eggs"',
       '         "milk"',
-      '         "bread"',
-      '         "butter"',
-      '         "chicken"',
-      '         "rice"]',
+      '         "bread"]',
       '',
-      'print(f"Shopping list ({len(items)} items):")',
-      'for item in items:',
-      '    print(f"  - {item}")',
+      'print(items)',
     ],
     output: null,
-    error: `  File "grocery.py", line 2
+    error: `  File "app.py", line 2
          "milk"
          ^
 SyntaxError: invalid syntax`,
     evidenceClues: [
-      'Sarah\'s grocery list items ran together.',
-      'The items appear as one giant word to the program.',
-      'Python cannot read the list correctly.',
+      'The list items are joined together.',
+      'Python cannot read the list properly.',
+      'Commas are missing between items.',
     ],
   },
   'b-syn-7': {
     code: [
-      '# Concert Ticket Form',
-      'name = input("Enter your name: ")',
-      'email = input("Enter your email: ")',
-      'tickets = int(input("Number of tickets: "))',
-      '',
       'order = {',
-      '    "name": name',
-      '    "email": email',
-      '    "tickets": tickets',
+      '    "name": "Alice"',
+      '    "item": "cake"',
       '}',
       '',
-      'print(f"Order confirmed: {order}")',
+      'print(order)',
     ],
     output: null,
-    error: `  File "tickets.py", line 7
-    "email": email
-              ^
+    error: `  File "app.py", line 3
+    "item": "cake"
+            ^
 SyntaxError: invalid syntax`,
     evidenceClues: [
-      'The purchase button was unresponsive.',
-      'The form fields appear open and unfinished.',
-      'Python cannot parse the order dictionary.',
+      'The dictionary cannot be created.',
+      'Entries look incomplete.',
+      'A comma is missing between entries.',
     ],
   },
   'b-run-1': {
     code: [
-      '# School Awards Ceremony',
-      'awards = {',
-      '    "Best Science": "Alexandra Chen",',
-      '    "Best Math": undefined,',
-      '    "Best Art": "Jordan Lee",',
-      '    "Best Music": undefined,',
-      '    "Best Sports": "Sam Rivera"',
+      'names = {',
+      '    "A": "Alice",',
+      '    "B": undefined,',
+      '    "C": "Carol"',
       '}',
       '',
-      'for category, student in awards.items():',
-      '    print(f"{category}: {student}")',
+      'for key in names:',
+      '    print(names[key])',
     ],
     output: null,
     error: `Traceback (most recent call last):
-  File "ceremony.py", line 9
-    print(f"{category}: {student}")
+  File "app.py", line 8
+    print(names[key])
 NameError: name 'undefined' is not defined`,
     evidenceClues: [
-      'Some student names disappeared from the list.',
-      'The ceremony had to stop halfway through.',
-      'Python does not recognize one of the values.',
+      'One value is not recognized.',
+      'The program stops halfway.',
+      'Python does not know what "undefined" means.',
     ],
   },
   'b-run-2': {
     code: [
-      '# Apple Pie Recipe',
-      'flour_cups = 2',
-      'butter_cups = flour_cups / 0',
+      'total = 10',
+      'share = total / 0',
       '',
-      'print(f"Flour: {flour_cups} cups")',
-      'print(f"Butter: {butter_cups} cups")',
-      'print("Mix ingredients together")',
+      'print(share)',
     ],
     output: null,
     error: `Traceback (most recent call last):
-  File "recipe.py", line 2
-    butter_cups = flour_cups / 0
+  File "app.py", line 2
+    share = total / 0
 ZeroDivisionError: division by zero`,
     evidenceClues: [
-      'The recipe instructions contain an impossible calculation.',
-      'The program crashed when trying to compute an amount.',
-      'Python cannot divide something into zero parts.',
+      'The calculation is impossible.',
+      'You cannot divide by zero.',
+      'The program crashes on line 2.',
     ],
   },
   'b-run-3': {
     code: [
-      '# Train Schedule App',
-      'def get_platform(station):',
-      '    stations = {"NYC": 1, "BOS": 3, "CHI": 5}',
-      '    return stations[station]',
+      'data = {"NYC": 1, "BOS": 3}',
       '',
-      'departure = "NYC"',
-      'arrival = input("Enter destination: ")',
-      '',
-      'print(f"Platform for {arrival}: {get_platform(arrival)}")',
+      'city = "LAX"',
+      'print(data[city])',
     ],
     output: null,
     error: `Traceback (most recent call last):
-  File "train.py", line 8
-    print(f"Platform for {arrival}: {get_platform(arrival)}")
-  File "train.py", line 3
-    return stations[station]
-TypeError: cannot read property 'platform' of undefined`,
+  File "app.py", line 4
+    print(data[city])
+KeyError: 'LAX'`,
     evidenceClues: [
-      'The app crashes when receiving certain input.',
-      'The program expects a specific type of data.',
-      'Python found a mismatch in the data types.',
+      'The lookup fails for some keys.',
+      'The key does not exist in the dictionary.',
+      'Python cannot find the requested entry.',
     ],
   },
   'b-run-4': {
     code: [
-      '# Voting System',
-      'def cast_vote(choice):',
-      '    if choice == 1:',
-      '        return "Candidate A"',
-      '    elif choice == 2:',
-      '        return "Candidate B"',
-      '    elif choice == 3:',
-      '        return "Candidate C"',
+      'vote = input("Pick 1, 2, or 3: ")',
       '',
-      'voter_choice = int(input("Enter your vote (1-3): "))',
-      'result = cast_vote(voter_choice)',
-      'print(f"You voted for: {result}")',
+      'if vote == 1:',
+      '    print("A")',
+      'elif vote == 2:',
+      '    print("B")',
+      'else:',
+      '    print("C")',
     ],
     output: null,
     error: `Traceback (most recent call last):
-  File "voting.py", line 10
-    result = cast_vote(voter_choice)
-  File "voting.py", line 2
-    if choice == 1:
-ValueError: invalid choice. Please try again.`,
+  File "app.py", line 3
+    if vote == 1:
+TypeError: comparison failed`,
     evidenceClues: [
-      'The voting system crashes on unexpected input.',
-      'Only three specific values are accepted.',
-      'Python raises an error for any other input.',
+      'Input is text but compared as a number.',
+      'The data types do not match.',
+      'Python cannot compare string to integer.',
     ],
   },
   'b-log-1': {
     code: [
-      '# Pizza Party Calculator',
       'people = 24',
-      'slices_per_person = 3',
+      'slices_each = 3',
       'slices_per_pizza = 8',
       '',
-      'total_slices = people * slices_per_person',
-      'pizzas_needed = total_slices * slices_per_pizza',
+      'total = people * slices_each',
+      'pizzas = total * slices_per_pizza',
       '',
-      'print(f"People: {people}")',
-      'print(f"Slices needed: {total_slices}")',
-      'print(f"Pizzas to order: {pizzas_needed}")',
+      'print(f"Pizzas needed: {pizzas}")',
     ],
-    output: `People: 24
-Slices needed: 72
-Pizzas to order: 576`,
+    output: `Pizzas needed: 576`,
     error: null,
     evidenceClues: [
-      'The result doesn\'t match real-world experience.',
-      'The calculation produces an unreasonable number.',
-      'The formula uses the wrong mathematical operation.',
+      '576 pizzas is way too many.',
+      'The answer does not match real life.',
+      'The formula uses the wrong operation.',
     ],
   },
   'b-log-2': {
     code: [
-      '# Smart Thermostat',
-      'current_temp = 68',
-      'target_temp = 72',
+      'current = 68',
+      'target = 72',
       '',
-      'if current_temp > target_temp:',
-      '    print("Heater: ON")',
+      'if current > target:',
+      '    print("Heat ON")',
       'else:',
-      '    print("Heater: OFF")',
-      '',
-      'print(f"Current: {current_temp}°F")',
-      'print(f"Target: {target_temp}°F")',
+      '    print("Heat OFF")',
     ],
-    output: `Current: 68°F
-Target: 72°F
-Heater: OFF`,
+    output: `Heat OFF`,
     error: null,
     evidenceClues: [
-      'The heater won\'t turn on even though it\'s cold.',
-      'The thermostat is comparing temperatures incorrectly.',
-      'The comparison operator is checking the wrong condition.',
+      'The heater should be on but is off.',
+      'The comparison checks the wrong thing.',
+      '68 is less than 72, so heat stays off.',
     ],
   },
   'b-log-3': {
     code: [
-      '# Student Grade Calculator',
-      'ryan_scores = [85, 92, 78, 90]',
-      'other_scores = [70, 75, 80, 85]',
+      'scores_a = [85, 92, 78, 90]',
+      'scores_b = [70, 75, 80, 85]',
       '',
-      'def calculate_average(scores):',
-      '    return sum(scores) / len(scores)',
+      'avg_a = sum(scores_a) / len(scores_a)',
+      'avg_b = sum(scores_a) / len(scores_b)',
       '',
-      'ryan_avg = calculate_average(ryan_scores)',
-      'other_avg = calculate_average(other_scores)',
-      '',
-      'print(f"Ryan\'s average: {ryan_avg}")',
-      'print(f"Other average: {other_avg}")',
+      'print(f"A: {avg_a}")',
+      'print(f"B: {avg_b}")',
     ],
-    output: `Ryan's average: 86.25
-Other average: 77.5`,
+    output: `A: 86.25
+B: 86.25`,
     error: null,
     evidenceClues: [
-      'The grade calculation shows the wrong result.',
-      'The math looks correct but the output is different.',
-      'The wrong data is being used in the calculation.',
+      'Both averages are the same.',
+      'One calculation uses the wrong data.',
+      'scores_a is used twice by mistake.',
     ],
   },
   'b-log-4': {
     code: [
-      '# Traffic Light Controller',
-      'is_daytime = True',
-      'is_nighttime = False',
+      'is_day = True',
       '',
-      'if is_daytime:',
-      '    print("Light: GREEN")',
+      'if is_day:',
+      '    print("GREEN")',
       '',
-      'print("Traffic flowing normally")',
+      'print("Go")',
     ],
-    output: `Light: GREEN
-Traffic flowing normally`,
+    output: `GREEN
+Go`,
     error: null,
     evidenceClues: [
-      'The traffic light stays green at night.',
-      'The program only handles one condition.',
-      'There is no rule for the nighttime case.',
+      'Only daytime is handled.',
+      'There is no check for nighttime.',
+      'The light stays green always.',
     ],
   },
   'e-syn-1': {
     code: [
-      '# Nested Loop Organizer',
-      'rooms = ["kitchen", "living room", "bedroom"]',
+      'rooms = ["kitchen", "bedroom"]',
       '',
       'for room in rooms:',
-      '    items = get_items(room)',
+      '    items = ["table", "chair"]',
       '        for item in items:',
-      '            print(f"Checking {item} in {room}")',
-      '    print(f"{room} organized")',
+      '            print(item)',
     ],
     output: null,
-    error: `  File "organizer.py", line 6
+    error: `  File "app.py", line 5
         for item in items:
         ^
 IndentationError: unexpected indent`,
     evidenceClues: [
-      'The volunteers mixed up the sections.',
-      'The instructions don\'t line up correctly.',
-      'Python found an indentation problem.',
+      'The inner loop is not lined up.',
+      'Indentation is wrong on line 5.',
+      'Python expects consistent spacing.',
     ],
   },
   'e-syn-2': {
     code: [
-      '# Function Definition Error',
-      'def greet_user(name)',
-      '    """Greet the user"""',
-      '    print(f"Hello, {name}!")',
-      '    return f"Welcome, {name}"',
+      'def greet(name)',
+      '    print(f"Hello {name}")',
       '',
-      'message = greet_user("Alice")',
-      'print(message)',
+      'greet("Alice")',
     ],
     output: null,
-    error: `  File "greeting.py", line 1
-    def greet_user(name)
-                      ^
+    error: `  File "app.py", line 1
+    def greet(name)
+                ^
 SyntaxError: expected ':'`,
     evidenceClues: [
-      'The function definition is incomplete.',
-      'Python expects a colon after the parameters.',
-      'The function cannot be called properly.',
+      'The function header is incomplete.',
+      'A colon is missing after the parentheses.',
+      'Python cannot define the function.',
     ],
   },
   'e-syn-3': {
     code: [
-      '# Collection Manager',
-      'fruits = ["apple", "banana", "cherry"',
-      'vegetables = ["carrot", "pea", "corn"]',
+      'fruits = ["apple", "banana"',
+      'vegs = ["carrot", "pea"]',
       '',
-      'print(f"Fruits: {len(fruits)}")',
-      'print(f"Vegetables: {len(vegetables)}")',
+      'print(fruits)',
+      'print(vegs)',
     ],
     output: null,
-    error: `  File "collection.py", line 2
-    vegetables = ["carrot", "pea", "corn"]
-              ^
+    error: `  File "app.py", line 2
+    vegs = ["carrot", "pea"]
+          ^
 SyntaxError: invalid syntax`,
     evidenceClues: [
-      'The collection lists are not properly closed.',
-      'Python cannot parse the data structures.',
-      'There are missing brackets in the code.',
+      'The first list is not closed.',
+      'A closing bracket is missing.',
+      'Python thinks both lists are one.',
     ],
   },
   'e-syn-4': {
     code: [
-      '# Variable Assignment Error',
       'x = 10',
       'y = 20',
       '',
       'x + y = 30',
       '',
-      'print(f"Sum: {x + y}")',
+      'print(x + y)',
     ],
     output: null,
-    error: `  File "assign.py", line 5
+    error: `  File "app.py", line 4
     x + y = 30
     ^
 SyntaxError: cannot assign to operator`,
     evidenceClues: [
-      'The program cannot store the calculated value.',
-      'The assignment target is invalid.',
-      'Python does not allow this type of assignment.',
+      'The result cannot be stored.',
+      'You cannot put a calculation on the left side.',
+      'A variable name is needed on the left.',
     ],
   },
   'e-run-1': {
     code: [
-      '# List Index Accessor',
       'colors = ["red", "green", "blue"]',
       '',
-      'print(f"First color: {colors[0]}")',
-      'print(f"Second color: {colors[1]}")',
-      'print(f"Third color: {colors[2]}")',
-      'print(f"Fourth color: {colors[3]}")',
+      'print(colors[0])',
+      'print(colors[1])',
+      'print(colors[2])',
+      'print(colors[3])',
     ],
-    output: `First color: red
-Second color: green
-Third color: blue`,
+    output: `red
+green
+blue`,
     error: `Traceback (most recent call last):
-  File "colors.py", line 7
-    print(f"Fourth color: {colors[3]}")
+  File "app.py", line 6
+    print(colors[3])
 IndexError: list index out of range`,
     evidenceClues: [
-      'The program works for some items but fails on others.',
-      'The list has only 3 items but the code tries to access a 4th.',
-      'Python cannot find an element at that position.',
+      'The list has 3 items.',
+      'The code tries to access a 4th item.',
+      'There is no item at index 3.',
     ],
   },
   'e-run-2': {
     code: [
-      '# Dictionary Lookup',
       'person = {"name": "Alice", "age": 25}',
       '',
-      'print(f"Name: {person[\'name\']}")',
-      'print(f"Age: {person[\'age\']}")',
-      'print(f"City: {person[\'city\']}")',
+      'print(person["name"])',
+      'print(person["age"])',
+      'print(person["city"])',
     ],
-    output: `Name: Alice
-Age: 25`,
+    output: `Alice
+25`,
     error: `Traceback (most recent call last):
-  File "lookup.py", line 6
-    print(f"City: {person['city']}")
+  File "app.py", line 5
+    print(person["city"])
 KeyError: 'city'`,
     evidenceClues: [
-      'The program works for some lookups but fails on others.',
-      'The dictionary doesn\'t contain all expected keys.',
-      'Python cannot find the requested key in the dictionary.',
+      'Two lookups work, one fails.',
+      'The dictionary has no "city" key.',
+      'Python cannot find the missing key.',
     ],
   },
   'e-run-3': {
     code: [
-      '# String Method Caller',
-      'text = "Hello World"',
+      'text = "hello"',
       '',
       'print(text.upper())',
       'print(text.lower())',
       'print(text.reverse())',
     ],
-    output: `HELLO WORLD
-hello world`,
+    output: `HELLO
+hello`,
     error: `Traceback (most recent call last):
-  File "string.py", line 6
+  File "app.py", line 5
     print(text.reverse())
-AttributeError: 'str' object has no attribute 'reverse'`,
+AttributeError: 'str' has no attribute 'reverse'`,
     evidenceClues: [
-      'Some string operations work but others fail.',
-      'The program tries to call a method that doesn\'t exist.',
-      'Python strings don\'t have a reverse() method.',
+      'upper() and lower() work fine.',
+      'reverse() does not exist on strings.',
+      'Python strings cannot be reversed this way.',
     ],
   },
   'e-run-4': {
     code: [
-      '# File Reader',
-      'filename = "data.txt"',
-      '',
-      'with open(filename, "r") as file:',
-      '    content = file.read()',
-      '    print(content)',
+      'file = open("data.txt")',
+      'content = file.read()',
+      'print(content)',
     ],
     output: null,
     error: `Traceback (most recent call last):
-  File "reader.py", line 4
-    with open(filename, "r") as file:
-FileNotFoundError: [Errno 2] No such file or directory: 'data.txt'`,
+  File "app.py", line 1
+    file = open("data.txt")
+FileNotFoundError: data.txt`,
     evidenceClues: [
-      'The program crashes when trying to read a file.',
-      'The file might not exist in the expected location.',
-      'Python cannot find the file on the system.',
+      'The file does not exist.',
+      'Python cannot find "data.txt".',
+      'The file path may be wrong.',
     ],
   },
   'e-run-5': {
     code: [
-      '# Module Importer',
       'import math',
       'import statistics',
-      'import nonexistent_module',
+      'import fake_module',
       '',
       'print(math.sqrt(16))',
-      'print(statistics.mean([1, 2, 3, 4, 5]))',
     ],
-    output: `4.0
-3.0`,
+    output: `4.0`,
     error: `Traceback (most recent call last):
-  File "importer.py", line 4
-    import nonexistent_module
-ModuleNotFoundError: No module named 'nonexistent_module'`,
+  File "app.py", line 3
+    import fake_module
+ModuleNotFoundError: No module named 'fake_module'`,
     evidenceClues: [
-      'The program works for some imports but fails on others.',
-      'One of the modules doesn\'t exist.',
-      'Python cannot find the specified module.',
+      'math and statistics load fine.',
+      'fake_module does not exist.',
+      'Python cannot import it.',
     ],
   },
   'e-run-6': {
     code: [
-      '# Package Importer',
       'from datetime import datetime',
       'from os import path',
-      'from fake_package import helper',
+      'from fake_pkg import helper',
       '',
-      'now = datetime.now()',
-      'print(f"Current time: {now}")',
+      'print(datetime.now())',
     ],
-    output: `Current time: 2024-01-15 10:30:00.123456`,
+    output: `2024-01-15 10:30:00`,
     error: `Traceback (most recent call last):
-  File "package.py", line 4
-    from fake_package import helper
-ImportError: cannot import name 'helper' from 'fake_package'`,
+  File "app.py", line 3
+    from fake_pkg import helper
+ImportError: cannot import name 'helper'`,
     evidenceClues: [
-      'Some imports work but others fail.',
-      'The package doesn\'t contain the expected module.',
-      'Python cannot find the specified name in the package.',
+      'Two imports work, one fails.',
+      'The package does not have "helper".',
+      'Python cannot find the name in the package.',
     ],
   },
   'e-log-1': {
     code: [
-      '# Loop Counter',
       'count = 0',
       'for i in range(10):',
       '    count = i',
       '',
-      'print(f"Final count: {count}")',
-      'print(f"Expected: 10")',
+      'print(f"Count: {count}")',
     ],
-    output: `Final count: 9
-Expected: 10`,
+    output: `Count: 9`,
     error: null,
     evidenceClues: [
-      'The loop runs 10 times but the result is 9.',
-      'The counter is off by one.',
-      'The loop boundary is incorrect.',
+      'The count is 9, not 10.',
+      'The loop runs 10 times but count is wrong.',
+      'The last value of i is 9.',
     ],
   },
   'e-log-2': {
     code: [
-      '# Counter Program',
       'x = 1',
       '',
       'while x > 0:',
-      '    print(f"x = {x}")',
+      '    print(x)',
       '    x = x + 1',
     ],
-    output: `x = 1
-x = 2
-x = 3
-... (continues forever)`,
+    output: `1
+2
+3
+... (forever)`,
     error: null,
     evidenceClues: [
-      'The program never stops running.',
-      'The loop condition is always true.',
-      'There is no way to exit the loop.',
+      'The program never stops.',
+      'x keeps getting bigger.',
+      'The condition is always true.',
     ],
   },
   'e-log-3': {
     code: [
-      '# Range Iterator',
       'for i in range(5):',
-      '    print(f"Processing item {i}")',
+      '    print(f"Item {i}")',
       '',
-      'print(f"Total items processed: {i}")',
+      'print(f"Last: {i}")',
     ],
-    output: `Processing item 0
-Processing item 1
-Processing item 2
-Processing item 3
-Processing item 4
-Total items processed: 4`,
+    output: `Item 0
+Item 1
+Item 2
+Item 3
+Item 4
+Last: 4`,
     error: null,
     evidenceClues: [
-      'The loop processes fewer items than expected.',
-      'The boundary condition is wrong.',
-      'The last item is not included.',
+      'The last item shows as 4, not 5.',
+      'range(5) goes from 0 to 4.',
+      'The count is off by one.',
     ],
   },
   'e-log-4': {
     code: [
-      '# Boolean Logic Checker',
       'age = 20',
-      'has_ticket = True',
+      'ticket = True',
       '',
-      'if age >= 18 and has_ticket = True:',
-      '    print("Entry allowed")',
-      'else:',
-      '    print("Entry denied")',
+      'if age >= 18 and ticket = True:',
+      '    print("Enter")',
     ],
     output: null,
-    error: `  File "logic.py", line 5
-    if age >= 18 and has_ticket = True:
+    error: `  File "app.py", line 4
+    if age >= 18 and ticket = True:
                               ^
 SyntaxError: invalid syntax`,
     evidenceClues: [
-      'The condition check produces an error.',
-      'The boolean comparison is written incorrectly.',
-      'Python expects == for comparison, not =.',
+      'The condition has a syntax error.',
+      'Single = is for assignment, not comparison.',
+      'Python expects == to compare values.',
     ],
   },
   'e-log-5': {
     code: [
-      '# Calculation Order',
-      'a = 10',
-      'b = 5',
-      'c = 2',
+      'price = 10',
+      'qty = 5',
+      'tax = 2',
       '',
-      'result = a + b * c',
-      'print(f"Result: {result}")',
-      '',
-      'expected = (a + b) * c',
-      'print(f"Expected: {expected}")',
+      'total = price + qty * tax',
+      'print(f"Total: {total}")',
     ],
-    output: `Result: 20
-Expected: 30`,
+    output: `Total: 20`,
     error: null,
     evidenceClues: [
-      'The calculation gives a different result than expected.',
-      'The order of operations affects the outcome.',
-      'Multiplication is happening before addition.',
+      'The total is 20, not 30.',
+      'Multiplication runs before addition.',
+      'Parentheses are needed around the sum.',
     ],
   },
   'bu-syn-1': {
     code: [
-      '# Multi-Issue Program',
-      'def process_data(data)',
+      'def filter_pos(data)',
       '    result = []',
-      '    for item in data:',
-      '        if item > 0',
-      '            result.append(item * 2',
+      '    for x in data:',
+      '        if x > 0',
+      '            result.append(x * 2)',
       '    return result',
       '',
-      'numbers = [1, -2, 3, -4, 5]',
-      'processed = process_data(numbers)',
-      'print(processed)',
+      'print(filter_pos([1, -2, 3]))',
     ],
     output: null,
-    error: `  File "multi.py", line 1
-    def process_data(data)
-                        ^
+    error: `  File "app.py", line 1
+    def filter_pos(data)
+                      ^
 SyntaxError: expected ':'`,
     evidenceClues: [
-      'The program has multiple issues at once.',
-      'The first error stops all further execution.',
-      'There are problems on several lines.',
+      'Multiple issues in one program.',
+      'The first error blocks everything else.',
+      'Fix errors from top to bottom.',
     ],
   },
   'bu-run-1': {
     code: [
-      '# Multiple Exception Program',
       'data = {"a": 1, "b": 2}',
       '',
-      'result = data["c"]',
-      'value = result / 0',
-      'text = value.upper()',
+      'val = data["c"]',
+      'result = val / 0',
+      'text = result.upper()',
     ],
     output: null,
     error: `Traceback (most recent call last):
-  File "multi.py", line 4
-    result = data["c"]
+  File "app.py", line 3
+    val = data["c"]
 KeyError: 'c'`,
     evidenceClues: [
-      'Multiple things could go wrong.',
-      'The first error prevents other errors from showing.',
-      'Each line has a different type of potential error.',
+      'Three things could go wrong.',
+      'Only the first error is shown.',
+      'Each line has a different potential error.',
     ],
   },
   'bu-run-2': {
     code: [
-      '# Exception Handling',
-      'def safe_divide(a, b):',
-      '    result = a / b',
-      '    return result',
+      'def divide(a, b):',
+      '    return a / b',
       '',
-      'print(safe_divide(10, 2))',
-      'print(safe_divide(10, 0))',
-      'print(safe_divide(10, "a"))',
+      'print(divide(10, 2))',
+      'print(divide(10, 0))',
     ],
     output: `5.0`,
     error: `Traceback (most recent call last):
-  File "exception.py", line 7
-    print(safe_divide(10, 0))
+  File "app.py", line 5
+    print(divide(10, 0))
 ZeroDivisionError: division by zero`,
     evidenceClues: [
-      'The program works for valid inputs.',
-      'It crashes on invalid inputs.',
-      'There is no error handling for edge cases.',
+      'divide(10, 2) works fine.',
+      'divide(10, 0) crashes.',
+      'No error handling for bad input.',
     ],
   },
   'bu-run-3': {
     code: [
-      '# User Input Handler',
-      'user_input = input("Enter a number: ")',
-      'number = int(user_input)',
-      'result = 100 / number',
-      'print(f"Result: {result}")',
+      'user = input("Enter number: ")',
+      'num = int(user)',
+      'result = 100 / num',
+      'print(result)',
     ],
     output: null,
     error: `Traceback (most recent call last):
-  File "input.py", line 2
-    number = int(user_input)
+  File "app.py", line 2
+    num = int(user)
 ValueError: invalid literal for int()`,
     evidenceClues: [
-      'The program crashes on certain user input.',
-      'The input might not be a valid number.',
-      'Python cannot convert the input to an integer.',
+      'Works if you type a number.',
+      'Crashes if you type letters.',
+      'The input is not validated.',
     ],
   },
   'bu-log-1': {
     code: [
-      '# Search Algorithm',
-      'def linear_search(arr, target):',
+      'def search(arr, target):',
       '    for i in range(len(arr)):',
       '        if arr[i] == target:',
       '            return i',
       '    return -1',
       '',
-      'numbers = [10, 20, 30, 40, 50]',
-      'index = linear_search(numbers, 30)',
-      'print(f"Found at index: {index}")',
+      'print(search([10, 20, 30], 30))',
     ],
-    output: `Found at index: 2`,
+    output: `2`,
     error: null,
     evidenceClues: [
-      'The search algorithm might not work correctly.',
-      'The implementation has a logical flaw.',
-      'The algorithm doesn\'t handle all cases properly.',
+      'The search finds the item.',
+      'The code looks correct on the surface.',
+      'Check if it handles all edge cases.',
     ],
   },
   'bu-log-2': {
     code: [
-      '# Search Validator',
-      'def validate_search(query, database):',
-      '    if query in database:',
-      '        return True',
-      '    return False',
+      'db = ["apple", "banana", "cherry"]',
       '',
-      'database = ["apple", "banana", "cherry"]',
-      'print(validate_search("Apple", database))',
+      'def find(item):',
+      '    return item in db',
+      '',
+      'print(find("Apple"))',
     ],
     output: `False`,
     error: null,
     evidenceClues: [
-      'The search is case-sensitive.',
-      'The validation doesn\'t match expected behavior.',
-      'The comparison is not handling text correctly.',
+      '"Apple" is in the list but returns False.',
+      'Python compares with exact case.',
+      '"Apple" is not the same as "apple".',
     ],
   },
   'bu-log-3': {
     code: [
-      '# Input Validator',
-      'def validate_age(age):',
+      'def check_age(age):',
       '    if age > 0:',
       '        return True',
       '    return False',
       '',
-      'print(validate_age(25))',
-      'print(validate_age(-5))',
-      'print(validate_age(150))',
+      'print(check_age(25))',
+      'print(check_age(-5))',
+      'print(check_age(150))',
     ],
     output: `True
 True
 True`,
     error: null,
     evidenceClues: [
-      'The validator accepts unreasonable values.',
-      'There are no upper or lower bounds.',
-      'The validation logic is incomplete.',
+      'All ages return True.',
+      '-5 and 150 should not be valid.',
+      'The check only verifies age > 0.',
     ],
   },
   'bu-log-4': {
     code: [
-      '# Bubble Sort',
-      'def bubble_sort(arr):',
+      'def sort(arr):',
       '    n = len(arr)',
       '    for i in range(n):',
       '        for j in range(0, n-i-1):',
@@ -838,63 +715,59 @@ True`,
       '                arr[j], arr[j+1] = arr[j+1], arr[j]',
       '    return arr',
       '',
-      'numbers = [64, 34, 25, 12, 22, 11, 90]',
-      'sorted_numbers = bubble_sort(numbers)',
-      'print(sorted_numbers)',
+      'print(sort([64, 34, 25, 12]))',
     ],
-    output: `[11, 12, 22, 25, 34, 64, 90]`,
+    output: `[12, 25, 34, 64]`,
     error: null,
     evidenceClues: [
-      'The sorting algorithm might not work correctly.',
-      'The implementation has a potential issue.',
-      'The algorithm doesn\'t sort all elements properly.',
+      'The sort works correctly.',
+      'The output looks sorted.',
+      'Verify each step of the algorithm.',
     ],
   },
   'bu-log-5': {
     code: [
-      '# Temperature Converter',
-      'def celsius_to_fahrenheit(celsius):',
-      '    return celsius * 9 / 5 + 32',
+      'def to_f(c):',
+      '    return c * 9 / 5 + 32',
       '',
-      'def fahrenheit_to_celsius(fahrenheit):',
-      '    return fahrenheit * 9 / 5 + 32',
+      'def to_c(f):',
+      '    return f * 9 / 5 + 32',
       '',
-      'print(f"100°C = {celsius_to_fahrenheit(100)}°F")',
-      'print(f"32°F = {fahrenheit_to_celsius(32)}°C")',
+      'print(to_f(100))',
+      'print(to_c(32))',
     ],
-    output: `100°C = 212.0°F
-32°F = 89.6°C`,
+    output: `212.0
+89.6`,
     error: null,
     evidenceClues: [
-      'The temperature conversion gives wrong results.',
-      'One of the formulas is incorrect.',
-      'The conversion logic has a mathematical error.',
+      'to_f(100) gives 212, which is correct.',
+      'to_c(32) gives 89.6, which is wrong.',
+      'The formula for to_c is the same as to_f.',
     ],
   },
   'bu-log-6': {
     code: [
-      '# Edge Case Handler',
-      'def find_max(numbers):',
-      '    max_val = numbers[0]',
-      '    for num in numbers:',
-      '        if num > max_val:',
-      '            max_val = num',
-      '    return max_val',
+      'def find_max(nums):',
+      '    m = nums[0]',
+      '    for n in nums:',
+      '        if n > m:',
+      '            m = n',
+      '    return m',
       '',
-      'print(find_max([3, 7, 2, 8, 1]))',
+      'print(find_max([3, 7, 2, 8]))',
       'print(find_max([]))',
     ],
     output: `8`,
     error: `Traceback (most recent call last):
-  File "edge.py", line 10
+  File "app.py", line 9
     print(find_max([]))
-  File "edge.py", line 2
-    max_val = numbers[0]
+  File "app.py", line 2
+    m = nums[0]
 IndexError: list index out of range`,
     evidenceClues: [
-      'The function works for normal cases.',
-      'It fails on empty or special inputs.',
-      'The edge case is not handled properly.',
+      'Works with normal data.',
+      'Crashes on an empty list.',
+      'nums[0] fails when the list is empty.',
     ],
   },
 };
