@@ -639,24 +639,6 @@ export default function BugAnalysisPage({
             </div>
           </div>
 
-          <div className="panel ir-console-card">
-            <div className="ir-console-header">
-              <Terminal size={14} />
-              <span>Output</span>
-              <span className={`ir-console-status ${investigation.error ? 'error' : 'success'}`}>
-                {investigation.error ? 'Exception' : 'Completed'}
-              </span>
-            </div>
-            <div className="ir-console-body">
-              {investigation.output && (
-                <pre className="ir-console-output">{investigation.output}</pre>
-              )}
-              {investigation.error && (
-                <pre className="ir-console-error">{investigation.error}</pre>
-              )}
-            </div>
-          </div>
-
           <div className="panel ba-analysis-card">
             <div className="ba-card-header">
               <Target size={18} />
